@@ -207,6 +207,8 @@ MonoBehaviour:
   rArm: {fileID: 8727314432344146667}
   handSlot: {fileID: 5868189144301117254}
   armObject: {fileID: 4588974612047626680}
+  legDecap: {fileID: 8989897149521310420, guid: 2f94034e4121c4e48add5f47373ca8ba, type: 3}
+  armDecap: {fileID: 1465919454413493694, guid: 781825c2ce8e6aa47bbc520d61ca46fd, type: 3}
   canInteract: 1
 --- !u!114 &8089716275638371328
 MonoBehaviour:
