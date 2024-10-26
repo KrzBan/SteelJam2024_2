@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class WeaponInWorld : MonoBehaviour, IInteractable
+public class FireAxeWeaponWorld : MonoBehaviour, IInteractable
 {
     [SerializeField] ItemSO Item;
-    
+
 
     public void interact(Player user)
     {
+        if (!(user.PlayerStatus.RightArm && user.PlayerStatus.RightArm)) return;
 
-        if (!user.PlayerStatus.RightArm) return;
-        user.inventory.ItemSlot = new DualHandItem();
+        user.inventory.ItemSlot = new FireAxeItem();
 
         user.inventory.ItemSlot.setItemSO(Item);
         user.PlaceInHand(Item);

@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour, IDamagable
     enum EnemyState
     {
         Following,
-        Attacking
+        Attacking,
+        Dead
     }
     public Transform target;
     public LayerMask m_LayerMask;
@@ -66,7 +67,7 @@ public class Enemy : MonoBehaviour, IDamagable
                     _lastUpdate = Time.time;
                     _agent.SetDestination(target.position);
                 }
-                if(Vector3.Distance(transform.position,target.position) < 1.2f
+                if(Vector3.Distance(transform.position,target.position) <1.5f
                     && _stateSwitchCooldown <=0)
                 {
                     _state = EnemyState.Attacking;
@@ -84,6 +85,9 @@ public class Enemy : MonoBehaviour, IDamagable
                     _agent.isStopped = false;
                 }
 
+
+                break;
+            case EnemyState.Dead :
 
                 break;
         }
@@ -155,9 +159,12 @@ public class Enemy : MonoBehaviour, IDamagable
     public void TakeDamage(float value)
     {
         status.Health -= value;
-
+        Debug.Log("Zombie HP :" + status.Health);
         if (status.Health <= 0f)
         {
+            GetComponent<CapsuleCollider>().enabled = false;
+            _agent.Stop();
+            _state = EnemyState.Dead;
             RagDoll();
             DropMoney();
         }
