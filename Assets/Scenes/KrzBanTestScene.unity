@@ -334,8 +334,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomLayers:
-  - roomTypes: 010000000100000001000000
-  - roomTypes: 010000000100000001000000
+  - roomTypes: 010000000300000005000000
+  - roomTypes: 010000000200000005000000
+  - roomTypes: 010000000600000005000000
+  - roomTypes: 010000000300000005000000
+  - roomTypes: 010000000200000005000000
+  - roomTypes: 050000000500000005000000
   - roomTypes: 04000000
   enemyTarget: {fileID: 672910342}
   roomParent: {fileID: 1289144003}
@@ -346,8 +350,17 @@ MonoBehaviour:
   lightObject: {fileID: 724133117482815894, guid: e61c74e0e43c68c43b6efa936d6fe350, type: 3}
   enemyObject: {fileID: 3101592751412893510, guid: 3323359f0ec6cf148a80b29b18849de3, type: 3}
   doorObject: {fileID: 5591542815596445596, guid: 40b5800cc45d9d34288166df6a58f947, type: 3}
-  bossRoom: {fileID: 0}
-  roomTemplates:
+  bossRoomTemplates:
+  - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
+  normalRoomTemplates:
+  - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
+  shopRoomTemplates:
+  - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
+  sacrificeRoomTemplates:
+  - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
+  challangeRoomTemplates:
+  - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
+  specialRoomTemplates:
   - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
 --- !u!4 &790338796
 Transform:
