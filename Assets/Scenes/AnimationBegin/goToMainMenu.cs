@@ -5,7 +5,6 @@ public class GoToMainMenu : MonoBehaviour
 {
     public void EndOfAnimation()
     {
-        Debug.Log("dupa");
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Start");
     }
 }
