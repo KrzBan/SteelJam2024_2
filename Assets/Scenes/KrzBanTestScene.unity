@@ -1003,7 +1003,7 @@ PrefabInstance:
       objectReference: {fileID: 672910342}
     - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
       propertyPath: roomLayers.Array.data[0].roomTypes.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
       propertyPath: roomLayers.Array.data[0].roomTypes.Array.data[2].roomType
