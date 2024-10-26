@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "cab5ef77dd61eb04",
+    "type": "split",
+    "children": [
+      {
+        "id": "1bd4460169741124",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4a8f1c50718732c8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Mechaniki/Postać.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Postać"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0cd70cdbf7fb136e",
+    "type": "split",
+    "children": [
+      {
+        "id": "45bfdd9739268c2e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "099651a402e4d2a6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "6f25cae93ba225dd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "ee5d7565bae0722e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c320888f6d08e4b2",
+    "type": "split",
+    "children": [
+      {
+        "id": "1e716d77b0428f7d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "64ac79a30efabd19",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Mechaniki/Postać.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Postać"
+            }
+          },
+          {
+            "id": "97606b6d8bfc0d8d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Mechaniki/Postać.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Postać"
+            }
+          },
+          {
+            "id": "b791efb31d8cded3",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c00ede19273b165a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Mechaniki/Postać.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Postać"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "4a8f1c50718732c8",
+  "lastOpenFiles": [
+    "Mechaniki/Rodzaje pokoi.md",
+    "Mechaniki/Postać.md",
+    "Mechaniki/Przemioty uleczalne.md",
+    "Mechaniki/Ekwipunek.md",
+    "Mechaniki/Części ciała.md",
+    "Mechaniki/Bronie.md",
+    "Mechaniki/Mapa.md",
+    "Wizualizacja/Przechodzenie między pokojami.md",
+    "Wizualizacja/Status i ekwipunek.md",
+    "Założenia.md",
+    "GDD - Steelworks Jam 2024.md",
+    "Wizualizacja/Pokój.md",
+    "Wizualizacja",
+    "Części.md",
+    "Mechaniki/Rodzaje ataku.md",
+    "Mechaniki"
+  ]
+}

@@ -1,0 +1,1 @@
+* Poprzez UI po kliknięciu drzwi

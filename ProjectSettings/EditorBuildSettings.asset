@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/MainMenu.unity
+    guid: ae3d8193b6465e44a8d1bca7f99c902d
+  - enabled: 1
+    path: Assets/Scenes/Attic.unity
+    guid: 07bd3e7de64b1b852beddf2e75cd4bbd
+  - enabled: 1
+    path: Assets/Scenes/KrzBanTestScene.unity
+    guid: 944ee18f86b5c554f9312ce530f15cd2
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_UseUCBPForAssetBundles: 0

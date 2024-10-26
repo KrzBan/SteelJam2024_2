@@ -1,0 +1,1 @@
+* Horror setting z umeblowaniem zależnym od otoczenia
