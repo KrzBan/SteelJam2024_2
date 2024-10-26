@@ -36,8 +36,14 @@ public class DualHandItem :  IItem
             {
                 var isDamageble = objTransform.TryGetComponent<IDamagable>(out var damagable);
 
-                if(isDamageble)
+                if (isDamageble)
+                {
                     damagable.TakeDamage(ItemSO.Damage);
+                    if (damagable is Enemy e)
+                    {
+                        e.DrawBloodHit(hit.point);
+                    }
+                }
                 
                 objTransform = objTransform.parent;
             }

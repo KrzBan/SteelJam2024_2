@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private int moneyDropMin;
     [SerializeField] private int moneyDropMax;
     [SerializeField] private GameObject moneyPrefab;
+    [SerializeField] private GameObject bloodHitPrefab;
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -136,6 +137,19 @@ public class Enemy : MonoBehaviour, IDamagable
     public void SetTarget(Transform target)
     {
         this.target = target;
+    }
+
+    public void DrawBloodHit(Vector3 position)
+    {
+        StartCoroutine(IDrawBlood(position));
+    }
+
+    IEnumerator IDrawBlood(Vector3 position)
+    {
+        var bloodObj = Instantiate(bloodHitPrefab, position, Quaternion.identity);
+        bloodObj.GetComponent<ParticleSystem>().Play();
+        yield return new WaitForSeconds(1f);
+        Destroy(bloodObj);
     }
 
     public void TakeDamage(float value)

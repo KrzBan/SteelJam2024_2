@@ -1935,3 +1935,4 @@ MonoBehaviour:
   moneyDropMin: 5
   moneyDropMax: 10
   moneyPrefab: {fileID: 123534167090756388, guid: 6ca3d66e97cf7c84e90b2f6b5e3e6038, type: 3}
+  bloodHitPrefab: {fileID: 2691878564117464624, guid: b7f3c294086a4d94a8ceef7ddc26ec8a, type: 3}
