@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34fe08faf3c7784a9a03261fe0484e9, type: 3}
   m_Name: "Pa\u0142a"
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 450127992598989824, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
+  InHandPrefab: {fileID: 450127992598989824, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
+  WorldPrefab: {fileID: 8642779040836782039, guid: c20a843feb8846f42b67ce33d3fb12bb, type: 3}
   HandRequirement: 0
   Range: 2
   Damage: 1
