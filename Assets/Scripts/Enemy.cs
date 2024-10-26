@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (target == null) return;
+        
         var interval = (transform.position - target.position).magnitude > _shortDistance 
             ? _updateIntervalFar : _updateIntervalShort;
         if( Time.time > _lastUpdate + interval)   

@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     private Vector2 direction;
     private Rigidbody rb;
     [SerializeField] private Transform HandAnchor;
+
+    public bool canInteract = true;
+
     private void Awake()
     {
         Instance = this;
@@ -68,7 +71,9 @@ public class Player : MonoBehaviour
 
     public void Interact()
     {
-
+        if(canInteract == false)
+            return;
+        
         RaycastHit hit;
         if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
