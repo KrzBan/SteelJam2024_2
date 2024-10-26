@@ -13,11 +13,11 @@ public class Player : MonoBehaviour
     [SerializeField] public Transform headTransform;
     [SerializeField] private float movementSpeed = 1f;
     [SerializeField] private Arm rArm;
+    [SerializeField] private Transform handSlot;
     [CanBeNull] public static Player Instance { get; private set; }
 
     private Vector2 direction;
     private Rigidbody rb;
-    [SerializeField] private Transform HandAnchor;
 
     public bool canInteract = true;
 
@@ -121,10 +121,10 @@ public class Player : MonoBehaviour
 
     public void PlaceInHand(ItemSO item)
     {
-        if (HandAnchor.childCount > 0)
-             Destroy(HandAnchor.GetChild(0));
+        if (handSlot.childCount > 0)
+             Destroy(handSlot.GetChild(0));
 
-        Instantiate(item.Prefab,HandAnchor);
+        Instantiate(item.Prefab, handSlot);
     }
 
     public void Use()
