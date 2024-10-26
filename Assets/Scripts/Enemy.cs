@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public Transform target;
     public LayerMask m_LayerMask;
 
+    [SerializeField] private CinemachineImpulseSource impulseSource;
     [SerializeField] private EnemyStatus status;
     [SerializeField] private int moneyDropMin;
     [SerializeField] private int moneyDropMax;
@@ -133,10 +135,19 @@ public class Enemy : MonoBehaviour, IDamagable
             return;
         }
 
-        var angle = Vector3.Angle(transform.forward, (target.position - transform.position).normalized);
+        var playerDir = target.position - transform.position;
+        playerDir.y = 0f;
+        playerDir.Normalize();
+
+        var forward = transform.forward;
+        forward.y = 0f;
+        forward.Normalize();
+        
+        var angle = Vector3.Angle(transform.forward, playerDir);
         if (angle <= hitAngle && Vector3.Distance(transform.position, target.position) <= hitRange + 0.05f)
         {
             player.Hit(new HitParams(damage, limbLossChanceOnHit));
+            impulseSource.GenerateImpulse(10f);
         }
     }
 

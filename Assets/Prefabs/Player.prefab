@@ -210,6 +210,7 @@ MonoBehaviour:
   legDecap: {fileID: 8989897149521310420, guid: 2f94034e4121c4e48add5f47373ca8ba, type: 3}
   armDecap: {fileID: 1465919454413493694, guid: 781825c2ce8e6aa47bbc520d61ca46fd, type: 3}
   canInteract: 1
+  AttackingMoveDebuff: 0
 --- !u!114 &8089716275638371328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,6 +944,7 @@ GameObject:
   - component: {fileID: 1417718039005260479}
   - component: {fileID: 8689960112683064626}
   - component: {fileID: 3056577761988928807}
+  - component: {fileID: 5085458005721657237}
   m_Layer: 6
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -1028,6 +1030,29 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 0.8, z: 0}
+--- !u!114 &5085458005721657237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9034769716757518232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &9073635028573078525
 GameObject:
   m_ObjectHideFlags: 0
