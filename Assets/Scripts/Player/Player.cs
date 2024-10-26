@@ -23,6 +23,8 @@ public class Player : MonoBehaviour, IDamagable
     private Rigidbody rb;
 
     public bool canInteract = true;
+    public bool AttackingMoveDebuff = false;
+
 
     private void Awake()
     {
@@ -71,6 +73,14 @@ public class Player : MonoBehaviour, IDamagable
         headTransform.RotateAround(headTransform.position, headTransform.right, -delta.y * sensitivity);
     }
 
+    void OnLimbLoss(PlayerStatus status)
+    {
+        if (!status.Head) PlayerStatus.OnDeath.Invoke();
+        movementSpeed = 0.2f;
+        if (status.LeftLeg) movementSpeed += 0.4f;
+        if (status.RightLeg) movementSpeed += 0.4f;
+
+    }
     public void Hit(HitParams hitParams)
     {
         TakeDamage(hitParams.Damage);
@@ -117,7 +127,10 @@ public class Player : MonoBehaviour, IDamagable
         right.y = 0f;
         right.Normalize();
 
-        rb.linearVelocity = (forward * direction.y + right * direction.x) * movementSpeed + rb.linearVelocity.y * Vector3.up;
+
+        var velo = (forward * direction.y + right * direction.x) * movementSpeed + rb.linearVelocity.y * Vector3.up;
+        if (AttackingMoveDebuff) velo *= 0.3f;
+        rb.linearVelocity = velo;
     }
 
     public void Interact()

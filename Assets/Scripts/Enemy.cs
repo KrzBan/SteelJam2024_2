@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour, IDamagable
     private NavMeshAgent _agent;
     private Animator _animator;
     private float cooldown = 0f;
+    private bool dead = false;
 
     private Vector3 OverlapBoxOffset;
     void Awake()
@@ -43,6 +44,11 @@ public class Enemy : MonoBehaviour, IDamagable
 
     void Update()
     {
+        if (dead)
+        {
+            return;
+        }
+        
         _animator.SetFloat("Speed", _agent.velocity.magnitude);
 
         if (target == null)
@@ -143,9 +149,12 @@ public class Enemy : MonoBehaviour, IDamagable
     public void TakeDamage(float value)
     {
         status.Health -= value;
-
+        Debug.Log("Zombie HP :" + status.Health);
         if (status.Health <= 0f)
         {
+            GetComponent<CapsuleCollider>().enabled = false;
+            _agent.Stop();
+            dead = true;
             RagDoll();
             DropMoney();
         }

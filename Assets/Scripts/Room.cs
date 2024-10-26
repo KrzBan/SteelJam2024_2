@@ -36,11 +36,11 @@ public class Room : MonoBehaviour
             navMeshSurface.BuildNavMesh();
         }
     }
-    public void SetMaterials(Material floorMaterial, Material wallMaterial, Material ceilingMaterial)
+    public void SetMaterial(Material floorMaterial)
     {
         SetFloorMaterial(floorMaterial);
-        SetWallMaterial(wallMaterial);
-        SetCeilingMaterial(ceilingMaterial);
+        SetWallMaterial(floorMaterial);
+        SetCeilingMaterial(floorMaterial);
     }
     
     public void InstantiateScenery(GameObject prefab)
