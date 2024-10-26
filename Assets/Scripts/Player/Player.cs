@@ -104,9 +104,6 @@ public class Player : MonoBehaviour
 
     public void Interact()
     {
-        if(canInteract == false)
-            return;
-        
         RaycastHit hit;
         if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
