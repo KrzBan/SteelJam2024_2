@@ -14,11 +14,14 @@ public class DualHandItem :  IItem
         return ItemSO;
     }
 
-    public GameObject GetPrefab()
+    public GameObject GetInHandPrefab()
     {
-        return ItemSO.Prefab;
+        return ItemSO.InHandPrefab;
     }
-
+    public GameObject GetWorldPrefab()
+    {
+        return ItemSO.InHandPrefab;
+    }
     public void setItemSO(ItemSO itemSO_)
     {
         ItemSO = itemSO_;
@@ -26,28 +29,6 @@ public class DualHandItem :  IItem
 
     public void Use(Player User)
     {
-        Debug.Log("MI BEING USED :D ");
-
-        RaycastHit hit;
-        if (Physics.Raycast(User.headTransform.position, User.headTransform.TransformDirection(Vector3.forward), out hit, ItemSO.Range))
-        {
-            var objTransform = hit.transform;
-            while (objTransform != null)
-            {
-                var isDamageble = objTransform.TryGetComponent<IDamagable>(out var damagable);
-
-                if (isDamageble)
-                {
-                    damagable.TakeDamage(ItemSO.Damage);
-                    if (damagable is Enemy e)
-                    {
-                        e.DrawBloodHit(hit.point);
-                    }
-                }
-                
-                objTransform = objTransform.parent;
-            }
-        }
-
+        ItemUtility.SingleWieldedAttack(User, ItemSO);
     }
 }

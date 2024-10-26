@@ -8,7 +8,8 @@ public class WeaponInWorld : MonoBehaviour, IInteractable
     public void interact(Player user)
     {
 
-        if (!user.PlayerStatus.RightArm) return;
+        if (ItemUtility.ShouldRefuseInteract(user, Item)) return;
+
         user.inventory.ItemSlot = new DualHandItem();
 
         user.inventory.ItemSlot.setItemSO(Item);
