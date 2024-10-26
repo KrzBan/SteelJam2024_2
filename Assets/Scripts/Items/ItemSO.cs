@@ -9,7 +9,7 @@ public enum HandRequirement
 [CreateAssetMenu(fileName = "ItemSO", menuName = "Scriptable Objects/ItemSO")]
 public class ItemSO : ScriptableObject
 {
-    GameObject Prefab;
-    HandRequirement HandRequirement;
-    float Range;
+    public GameObject Prefab;
+    public HandRequirement HandRequirement;
+    public float Range;
 }

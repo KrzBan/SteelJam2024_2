@@ -6,23 +6,23 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [field: SerializeField] public PlayerStatus PlayerStatus { get; set; }
+    [SerializeField] public Inventory inventory;
     public Rigidbody Rigidbody => rb;
-    
     [SerializeField, Range(0f, 1f)] private float sensitivity = 0.05f;
     [SerializeField] private Transform headTransform;
     [SerializeField] private float movementSpeed = 1f;
-
     [CanBeNull] public static Player Instance { get; private set; }
-    
+
     private Vector2 direction;
     private Rigidbody rb;
+    [SerializeField] private Transform HandAnchor;
 
     public bool canInteract = true;
 
     private void Awake()
     {
         Instance = this;
-        
+        inventory = new Inventory();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -90,5 +90,13 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Did not Hit");
         }
+    }
+
+    public void PlaceInHand(ItemSO item)
+    {
+        if (HandAnchor.childCount > 0)
+             Destroy(HandAnchor.GetChild(0));
+
+        Instantiate(item.Prefab,HandAnchor);
     }
 }
