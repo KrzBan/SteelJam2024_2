@@ -47,7 +47,8 @@ public class RoomManager : MonoBehaviour
     public GameObject lightObject;
     public GameObject enemyObject;
     public GameObject doorObject;
-
+    public GameObject keyObject;
+    
     [Header("Rooms")]
     public List<Room> bossRoomTemplates;
     public List<Room> normalRoomTemplates;
@@ -124,10 +125,10 @@ public class RoomManager : MonoBehaviour
         var roomTypes = roomLayers[_currentRoomLayer].roomTypes;
         if (roomTypes.Count == 3)
         {
-            _newRoom.InstantiateDoors(doorObject, roomTypes[0], roomTypes[1], roomTypes[2]);
+            _newRoom.InstantiateDoors(doorObject, keyObject, roomTypes[0], roomTypes[1], roomTypes[2]);
         } else if (roomTypes.Count() == 1)
         {
-            _newRoom.InstantiateDoors(doorObject, RoomType.None, roomTypes[0], RoomType.None);
+            _newRoom.InstantiateDoors(doorObject, keyObject, RoomType.None, roomTypes[0], RoomType.None);
         }
         else
         {
