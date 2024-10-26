@@ -1275,7 +1275,7 @@ MonoBehaviour:
   limbLossChanceOnHit: 0.1
   hitRange: 1.7
   attackCooldown: 2
-  rotateDuringAttackSpeed: 180
+  rotateDuringAttackSpeed: 360
   hitAngle: 30
 --- !u!114 &7676306076082046244
 MonoBehaviour:
