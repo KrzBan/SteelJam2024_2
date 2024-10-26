@@ -9,11 +9,12 @@ using Random = UnityEngine.Random;
 public enum RoomType
 {
     Normal,
-    Shop,
+    Heal,
     Sacrifice,
     Boss,
     Challange,
-    Special
+    Special,
+    Treasure
 }
 
 [Serializable]
@@ -57,10 +58,11 @@ public class RoomManager : MonoBehaviour
     [Header("Rooms")]
     public List<Room> bossRoomTemplates;
     public List<Room> normalRoomTemplates;
-    public List<Room> shopRoomTemplates;
+    public List<Room> healRoomTemplates;
     public List<Room> sacrificeRoomTemplates;
     public List<Room> challangeRoomTemplates;
     public List<Room> specialRoomTemplates;
+    public List<Room> treasureRoomTemplates;
 
     private Room _currentRoom;
     private Room _newRoom;
@@ -74,8 +76,8 @@ public class RoomManager : MonoBehaviour
             case RoomType.Normal:
                 SpawnRandomRoom(normalRoomTemplates);
                 break;
-            case RoomType.Shop:
-                SpawnRandomRoom(shopRoomTemplates);
+            case RoomType.Heal:
+                SpawnRandomRoom(healRoomTemplates);
                 break;
             case RoomType.Sacrifice:
                 SpawnRandomRoom(sacrificeRoomTemplates);
@@ -88,6 +90,9 @@ public class RoomManager : MonoBehaviour
                 break;
             case RoomType.Special:
                 SpawnRandomRoom(specialRoomTemplates);
+                break;
+            case RoomType.Treasure:
+                SpawnRandomRoom(treasureRoomTemplates);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -128,7 +133,12 @@ public class RoomManager : MonoBehaviour
         if (roomTypes.Count == 3)
         {
             _newRoom.InstantiateDoors(doorObject, keyObject, roomTypes[0], roomTypes[1], roomTypes[2]);
-        } else if (roomTypes.Count() == 1)
+        } 
+        else if (roomTypes.Count == 2)
+        {
+            _newRoom.InstantiateDoors(doorObject, keyObject, roomTypes[0], roomTypes[1], null);
+        }
+        else if (roomTypes.Count() == 1)
         {
             _newRoom.InstantiateDoors(doorObject, keyObject, null, roomTypes[0], null);
         }

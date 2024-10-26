@@ -85,6 +85,8 @@ public class Room : MonoBehaviour
             doorComp.roomType = roomInfo.roomType;
         }
 
+        doorComp.RoomText.text = roomInfo.roomType.ToString();
+
         if (roomInfo.hasKey)
         {
             var lockObj = Instantiate(lockKey, doorComp.lockSpawnPoint.position, doorComp.lockSpawnPoint.rotation, doorObj.transform);

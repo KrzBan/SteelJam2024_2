@@ -47,55 +47,65 @@ MonoBehaviour:
   roomLayers:
   - roomTypes:
     - roomType: 0
+      hasKey: 0
+    - roomType: 4
+      hasKey: 0
+  - roomTypes:
+    - roomType: 6
       hasKey: 1
+    - roomType: 2
+      hasKey: 0
+  - roomTypes:
     - roomType: 0
       hasKey: 0
-    - roomType: 0
+  - roomTypes:
+    - roomType: 2
+      hasKey: 0
+    - roomType: 4
+      hasKey: 0
+  - roomTypes:
+    - roomType: 6
       hasKey: 1
-  - roomTypes:
-    - roomType: 0
-      hasKey: 0
-    - roomType: 0
-      hasKey: 0
-    - roomType: 0
+    - roomType: 1
       hasKey: 0
   - roomTypes:
     - roomType: 0
       hasKey: 0
-    - roomType: 0
-      hasKey: 0
-    - roomType: 0
-      hasKey: 0
   - roomTypes:
-    - roomType: 0
-      hasKey: 0
-    - roomType: 0
-      hasKey: 0
-    - roomType: 0
-      hasKey: 0
-  - roomTypes:
-    - roomType: 0
-      hasKey: 0
-    - roomType: 0
-      hasKey: 0
-    - roomType: 0
-      hasKey: 0
-  - roomTypes:
-    - roomType: 0
-      hasKey: 0
-    - roomType: 0
-      hasKey: 0
-    - roomType: 0
-      hasKey: 0
-  - roomTypes:
-    - roomType: 0
+    - roomType: 3
       hasKey: 0
   enemyTarget: {fileID: 0}
   roomParent: {fileID: 0}
-  floorMaterial: {fileID: 2100000, guid: b1bb71bb18f7b9d4489cb676e117de67, type: 2}
-  wallMaterial: {fileID: 2100000, guid: a6b67be559c99c849a7050aaf7cb7273, type: 2}
+  roomMaterials:
+  - {fileID: 2100000, guid: 5deabf6b72ea8f54eb61d0cc19fddd2b, type: 2}
+  - {fileID: 2100000, guid: d24a27e0dede04e4c9a0d9fb5b29ab4f, type: 2}
+  - {fileID: 2100000, guid: 4b1c9078c6c36404c95e5b4fc2f833c7, type: 2}
+  - {fileID: 2100000, guid: 6ac12ff5057a69941ad19d7bca9deba3, type: 2}
+  - {fileID: 2100000, guid: 87219803fde09404ca3b46db6a3d4059, type: 2}
   ceilingMaterial: {fileID: 2100000, guid: 583ba5fe437b17442a68287dc6ec476f, type: 2}
-  sceneryObject: {fileID: 3101592751412893510, guid: 0b720eaf3660af2458af5b6e65f04ff7, type: 3}
+  propObjects:
+  - {fileID: 2847881385650683060, guid: 628940d1c04599e45b6d65ebcbd206d1, type: 3}
+  - {fileID: 5040289206633807985, guid: d28bf163313c84f4ba906f4fdd3983e3, type: 3}
+  - {fileID: 2168163275306491762, guid: 37008e25362d23e4f909d8fa3e78b429, type: 3}
+  - {fileID: 7479848413207235299, guid: 39fddc3c30de8d34e9ccaf3507fa4c21, type: 3}
+  - {fileID: 6715408208885704464, guid: e6fcefb2ec020934da7d05e3674c42fa, type: 3}
+  - {fileID: 7488782894259973841, guid: 492bf7dad84c8a64b91f0dd3e8b0f9e8, type: 3}
+  - {fileID: 5369911734443939988, guid: 99238aa5e3ca31f4cb29e51bcd79a4f1, type: 3}
+  - {fileID: 3021081039970982872, guid: 5c9a5d7548694154cb0ee3a36fcacf55, type: 3}
+  - {fileID: 5045419550530951577, guid: 3898ef3c755fcbd45a61e0eb0b9abffa, type: 3}
+  - {fileID: 259416065227705116, guid: 937ebe6d526d4834cb7c582201ca1a9f, type: 3}
+  - {fileID: 8495180269736799118, guid: b7ba7d785a8bffa46b6e863d4af1a4d6, type: 3}
+  - {fileID: 2672263737922494583, guid: 1bca5156905b04d479c929024d9c99ab, type: 3}
+  - {fileID: 8896111050646170962, guid: 8eafbc80d89212b4caa2e58f5651a592, type: 3}
+  - {fileID: 7041699299951048506, guid: 79b024fb44a55c04fa76f07d94447506, type: 3}
+  - {fileID: 3268910041392419006, guid: 151a6a0ace79cb54eb4cf77d91fed5a5, type: 3}
+  - {fileID: 3385368179173273181, guid: 0aaaa3627deee5d4b9c9ac3a8c89f3db, type: 3}
+  - {fileID: 7131430495408432971, guid: 8e70421517332b84fabc8e0c049896ca, type: 3}
+  - {fileID: 7082413971201115633, guid: 32a60994d8a2a574ea4688dc75c895c6, type: 3}
+  - {fileID: 6271031704755011298, guid: 3fee0d8eb096ca54c9392ecab2433d2a, type: 3}
+  - {fileID: 5455892171335001669, guid: 30d7a738040944346aa49b197d6b7a56, type: 3}
+  - {fileID: 4234191957543052855, guid: 78062eb8732a0a44299ecf1f390b4318, type: 3}
+  - {fileID: 7545615220076572789, guid: fb886b78b0230c542b71f562d3334ff4, type: 3}
   lightObject: {fileID: 724133117482815894, guid: e61c74e0e43c68c43b6efa936d6fe350, type: 3}
   enemyObject: {fileID: 7678512171347918952, guid: 2f1f487f012edd64f9b3314019174a02, type: 3}
   doorObject: {fileID: 1123299098356835380, guid: f7607bb30c8ff474fa76335417b50a6f, type: 3}
@@ -104,7 +114,7 @@ MonoBehaviour:
   - {fileID: 3205531888409352052, guid: 077698cd8b0733b4b817f9c317b323bf, type: 3}
   normalRoomTemplates:
   - {fileID: 3517669031967486734, guid: f4f7f611590e3574984f03445d02d877, type: 3}
-  shopRoomTemplates:
+  healRoomTemplates:
   - {fileID: 5700448676719099809, guid: f92b83a13259fb24c820106a2988eaf9, type: 3}
   sacrificeRoomTemplates:
   - {fileID: 2849441465333524448, guid: 0010d83460dc33c4c8d768b431b32fb0, type: 3}
@@ -112,3 +122,5 @@ MonoBehaviour:
   - {fileID: 2320515126810040238, guid: c7d57a56ff6e25a47987625ccd0b512d, type: 3}
   specialRoomTemplates:
   - {fileID: 6135108285766436068, guid: fc1e6a0e1160f7646bacc7200bd28196, type: 3}
+  treasureRoomTemplates:
+  - {fileID: 5700448676719099809, guid: 8bc0fef761b34e748be35a877ef71e06, type: 3}
