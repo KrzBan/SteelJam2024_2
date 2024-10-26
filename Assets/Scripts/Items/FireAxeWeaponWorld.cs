@@ -7,7 +7,8 @@ public class FireAxeWeaponWorld : MonoBehaviour, IInteractable
 
     public void interact(Player user)
     {
-        if (!(user.PlayerStatus.RightArm && user.PlayerStatus.RightArm)) return;
+
+        if(ItemUtility.ShouldRefuseInteract(user, Item)) return;
 
         user.inventory.ItemSlot = new FireAxeItem();
 

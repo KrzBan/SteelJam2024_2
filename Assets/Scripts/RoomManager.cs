@@ -31,6 +31,8 @@ public class RoomLayer
 }
 public class RoomManager : MonoBehaviour
 {
+    public Action OnDoorsUnlocked { get; set; }
+    
     public static RoomManager Instance;
     private void Awake()
     {
@@ -182,5 +184,8 @@ public class RoomManager : MonoBehaviour
         {
             door.Open();
         }
+        
+        OnDoorsUnlocked?.Invoke();
+        OnDoorsUnlocked = null;
     }
 }

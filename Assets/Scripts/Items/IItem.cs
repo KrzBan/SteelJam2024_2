@@ -5,6 +5,7 @@ public interface IItem
 {
     void setItemSO(ItemSO itemSO);
     ItemSO getItemSO();
-    GameObject GetPrefab();
+    GameObject GetInHandPrefab();
+    GameObject GetWorldPrefab();
     void Use(Player User);
 }

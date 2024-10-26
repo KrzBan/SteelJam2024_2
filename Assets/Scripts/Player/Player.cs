@@ -81,6 +81,21 @@ public class Player : MonoBehaviour, IDamagable
         if (status.LeftLeg) movementSpeed += 0.4f;
         if (status.RightLeg) movementSpeed += 0.4f;
 
+        if (!(status.LeftArm || status.RightArm)) DropItem();
+
+
+        if(!(status.LeftArm && status.RightArm))
+        {
+            if (inventory.ItemSlot.getItemSO().HandRequirement == HandRequirement.DualHanded)
+                DropItem();
+        }
+    }
+    void DropItem()
+    {
+        if (handSlot.childCount != 0)
+            Destroy(handSlot.GetChild(0));
+
+        inventory.ItemSlot.setItemSO(null);
     }
     public void Hit(HitParams hitParams)
     {
@@ -155,12 +170,23 @@ public class Player : MonoBehaviour, IDamagable
         if (handSlot.childCount > 0)
              Destroy(handSlot.GetChild(0).gameObject);
 
-        Instantiate(item.Prefab, handSlot);
+        Instantiate(item.InHandPrefab, handSlot);
     }
 
     public void Use()
     {
-        rArm.Attack();
+        switch (inventory.ItemSlot.getItemSO().HandRequirement)
+        {
+            case HandRequirement.SingeHanded:
+                rArm.Attack("Attack");
+
+                break;
+            case HandRequirement.DualHanded:
+                rArm.Attack("Attack"); //tutaj ata animacja dla 2 rak, ale jje nie ma jeszcze sadge
+
+                break;
+        }
+
     }
 
     public void TakeDamage(float value)
