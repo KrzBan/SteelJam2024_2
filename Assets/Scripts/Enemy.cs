@@ -81,8 +81,13 @@ public class Enemy : MonoBehaviour, IDamagable
         while (i < hitColliders.Length)
         {
             Debug.Log("Hit : " + hitColliders[i].name + i);
-
             i++;
+            IDamagable player;
+           if( hitColliders[i].TryGetComponent<IDamagable>(out player))
+            {
+                player.TakeDamage(1f);
+            }
+
         }
 
     }    
