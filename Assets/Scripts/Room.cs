@@ -30,6 +30,11 @@ public class Room : MonoBehaviour
             enemy.SetTarget(target);
         }
     }
+
+    public int GetEnemiesAlive()
+    {
+        return GetComponentsInChildren<Enemy>().Length;
+    }
     public void BakeNavMesh()
     {
         var navMeshSurfaces = GetComponentsInChildren<NavMeshSurface>();

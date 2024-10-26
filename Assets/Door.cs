@@ -12,7 +12,7 @@ public class Door : MonoBehaviour, IInteractable
     public GameObject keyLock;
     public Transform lockSpawnPoint;
     
-    private bool _interactable = true;
+    [SerializeField] bool _interactable = false;
     public void interact(Player user)
     {
         if(_interactable == false)
@@ -31,6 +31,11 @@ public class Door : MonoBehaviour, IInteractable
 
         StartCoroutine(TeleportCoroutine(user, RoomManager.Instance.GetPlayerSpawnPoint()));
     }
+
+    public void Open()
+    {
+        _interactable = true;
+    }
     
     IEnumerator TeleportCoroutine(Player user, Transform spawnPoint)
     {
@@ -38,6 +43,7 @@ public class Door : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(2.0f);
         
         float fadeTime = 3.0f;
+        float fadeOutTime = 1.0f;
         
         // fade in
         Fade.Instance.Out(fadeTime);
@@ -49,7 +55,7 @@ public class Door : MonoBehaviour, IInteractable
         
         // fade out
         Fade.Instance.In(fadeTime);
-        yield return new WaitForSeconds(fadeTime);
+        yield return new WaitForSeconds(fadeOutTime);
         
         user.canInteract = true;
         RoomManager.Instance.SwapRooms();
