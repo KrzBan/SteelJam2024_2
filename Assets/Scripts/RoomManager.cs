@@ -141,7 +141,6 @@ public class RoomManager : MonoBehaviour
         _newRoom.BakeNavMesh();
         
         _newRoom.InstantiateEnemies(enemyObject);
-        _newRoom.SetEnemyTarget(enemyTarget);
     }
 
     public void SwapRooms()
@@ -149,5 +148,7 @@ public class RoomManager : MonoBehaviour
         DeleteCurrentRoom();
         _currentRoom = _newRoom;
         _newRoom = null;
+        
+        _currentRoom.SetEnemyTarget(Player.Instance.transform);
     }
 }

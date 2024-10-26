@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private Vector2 direction;
     private Rigidbody rb;
 
-    
+    public bool canInteract = true;
 
     private void Awake()
     {
@@ -71,7 +71,9 @@ public class Player : MonoBehaviour
 
     public void Interact()
     {
-
+        if(canInteract == false)
+            return;
+        
         RaycastHit hit;
         if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
