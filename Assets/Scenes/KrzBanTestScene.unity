@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 1
-  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
+  m_Fog: 0
+  m_FogColor: {r: 0.41509432, g: 0, b: 0, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -812,6 +812,7 @@ MonoBehaviour:
   roomType: 1
   keyLock: {fileID: 0}
   lockSpawnPoint: {fileID: 0}
+  _interactable: 1
 --- !u!1001 &1659018351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1003,7 +1004,7 @@ PrefabInstance:
       objectReference: {fileID: 672910342}
     - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
       propertyPath: roomLayers.Array.data[0].roomTypes.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
       propertyPath: roomLayers.Array.data[0].roomTypes.Array.data[2].roomType

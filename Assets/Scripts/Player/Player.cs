@@ -153,7 +153,7 @@ public class Player : MonoBehaviour, IDamagable
     public void PlaceInHand(ItemSO item)
     {
         if (handSlot.childCount > 0)
-             Destroy(handSlot.GetChild(0));
+             Destroy(handSlot.GetChild(0).gameObject);
 
         Instantiate(item.Prefab, handSlot);
     }

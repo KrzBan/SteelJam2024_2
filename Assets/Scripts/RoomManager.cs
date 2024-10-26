@@ -68,6 +68,7 @@ public class RoomManager : MonoBehaviour
     private Room _newRoom;
 
     private float _roomOffset = 100.0f;
+    private int _enemiesAlive = 0;
 
     public void SpawnRoomByType(RoomType type)
     {
@@ -160,5 +161,26 @@ public class RoomManager : MonoBehaviour
         _newRoom = null;
         
         _currentRoom.SetEnemyTarget(Player.Instance.transform);
+        _enemiesAlive = _currentRoom.GetEnemiesAlive();
+        if(_enemiesAlive == 0) UnlockDoors();
+    }
+
+    public void OnEnemyDeath()
+    {
+        if (_enemiesAlive > 0) --_enemiesAlive;
+
+        if (_enemiesAlive == 0)
+        {
+            UnlockDoors();
+        }
+    }
+
+    private void UnlockDoors()
+    {
+        var objs = FindObjectsByType<Door>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (var door in objs)
+        {
+            door.Open();
+        }
     }
 }
