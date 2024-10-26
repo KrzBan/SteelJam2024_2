@@ -12,4 +12,5 @@ public class ItemSO : ScriptableObject
     public GameObject Prefab;
     public HandRequirement HandRequirement;
     public float Range;
+    public float Damage = 1f;
 }

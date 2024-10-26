@@ -2,10 +2,12 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamagable
 {
     public Transform target;
-    
+
+    [SerializeField] private EnemyState state;
+
     private NavMeshAgent _agent;
     private Animator _animator;
     private float _lastUpdate = 0.0f;
@@ -33,6 +35,16 @@ public class Enemy : MonoBehaviour
             _agent.SetDestination(target.position);
         }
     }
+
+    private void RagDoll()
+    {
+        foreach (var rb in GetComponentsInChildren<Rigidbody>())
+        {
+            rb.isKinematic = false;
+        }
+
+        _animator.enabled = false;
+    }
     
     public void SetTarget(Transform target)
     {
@@ -41,6 +53,11 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float value)
     {
-        Destroy(this.gameObject);
+        state.Health -= value;
+
+        if (state.Health <= 0f)
+        {
+            RagDoll();
+        }
     }
 }

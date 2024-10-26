@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float sensitivity = 0.05f;
     [SerializeField] public Transform headTransform;
     [SerializeField] private float movementSpeed = 1f;
+    [SerializeField] private Arm rArm;
     [CanBeNull] public static Player Instance { get; private set; }
 
     private Vector2 direction;
@@ -128,7 +129,6 @@ public class Player : MonoBehaviour
 
     public void Use()
     {
-        if(inventory.ItemSlot!=null)
-            inventory.ItemSlot.Use(this);
+        rArm.Attack();
     }
 }
