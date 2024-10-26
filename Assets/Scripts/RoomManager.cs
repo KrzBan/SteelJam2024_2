@@ -45,8 +45,7 @@ public class RoomManager : MonoBehaviour
     public Transform enemyTarget;
     public Transform roomParent;
     
-    public Material floorMaterial;
-    public Material wallMaterial;
+    public List<Material> roomMaterials;
     public Material ceilingMaterial;
 
     public GameObject sceneryObject;
@@ -121,7 +120,7 @@ public class RoomManager : MonoBehaviour
     {
         yield return null;
         
-        _newRoom.SetMaterials(floorMaterial, wallMaterial, ceilingMaterial);
+        _newRoom.SetMaterial(roomMaterials[Random.Range(0, roomMaterials.Count)]);
         _newRoom.InstantiateScenery(sceneryObject);
         _newRoom.InstantiateLights(lightObject);
 

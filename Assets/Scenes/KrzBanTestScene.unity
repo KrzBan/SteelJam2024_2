@@ -344,8 +344,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.4811321, g: 0.47808766, b: 0.46978465, a: 1}
+  m_Intensity: 0.1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -943,6 +943,34 @@ PrefabInstance:
       propertyPath: enemyTarget
       value: 
       objectReference: {fileID: 672910342}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: roomMaterials.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5deabf6b72ea8f54eb61d0cc19fddd2b, type: 2}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d24a27e0dede04e4c9a0d9fb5b29ab4f, type: 2}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4b1c9078c6c36404c95e5b4fc2f833c7, type: 2}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ac12ff5057a69941ad19d7bca9deba3, type: 2}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 87219803fde09404ca3b46db6a3d4059, type: 2}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1911415e924501a42ab1a9178d41ef1e, type: 2}
     - target: {fileID: 7771203061307140637, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.7023226
