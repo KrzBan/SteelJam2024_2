@@ -62,11 +62,11 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             var angle = Vector3.SignedAngle(transform.forward, (target.position - transform.position).normalized, Vector3.up);
 
-            if (angle > rotateDuringAttackSpeed)
+            if (angle > 0.01f)
             {
                 angle = rotateDuringAttackSpeed;
             }
-            else if (angle < -rotateDuringAttackSpeed)
+            else if (angle < -0.01f)
             {
                 angle = -rotateDuringAttackSpeed;
             }
