@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &567255897296999428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7771203061307140637}
+  - component: {fileID: 5143348159318948154}
+  m_Layer: 0
+  m_Name: RoomManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7771203061307140637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567255897296999428}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.7023226, y: -0.4057951, z: -3.7534955}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5143348159318948154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567255897296999428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f9b3dbd2c65b84eb3b0f6f9a3ede4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomLayers:
+  - roomTypes:
+    - roomType: 0
+      hasKey: 1
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 1
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+  enemyTarget: {fileID: 0}
+  roomParent: {fileID: 0}
+  floorMaterial: {fileID: 2100000, guid: b1bb71bb18f7b9d4489cb676e117de67, type: 2}
+  wallMaterial: {fileID: 2100000, guid: a6b67be559c99c849a7050aaf7cb7273, type: 2}
+  ceilingMaterial: {fileID: 2100000, guid: 583ba5fe437b17442a68287dc6ec476f, type: 2}
+  sceneryObject: {fileID: 3101592751412893510, guid: 0b720eaf3660af2458af5b6e65f04ff7, type: 3}
+  lightObject: {fileID: 724133117482815894, guid: e61c74e0e43c68c43b6efa936d6fe350, type: 3}
+  enemyObject: {fileID: 7678512171347918952, guid: 2f1f487f012edd64f9b3314019174a02, type: 3}
+  doorObject: {fileID: 1123299098356835380, guid: f7607bb30c8ff474fa76335417b50a6f, type: 3}
+  keyObject: {fileID: 907664395641349445, guid: e6e3b70bd00aec54d9f8f2de96f6c556, type: 3}
+  bossRoomTemplates:
+  - {fileID: 3205531888409352052, guid: 077698cd8b0733b4b817f9c317b323bf, type: 3}
+  normalRoomTemplates:
+  - {fileID: 3517669031967486734, guid: f4f7f611590e3574984f03445d02d877, type: 3}
+  shopRoomTemplates:
+  - {fileID: 5700448676719099809, guid: f92b83a13259fb24c820106a2988eaf9, type: 3}
+  sacrificeRoomTemplates:
+  - {fileID: 2849441465333524448, guid: 0010d83460dc33c4c8d768b431b32fb0, type: 3}
+  challangeRoomTemplates:
+  - {fileID: 2320515126810040238, guid: c7d57a56ff6e25a47987625ccd0b512d, type: 3}
+  specialRoomTemplates:
+  - {fileID: 6135108285766436068, guid: fc1e6a0e1160f7646bacc7200bd28196, type: 3}
