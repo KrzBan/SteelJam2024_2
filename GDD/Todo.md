@@ -1,11 +1,15 @@
 ## Ważne
 
 - [ ] 2 Sacrifice roomy pod inne maszyny obcinania kończyn
+- [ ] Gilotyna (obcinanie ręki)
+- [ ] Mielarka (obcinanie nogi)
+- [ ] Możliwość odcięcia kończyny przez przeciwnika
 - [x] Po obcięciu kończyny spadanie klucza (na maszynę, obok gracza)
 - [ ] Dodanie broni (wstępnie 2 jednoręczne i 1 dwuręczna)
-- [ ] Treasure roomy z skrzynką z nagrodą (bronie)
-- [ ] Normal roomy z wariantami - nagroda pieniądze, moga wypadać z przeciwników
-- [ ] Challange roomy (utrudniona wersja normal roomów) - z lepszą nagrodą (np. więcej pieniędzy)
+- [ ] Treasure roomy z skrzynką (lub na stole) z nagrodą (bronie)
+- [ ] Normal roomy z wariantami
+- [ ] Wypadanie pieniędzy z przeciwników
+- [ ] Challange roomy (utrudniona wersja normal roomów) - z lepszą nagrodą (np. więcej pieniędzy przez większą ilość przeciwników)
 - [ ] Shop - 2-3 skrzynie z ceną, tu najważniejsze możliwość kupienia leczenia
 ## Średnie
 
