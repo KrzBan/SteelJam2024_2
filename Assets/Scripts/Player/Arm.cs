@@ -25,7 +25,7 @@ public class Arm : MonoBehaviour
         {
             return;
         }
-        
-        Player.Instance.inventory.ItemSlot.Use(Player.Instance);
+        if(Player.Instance.inventory.ItemSlot != null)
+         Player.Instance.inventory.ItemSlot.Use(Player.Instance);
     }
 }
