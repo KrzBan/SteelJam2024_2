@@ -144,10 +144,10 @@ public class Enemy : MonoBehaviour, IDamagable
         forward.Normalize();
         
         var angle = Vector3.Angle(transform.forward, playerDir);
-        if (angle <= hitAngle && Vector3.Distance(transform.position, target.position) <= hitRange + 0.05f)
+        if (angle <= hitAngle && Vector3.Distance(transform.position, target.position) <= hitRange + 0.3f)
         {
             player.Hit(new HitParams(damage, limbLossChanceOnHit));
-            impulseSource.GenerateImpulse(10f);
+            impulseSource.GenerateImpulse(0.2f);
         }
     }
 
