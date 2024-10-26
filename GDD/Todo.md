@@ -1,7 +1,7 @@
 ## Ważne
 
 - [ ] 2 Sacrifice roomy pod inne maszyny obcinania kończyn
-- [ ] Gilotyna (obcinanie ręki)
+- [x] Gilotyna (obcinanie ręki)
 - [ ] Mielarka (obcinanie nogi)
 - [ ] Możliwość odcięcia kończyny przez przeciwnika
 - [x] Po obcięciu kończyny spadanie klucza (na maszynę, obok gracza)
