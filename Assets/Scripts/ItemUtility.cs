@@ -9,12 +9,13 @@ public class ItemUtility
         switch (Item.HandRequirement)
         {
             case HandRequirement.SingeHanded:
-                if (!(user.PlayerStatus.RightArm || user.PlayerStatus.RightArm)) return true;
+                if (!user.PlayerStatus.RightArm && !user.PlayerStatus.RightArm) return true;
                 break;
             case HandRequirement.DualHanded:
-                if (!(user.PlayerStatus.RightArm && user.PlayerStatus.RightArm)) return true;
+                if (!user.PlayerStatus.RightArm || !user.PlayerStatus.RightArm) return true;
                 break;
-        }
+        };
+        user.DropItem(); 
         return false;
     }
 

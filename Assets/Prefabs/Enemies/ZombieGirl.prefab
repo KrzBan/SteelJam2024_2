@@ -1278,7 +1278,7 @@ MonoBehaviour:
   limbLossChanceOnHit: 0.1
   hitRange: 1.7
   attackCooldown: 2
-  rotateDuringAttackSpeed: 180
+  rotateDuringAttackSpeed: 360
   hitAngle: 30
   hitSounds:
   - {fileID: 8300000, guid: 1a9daf3ccc020ef4f9ac1f0bf2aede0d, type: 3}

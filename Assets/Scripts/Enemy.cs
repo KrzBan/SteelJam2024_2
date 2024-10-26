@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private float rotateDuringAttackSpeed = 30f;
     [SerializeField] private float hitAngle = 30f;
+
+    private bool movementPaused = false;
     
     [SerializeField] private List<AudioClip> hitSounds;
     
@@ -56,8 +58,11 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             return;
         }
-        
-        _animator.SetFloat("Speed", _agent.velocity.magnitude);
+
+        if (!movementPaused)
+        {
+            _animator.SetFloat("Speed", _agent.velocity.magnitude);
+        }
 
         if (target == null)
         {
@@ -68,11 +73,11 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             var angle = Vector3.SignedAngle(transform.forward, (target.position - transform.position).normalized, Vector3.up);
 
-            if (angle > rotateDuringAttackSpeed)
+            if (angle > 0.01f)
             {
                 angle = rotateDuringAttackSpeed;
             }
-            else if (angle < -rotateDuringAttackSpeed)
+            else if (angle < -0.01f)
             {
                 angle = -rotateDuringAttackSpeed;
             }
@@ -80,19 +85,27 @@ public class Enemy : MonoBehaviour, IDamagable
             transform.Rotate(Vector3.up, angle * Time.deltaTime);
             
             cooldown += Time.deltaTime;
-            return;
+            //return;
+        }
+        else
+        {
+            cooldown = 0f;
+            _animator.SetTrigger("Attack");
         }
 
         if (Vector3.Distance(target.position, transform.position) > hitRange)
         {
-            _agent.SetDestination(target.position);
+            if (!movementPaused)
+            {
+                _agent.SetDestination(target.position);
+            }
+            else
+            {
+                _agent.SetDestination(transform.position);
+            }
+            
             return;
         }
-        
-        _agent.SetDestination(transform.position);
-
-        cooldown = 0f;
-        _animator.SetTrigger("Attack");
     }
 
     private void DropMoney()
@@ -101,6 +114,16 @@ public class Enemy : MonoBehaviour, IDamagable
         moneyObj.GetComponent<Money>().Amount = Random.Range(moneyDropMin, moneyDropMax + 1);
     }
 
+    public void PauseMovement()
+    {
+        movementPaused = true;
+    }
+
+    public void ResumeMovement()
+    {
+        movementPaused = false;
+    }
+    
     private void RagDoll()
     {
         foreach (var rb in GetComponentsInChildren<Rigidbody>())
