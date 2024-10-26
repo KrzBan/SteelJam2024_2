@@ -4,7 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamagable
 {
     [field: SerializeField] public PlayerStatus PlayerStatus { get; set; }
     [SerializeField] public Inventory inventory;
@@ -130,5 +130,10 @@ public class Player : MonoBehaviour
     public void Use()
     {
         rArm.Attack();
+    }
+
+    public void TakeDamage(float value)
+    {
+        Debug.Log("Player Took dmg");
     }
 }

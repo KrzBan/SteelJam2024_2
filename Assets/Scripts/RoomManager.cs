@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 [Serializable]
 public enum RoomType
 {
-    None,
     Normal,
     Shop,
     Sacrifice,
@@ -18,9 +17,16 @@ public enum RoomType
 }
 
 [Serializable]
+public class RoomInfo
+{
+    public RoomType roomType;
+    public bool hasKey;
+}
+
+[Serializable]
 public class RoomLayer
 {
-    public List<RoomType> roomTypes;
+    public List<RoomInfo> roomTypes;
 }
 public class RoomManager : MonoBehaviour
 {
@@ -47,7 +53,8 @@ public class RoomManager : MonoBehaviour
     public GameObject lightObject;
     public GameObject enemyObject;
     public GameObject doorObject;
-
+    public GameObject keyObject;
+    
     [Header("Rooms")]
     public List<Room> bossRoomTemplates;
     public List<Room> normalRoomTemplates;
@@ -79,9 +86,6 @@ public class RoomManager : MonoBehaviour
                 break;
             case RoomType.Boss:
                 SpawnRandomRoom(bossRoomTemplates);
-                break;
-            case RoomType.None:
-                Debug.LogWarning("Tried spawning room type: None?");
                 break;
             case RoomType.Special:
                 SpawnRandomRoom(specialRoomTemplates);
@@ -124,10 +128,10 @@ public class RoomManager : MonoBehaviour
         var roomTypes = roomLayers[_currentRoomLayer].roomTypes;
         if (roomTypes.Count == 3)
         {
-            _newRoom.InstantiateDoors(doorObject, roomTypes[0], roomTypes[1], roomTypes[2]);
+            _newRoom.InstantiateDoors(doorObject, keyObject, roomTypes[0], roomTypes[1], roomTypes[2]);
         } else if (roomTypes.Count() == 1)
         {
-            _newRoom.InstantiateDoors(doorObject, RoomType.None, roomTypes[0], RoomType.None);
+            _newRoom.InstantiateDoors(doorObject, keyObject, null, roomTypes[0], null);
         }
         else
         {

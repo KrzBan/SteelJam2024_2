@@ -346,13 +346,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomLayers:
-  - roomTypes: 010000000300000005000000
-  - roomTypes: 010000000200000005000000
-  - roomTypes: 010000000600000005000000
-  - roomTypes: 010000000300000005000000
-  - roomTypes: 010000000200000005000000
-  - roomTypes: 050000000500000005000000
-  - roomTypes: 04000000
+  - roomTypes:
+    - roomType: 0
+      hasKey: 1
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 1
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+    - roomType: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 0
+      hasKey: 0
   enemyTarget: {fileID: 672910342}
   roomParent: {fileID: 1289144003}
   floorMaterial: {fileID: 2100000, guid: b1bb71bb18f7b9d4489cb676e117de67, type: 2}
@@ -362,6 +400,7 @@ MonoBehaviour:
   lightObject: {fileID: 724133117482815894, guid: e61c74e0e43c68c43b6efa936d6fe350, type: 3}
   enemyObject: {fileID: 7678512171347918952, guid: 2f1f487f012edd64f9b3314019174a02, type: 3}
   doorObject: {fileID: 1123299098356835380, guid: f7607bb30c8ff474fa76335417b50a6f, type: 3}
+  keyObject: {fileID: 907664395641349445, guid: e6e3b70bd00aec54d9f8f2de96f6c556, type: 3}
   bossRoomTemplates:
   - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
   normalRoomTemplates:
@@ -825,6 +864,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 1
+  keyLock: {fileID: 0}
+  lockSpawnPoint: {fileID: 0}
 --- !u!1001 &1659018351
 PrefabInstance:
   m_ObjectHideFlags: 0
