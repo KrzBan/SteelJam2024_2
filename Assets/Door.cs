@@ -1,10 +1,13 @@
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public class Door : MonoBehaviour, IInteractable
 {
+    public TMP_Text RoomText;
+    
     public RoomType roomType;
     public GameObject keyLock;
     public Transform lockSpawnPoint;

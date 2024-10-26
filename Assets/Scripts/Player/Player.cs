@@ -15,18 +15,23 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private Arm rArm;
     [SerializeField] private Transform handSlot;
     [SerializeField] private GameObject armObject;
+    [SerializeField] private GameObject legDecap;
+    [SerializeField] private GameObject armDecap;
     [CanBeNull] public static Player Instance { get; private set; }
 
     private Vector2 direction;
     private Rigidbody rb;
 
     public bool canInteract = true;
+    public bool AttackingMoveDebuff = false;
+
 
     private void Awake()
     {
         Instance = this;
         inventory = new Inventory();
         rb = GetComponent<Rigidbody>();
+        Cursor.Instance.Hide();
     }
 
     private void FixedUpdate()
@@ -69,9 +74,17 @@ public class Player : MonoBehaviour, IDamagable
         headTransform.RotateAround(headTransform.position, headTransform.right, -delta.y * sensitivity);
     }
 
+    void OnLimbLoss(PlayerStatus status)
+    {
+        if (!status.Head) PlayerStatus.OnDeath.Invoke();
+        movementSpeed = 0.2f;
+        if (status.LeftLeg) movementSpeed += 0.4f;
+        if (status.RightLeg) movementSpeed += 0.4f;
+
+    }
     public void Hit(HitParams hitParams)
     {
-        PlayerStatus.Health -= hitParams.Damage;
+        TakeDamage(hitParams.Damage);
         if (Random.Range(0f, 1f) <= hitParams.LibLossChance)
         {
             RemoveLimbOrdered();
@@ -86,18 +99,22 @@ public class Player : MonoBehaviour, IDamagable
         if (PlayerStatus.LeftArm)
         {
             PlayerStatus.LeftArm = false;
+            Instantiate(armDecap, transform.position + Vector3.up, Quaternion.identity);
         }
         else if (PlayerStatus.LeftLeg)
         {
             PlayerStatus.LeftLeg = false;
+            Instantiate(legDecap, transform.position + Vector3.up, Quaternion.identity);
         }
         else if (PlayerStatus.RightLeg)
         {
             PlayerStatus.RightLeg = false;
+            Instantiate(legDecap, transform.position + Vector3.up, Quaternion.identity);
         }
         else if (PlayerStatus.RightArm)
         {
             PlayerStatus.RightArm = false;
+            Instantiate(armDecap, transform.position + Vector3.up, Quaternion.identity);
         }
     }
 
@@ -111,7 +128,10 @@ public class Player : MonoBehaviour, IDamagable
         right.y = 0f;
         right.Normalize();
 
-        rb.linearVelocity = (forward * direction.y + right * direction.x) * movementSpeed + rb.linearVelocity.y * Vector3.up;
+
+        var velo = (forward * direction.y + right * direction.x) * movementSpeed + rb.linearVelocity.y * Vector3.up;
+        if (AttackingMoveDebuff) velo *= 0.3f;
+        rb.linearVelocity = velo;
     }
 
     public void Interact()
@@ -145,6 +165,6 @@ public class Player : MonoBehaviour, IDamagable
 
     public void TakeDamage(float value)
     {
-        Debug.Log("Player Took dmg");
+        PlayerStatus.Health -= value;
     }
 }

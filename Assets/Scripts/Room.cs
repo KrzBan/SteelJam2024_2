@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Unity.AI.Navigation;
+using Unity.Mathematics.Geometry;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -36,16 +38,16 @@ public class Room : MonoBehaviour
             navMeshSurface.BuildNavMesh();
         }
     }
-    public void SetMaterials(Material floorMaterial, Material wallMaterial, Material ceilingMaterial)
+    public void SetMaterial(Material floorMaterial)
     {
         SetFloorMaterial(floorMaterial);
-        SetWallMaterial(wallMaterial);
-        SetCeilingMaterial(ceilingMaterial);
+        SetWallMaterial(floorMaterial);
+        SetCeilingMaterial(floorMaterial);
     }
     
-    public void InstantiateScenery(GameObject prefab)
+    public void InstantiateScenery(List<GameObject> props)
     {
-        InstantiateInChildren(prefab, sceneryParent);
+        InstantiateInChildren(props, sceneryParent);
     }
     public void InstantiateEnemies(GameObject prefab)
     {
@@ -83,6 +85,8 @@ public class Room : MonoBehaviour
             doorComp.roomType = roomInfo.roomType;
         }
 
+        doorComp.RoomText.text = roomInfo.roomType.ToString();
+
         if (roomInfo.hasKey)
         {
             var lockObj = Instantiate(lockKey, doorComp.lockSpawnPoint.position, doorComp.lockSpawnPoint.rotation, doorObj.transform);
@@ -95,6 +99,14 @@ public class Room : MonoBehaviour
         foreach(Transform child in parent)
         {
             Instantiate(prefab, child.position, child.rotation, child);        
+        }
+    }
+    
+    private void InstantiateInChildren(List<GameObject> props, Transform parent)
+    {
+        foreach(Transform child in parent)
+        {
+            Instantiate(props[Random.Range(0, props.Count)], child.position, child.rotation, child);        
         }
     }
      

@@ -7,12 +7,6 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class Enemy : MonoBehaviour, IDamagable
 {
-
-    enum EnemyState
-    {
-        Following,
-        Attacking
-    }
     public Transform target;
     public LayerMask m_LayerMask;
 
@@ -21,22 +15,23 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private int moneyDropMax;
     [SerializeField] private GameObject moneyPrefab;
     [SerializeField] private GameObject bloodHitPrefab;
+    [SerializeField] private float damage = 1f;
+    [SerializeField] private float limbLossChanceOnHit = 0.1f;
+    [SerializeField] private float hitRange = 1f;
+    [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private float rotateDuringAttackSpeed = 30f;
+    [SerializeField] private float hitAngle = 30f;
 
     private NavMeshAgent _agent;
     private Animator _animator;
-    private float _lastUpdate = 0.0f;
-    private float _updateIntervalFar = 5.0f;
-    private float _updateIntervalShort = 1.0f;
-    private float _shortDistance = 4.0f;
-    private EnemyState _state;
-    private float _stateSwitchCooldown = 0;
+    private float cooldown = 0f;
+    private bool dead = false;
 
     private Vector3 OverlapBoxOffset;
     void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
-        _state = EnemyState.Following;
     }
 
     private void OnValidate()
@@ -49,45 +44,47 @@ public class Enemy : MonoBehaviour, IDamagable
 
     void Update()
     {
-        OverlapBoxOffset = new Vector3(0, 1, 0) + (transform.forward * 0.5f);
-        _animator.SetFloat("Speed", _agent.velocity.magnitude);
-        
-        if (target == null) return;
-
-        _stateSwitchCooldown -= Time.deltaTime;
-        switch(_state)
+        if (dead)
         {
-            case EnemyState.Following :
-
-                var interval = (transform.position - target.position).magnitude > _shortDistance
-            ? _updateIntervalFar : _updateIntervalShort;
-                if (Time.time > _lastUpdate + interval)
-                {
-                    _lastUpdate = Time.time;
-                    _agent.SetDestination(target.position);
-                }
-                if(Vector3.Distance(transform.position,target.position) < 1.2f
-                    && _stateSwitchCooldown <=0)
-                {
-                    _state = EnemyState.Attacking;
-                    _stateSwitchCooldown = 2f;
-                    _animator.SetBool("Attack", true);
-                    StartCoroutine(Attack());
-                    _agent.isStopped = true;
-                }
-
-                break;
-            case EnemyState.Attacking:
-                if(_stateSwitchCooldown <=0)
-                {
-                    _state = EnemyState.Following;
-                    _agent.isStopped = false;
-                }
-
-
-                break;
+            return;
         }
         
+        _animator.SetFloat("Speed", _agent.velocity.magnitude);
+
+        if (target == null)
+        {
+            return;
+        }
+        
+        if (cooldown < attackCooldown)
+        {
+            var angle = Vector3.SignedAngle(transform.forward, (target.position - transform.position).normalized, Vector3.up);
+
+            if (angle > rotateDuringAttackSpeed)
+            {
+                angle = rotateDuringAttackSpeed;
+            }
+            else if (angle < -rotateDuringAttackSpeed)
+            {
+                angle = -rotateDuringAttackSpeed;
+            }
+            
+            transform.Rotate(Vector3.up, angle * Time.deltaTime);
+            
+            cooldown += Time.deltaTime;
+            return;
+        }
+
+        if (Vector3.Distance(target.position, transform.position) > hitRange)
+        {
+            _agent.SetDestination(target.position);
+            return;
+        }
+        
+        _agent.SetDestination(transform.position);
+
+        cooldown = 0f;
+        _animator.SetTrigger("Attack");
     }
 
     private void DropMoney()
@@ -105,35 +102,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
         _animator.enabled = false;
     }
-    IEnumerator Attack()
-    {
-
-
-        yield return new WaitForSeconds(1f);
-
-
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + OverlapBoxOffset, transform.localScale / 2, Quaternion.identity, m_LayerMask);
-        int i = 0;
-        while (i < hitColliders.Length)
-        {
-            Debug.Log("Hit : " + hitColliders[i].name + i);
-          
-            IDamagable player;
-           if( hitColliders[i].TryGetComponent<IDamagable>(out player))
-            {
-                player.TakeDamage(1f);
-            }
-            i++;
-        }
-
-    }
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
-            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-            Gizmos.DrawWireCube(transform.position + OverlapBoxOffset, transform.localScale);
-    }
+    
+    
     public void SetTarget(Transform target)
     {
         this.target = target;
@@ -152,12 +122,37 @@ public class Enemy : MonoBehaviour, IDamagable
         Destroy(bloodObj);
     }
 
+    public void Attack()
+    {
+        if (target == null)
+            return;
+        
+        var player = target.GetComponent<Player>();
+        if (player == null)
+        {
+            return;
+        }
+
+        var angle = Vector3.Angle(transform.forward, (target.position - transform.position).normalized);
+        if (angle <= hitAngle && Vector3.Distance(transform.position, target.position) <= hitRange + 0.05f)
+        {
+            player.Hit(new HitParams(damage, limbLossChanceOnHit));
+        }
+    }
+
     public void TakeDamage(float value)
     {
+        if (dead)
+        {
+            return;
+        }
+        
         status.Health -= value;
-
+        Debug.Log("Zombie HP :" + status.Health);
         if (status.Health <= 0f)
         {
+            _agent.Stop();
+            dead = true;
             RagDoll();
             DropMoney();
         }
