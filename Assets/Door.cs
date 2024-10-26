@@ -42,8 +42,7 @@ public class Door : MonoBehaviour, IInteractable
         if (keyLock != null)
             yield return new WaitForSeconds(2.0f);
         
-        float fadeTime = 3.0f;
-        float fadeOutTime = 1.0f;
+        float fadeTime = 2.5f;
         
         // fade in
         Fade.Instance.Out(fadeTime);
@@ -55,7 +54,7 @@ public class Door : MonoBehaviour, IInteractable
         
         // fade out
         Fade.Instance.In(fadeTime);
-        yield return new WaitForSeconds(fadeOutTime);
+        yield return new WaitForSeconds(fadeTime);
         
         user.canInteract = true;
         RoomManager.Instance.SwapRooms();
