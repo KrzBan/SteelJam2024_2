@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class FireAxeWeaponWorld : MonoBehaviour, IInteractable
+public class BatItemWorld : MonoBehaviour, IInteractable
 {
     [SerializeField] ItemSO Item;
 
 
     public void interact(Player user)
     {
+        if (ItemUtility.ShouldRefuseInteract(user, Item)) return;
 
-        if(ItemUtility.ShouldRefuseInteract(user, Item)) return;
 
         user.inventory.ItemSlot = new FireAxeItem();
 

@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireAxeItem :  IItem
+public class FireAxeItem : IItem
 {
     public ItemSO ItemSO;
-    private Vector3 OverlapBoxOffset;
 
     public FireAxeItem()
     {
-       
+
+    }
+
+    public GameObject GetInHandPrefab()
+    {
+        return ItemSO.InHandPrefab;
+
     }
 
     public ItemSO getItemSO()
@@ -17,9 +22,11 @@ public class FireAxeItem :  IItem
         return ItemSO;
     }
 
-    public GameObject GetPrefab()
+    
+
+    public GameObject GetWorldPrefab()
     {
-        return ItemSO.Prefab;
+        return ItemSO.WorldPrefab;
     }
 
     public void setItemSO(ItemSO itemSO_)
@@ -29,46 +36,7 @@ public class FireAxeItem :  IItem
 
     public void Use(Player User)
     {
-
-      
-        User.StartCoroutine(Attack(User));
-
+        ItemUtility.DualWeaponAttack(User, ItemSO);
     }
-    IEnumerator Attack(Player User)
-    {
-        User.AttackingMoveDebuff = true;
-        OverlapBoxOffset = new Vector3(0, -0.5f, 0) + (User.transform.forward * 0.5f);
-        Debug.Log("MI BEING USED :D ");
-
-
-        yield return new WaitForSeconds(1f);
-
-        var enemies = new HashSet<Enemy>();
-
-        Collider[] hitColliders = Physics.OverlapBox(User.transform.position + OverlapBoxOffset, User.transform.localScale, Quaternion.identity);
-        foreach (var col in hitColliders)
-        {
-            Debug.Log("Hit : " + col.name);
-
-            var objTransform = col.transform;
-            while (objTransform != null)
-            {
-                if (objTransform.TryGetComponent<IDamagable>(out var zombie))
-                {
-                    if (zombie is Enemy e)
-                    {
-                        enemies.Add(e);
-                    }
-                }
-                
-                objTransform = objTransform.parent;
-            }
-        }
-        
-        foreach (var enemy in enemies)
-        {
-            enemy.TakeDamage(ItemSO.Damage);
-        }
-        User.AttackingMoveDebuff = false;
-    }
+   
 }
