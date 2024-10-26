@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour, IDamagable
     }
     public Transform target;
     public LayerMask m_LayerMask;
+
+    [SerializeField] private EnemyStatus status;
+
     private NavMeshAgent _agent;
     private Animator _animator;
     private float _lastUpdate = 0.0f;
@@ -69,6 +72,16 @@ public class Enemy : MonoBehaviour, IDamagable
         }
         
     }
+
+    private void RagDoll()
+    {
+        foreach (var rb in GetComponentsInChildren<Rigidbody>())
+        {
+            rb.isKinematic = false;
+        }
+
+        _animator.enabled = false;
+    }
     IEnumerator Attack()
     {
 
@@ -99,6 +112,11 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void TakeDamage(float value)
     {
-        Destroy(this.gameObject);
+        status.Health -= value;
+
+        if (status.Health <= 0f)
+        {
+            RagDoll();
+        }
     }
 }
