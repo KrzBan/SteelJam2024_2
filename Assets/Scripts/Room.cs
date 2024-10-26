@@ -66,11 +66,11 @@ public class Room : MonoBehaviour
 
     public void InstantiateDoors(GameObject door, GameObject lockKey, RoomInfo leftInfo, RoomInfo middleInfo, RoomInfo rightInfo)
     {
-        if (leftInfo.roomType != null)
+        if (leftInfo != null)
             InstantiateDoor(door, lockKey, leftInfo, doorsParent.GetChild(0));
-        if (middleInfo.roomType != null)
+        if (middleInfo != null)
             InstantiateDoor(door, lockKey, middleInfo, doorsParent.GetChild(1));
-        if (rightInfo.roomType != null)
+        if (rightInfo != null)
             InstantiateDoor(door, lockKey, rightInfo, doorsParent.GetChild(2));
     }
 

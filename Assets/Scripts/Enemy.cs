@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour, IDamagable
                     _stateSwitchCooldown = 2f;
                     _animator.SetBool("Attack", true);
                     StartCoroutine(Attack());
-                    _agent.Stop();
+                    _agent.isStopped = true;
                 }
 
                 break;
@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour, IDamagable
                 if(_stateSwitchCooldown <=0)
                 {
                     _state = EnemyState.Following;
-                    _agent.Resume();
+                    _agent.isStopped = false;
                 }
 
 
