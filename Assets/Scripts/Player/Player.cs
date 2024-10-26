@@ -31,6 +31,7 @@ public class Player : MonoBehaviour, IDamagable
         Instance = this;
         inventory = new Inventory();
         rb = GetComponent<Rigidbody>();
+        Cursor.Instance.Hide();
     }
 
     private void FixedUpdate()

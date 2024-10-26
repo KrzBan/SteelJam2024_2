@@ -103,13 +103,7 @@ public class Enemy : MonoBehaviour, IDamagable
         _animator.enabled = false;
     }
     
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
-            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-            Gizmos.DrawWireCube(transform.position + OverlapBoxOffset, transform.localScale);
-    }
+    
     public void SetTarget(Transform target)
     {
         this.target = target;
