@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class Enemy : MonoBehaviour, IDamagable
@@ -15,6 +17,9 @@ public class Enemy : MonoBehaviour, IDamagable
     public LayerMask m_LayerMask;
 
     [SerializeField] private EnemyStatus status;
+    [SerializeField] private int moneyDropMin;
+    [SerializeField] private int moneyDropMax;
+    [SerializeField] private GameObject moneyPrefab;
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -23,7 +28,7 @@ public class Enemy : MonoBehaviour, IDamagable
     private float _updateIntervalShort = 1.0f;
     private float _shortDistance = 4.0f;
     private EnemyState _state;
-    private float _stateSwitchCooldown=0;
+    private float _stateSwitchCooldown = 0;
 
     private Vector3 OverlapBoxOffset;
     void Awake()
@@ -31,6 +36,14 @@ public class Enemy : MonoBehaviour, IDamagable
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _state = EnemyState.Following;
+    }
+
+    private void OnValidate()
+    {
+        if (moneyDropMax < moneyDropMin)
+        {
+            moneyDropMax = moneyDropMin;
+        }
     }
 
     void Update()
@@ -74,6 +87,12 @@ public class Enemy : MonoBehaviour, IDamagable
                 break;
         }
         
+    }
+
+    private void DropMoney()
+    {
+        var moneyObj = Instantiate(moneyPrefab, transform.position + Vector3.up, Quaternion.identity);
+        moneyObj.GetComponent<Money>().Amount = Random.Range(moneyDropMin, moneyDropMax + 1);
     }
 
     private void RagDoll()
@@ -126,6 +145,7 @@ public class Enemy : MonoBehaviour, IDamagable
         if (status.Health <= 0f)
         {
             RagDoll();
+            DropMoney();
         }
     }
 }

@@ -1929,6 +1929,9 @@ MonoBehaviour:
   target: {fileID: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   status:
     Health: 3
+  moneyDropMin: 5
+  moneyDropMax: 10
+  moneyPrefab: {fileID: 123534167090756388, guid: 6ca3d66e97cf7c84e90b2f6b5e3e6038, type: 3}

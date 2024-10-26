@@ -1260,9 +1260,12 @@ MonoBehaviour:
   target: {fileID: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   status:
     Health: 3
+  moneyDropMin: 5
+  moneyDropMax: 50
+  moneyPrefab: {fileID: 123534167090756388, guid: 6ca3d66e97cf7c84e90b2f6b5e3e6038, type: 3}
 --- !u!1 &7739065210319591711 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1082271958561512970, guid: 9e272db1283cb8a41b80562bc7573475, type: 3}

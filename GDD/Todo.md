@@ -8,7 +8,7 @@
 - [ ] Dodanie broni (wstępnie 2 jednoręczne i 1 dwuręczna)
 - [ ] Treasure roomy z skrzynką (lub na stole) z nagrodą (bronie)
 - [ ] Normal roomy z wariantami
-- [ ] Wypadanie pieniędzy z przeciwników
+- [x] Wypadanie pieniędzy z przeciwników
 - [ ] Challange roomy (utrudniona wersja normal roomów) - z lepszą nagrodą (np. więcej pieniędzy przez większą ilość przeciwników)
 - [ ] Shop - 2-3 skrzynie z ceną, tu najważniejsze możliwość kupienia leczenia
 ## Średnie
