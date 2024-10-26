@@ -1,6 +1,7 @@
 using System;
 using JetBrains.Annotations;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -54,6 +55,38 @@ public class Player : MonoBehaviour
         
         headTransform.RotateAround(headTransform.position, Vector3.up, delta.x * sensitivity);
         headTransform.RotateAround(headTransform.position, headTransform.right, -delta.y * sensitivity);
+    }
+
+    public void Hit(HitParams hitParams)
+    {
+        PlayerStatus.Health -= hitParams.Damage;
+        if (Random.Range(0f, 1f) <= hitParams.LibLossChance)
+        {
+            RemoveLimbOrdered();
+        }
+    }
+
+    /// <summary>
+    /// Order - left arm -> left leg -> right leg -> right arm
+    /// </summary>
+    public void RemoveLimbOrdered()
+    {
+        if (PlayerStatus.LeftArm)
+        {
+            PlayerStatus.LeftArm = false;
+        }
+        else if (PlayerStatus.LeftLeg)
+        {
+            PlayerStatus.LeftLeg = false;
+        }
+        else if (PlayerStatus.RightLeg)
+        {
+            PlayerStatus.RightLeg = false;
+        }
+        else if (PlayerStatus.RightArm)
+        {
+            PlayerStatus.RightArm = false;
+        }
     }
 
     private void EvaluateMovement()
