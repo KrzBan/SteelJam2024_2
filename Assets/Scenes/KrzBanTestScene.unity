@@ -360,7 +360,7 @@ MonoBehaviour:
   ceilingMaterial: {fileID: 2100000, guid: 583ba5fe437b17442a68287dc6ec476f, type: 2}
   sceneryObject: {fileID: 3101592751412893510, guid: 0b720eaf3660af2458af5b6e65f04ff7, type: 3}
   lightObject: {fileID: 724133117482815894, guid: e61c74e0e43c68c43b6efa936d6fe350, type: 3}
-  enemyObject: {fileID: 3101592751412893510, guid: 3323359f0ec6cf148a80b29b18849de3, type: 3}
+  enemyObject: {fileID: 7678512171347918952, guid: 2f1f487f012edd64f9b3314019174a02, type: 3}
   doorObject: {fileID: 1123299098356835380, guid: f7607bb30c8ff474fa76335417b50a6f, type: 3}
   bossRoomTemplates:
   - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
