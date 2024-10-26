@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FireAxeItem :  IItem
@@ -42,19 +43,31 @@ public class FireAxeItem :  IItem
 
         yield return new WaitForSeconds(1f);
 
+        var enemies = new HashSet<Enemy>();
 
         Collider[] hitColliders = Physics.OverlapBox(User.transform.position + OverlapBoxOffset, User.transform.localScale, Quaternion.identity);
-        int i = 0;
-        while (i < hitColliders.Length)
+        foreach (var col in hitColliders)
         {
-            Debug.Log("Hit : " + hitColliders[i].name + i);
+            Debug.Log("Hit : " + col.name);
 
-            IDamagable zombie;
-            if (hitColliders[i].TryGetComponent<IDamagable>(out zombie))
+            var objTransform = col.transform;
+            while (objTransform != null)
             {
-                zombie.TakeDamage(ItemSO.Damage);
+                if (objTransform.TryGetComponent<IDamagable>(out var zombie))
+                {
+                    if (zombie is Enemy e)
+                    {
+                        enemies.Add(e);
+                    }
+                }
+                
+                objTransform = objTransform.parent;
             }
-            i++;
+        }
+        
+        foreach (var enemy in enemies)
+        {
+            enemy.TakeDamage(ItemSO.Damage);
         }
         User.AttackingMoveDebuff = false;
     }

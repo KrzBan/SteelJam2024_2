@@ -11,13 +11,15 @@
 - [x] Wypadanie pieniędzy z przeciwników
 - [ ] Challange roomy (utrudniona wersja normal roomów) - z lepszą nagrodą (np. więcej pieniędzy przez większą ilość przeciwników)
 - [ ] Shop - 2-3 skrzynie z ceną, tu najważniejsze możliwość kupienia leczenia
+- [ ] Efekty poruszania się z braku nóg
 ## Średnie
 
 - [x] Celownik
+- [x] Poprawka ataku przeciwników w gracza
 - [ ] Poprawki w wykrywaniu uderzeń gracza w przeciwników (kolizja)
 - [ ] (Do przemyślenia) dash gracza w celu uniknięcia przeciwników
 - [ ] Bonus room
 ## Kosmetyczne
 
 - [x] Efekt uderzenia w przeciwnika
-- [ ] Spadanie kończyn po utracie
+- [x] Spadanie kończyn po utracie

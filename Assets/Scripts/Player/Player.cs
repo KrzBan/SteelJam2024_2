@@ -15,6 +15,8 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private Arm rArm;
     [SerializeField] private Transform handSlot;
     [SerializeField] private GameObject armObject;
+    [SerializeField] private GameObject legDecap;
+    [SerializeField] private GameObject armDecap;
     [CanBeNull] public static Player Instance { get; private set; }
 
     private Vector2 direction;
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour, IDamagable
         Instance = this;
         inventory = new Inventory();
         rb = GetComponent<Rigidbody>();
+        Cursor.Instance.Hide();
     }
 
     private void FixedUpdate()
@@ -81,7 +84,7 @@ public class Player : MonoBehaviour, IDamagable
     }
     public void Hit(HitParams hitParams)
     {
-        PlayerStatus.Health -= hitParams.Damage;
+        TakeDamage(hitParams.Damage);
         if (Random.Range(0f, 1f) <= hitParams.LibLossChance)
         {
             RemoveLimbOrdered();
@@ -96,18 +99,22 @@ public class Player : MonoBehaviour, IDamagable
         if (PlayerStatus.LeftArm)
         {
             PlayerStatus.LeftArm = false;
+            Instantiate(armDecap, transform.position + Vector3.up, Quaternion.identity);
         }
         else if (PlayerStatus.LeftLeg)
         {
             PlayerStatus.LeftLeg = false;
+            Instantiate(legDecap, transform.position + Vector3.up, Quaternion.identity);
         }
         else if (PlayerStatus.RightLeg)
         {
             PlayerStatus.RightLeg = false;
+            Instantiate(legDecap, transform.position + Vector3.up, Quaternion.identity);
         }
         else if (PlayerStatus.RightArm)
         {
             PlayerStatus.RightArm = false;
+            Instantiate(armDecap, transform.position + Vector3.up, Quaternion.identity);
         }
     }
 
@@ -158,6 +165,6 @@ public class Player : MonoBehaviour, IDamagable
 
     public void TakeDamage(float value)
     {
-        Debug.Log("Player Took dmg");
+        PlayerStatus.Health -= value;
     }
 }
