@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class WeaponInWorld : MonoBehaviour, IInteractable
 {
-    [SerializeField] IItem Item;
+    [SerializeField] ItemSO Item;
+    
 
-    private void Awake()
-    {
-        Item = new DualHandItem();
-    }
     public void interact(Player user)
     {
-        user.inventory.ItemSlot = Item;
-        user.PlaceInHand(Item.getItemSO());
+        user.inventory.ItemSlot = new DualHandItem();
+
+        user.inventory.ItemSlot.setItemSO(Item);
+        user.PlaceInHand(Item);
         Destroy(this.gameObject);
     }
 

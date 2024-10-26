@@ -43,6 +43,6 @@ public class PlayerController : MonoBehaviour
     public void UseItem(InputAction.CallbackContext context)
     {
         if (context.started)
-            player.Interact();
+            player.Use();
     }
 }

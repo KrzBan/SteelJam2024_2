@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] public Inventory inventory;
     public Rigidbody Rigidbody => rb;
     [SerializeField, Range(0f, 1f)] private float sensitivity = 0.05f;
-    [SerializeField] private Transform headTransform;
+    [SerializeField] public Transform headTransform;
     [SerializeField] private float movementSpeed = 1f;
     [CanBeNull] public static Player Instance { get; private set; }
 
@@ -107,7 +107,6 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
-            Debug.Log("Did Hit");
             IInteractable interactable;
             bool isInteractable = hit.collider.TryGetComponent<IInteractable>(out interactable );
 
@@ -116,10 +115,7 @@ public class Player : MonoBehaviour
                 interactable.interact(this);
             }
         }
-        else
-        {
-            Debug.Log("Did not Hit");
-        }
+        
     }
 
     public void PlaceInHand(ItemSO item)
