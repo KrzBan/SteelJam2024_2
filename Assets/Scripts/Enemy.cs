@@ -1,12 +1,20 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class Enemy : MonoBehaviour, IDamagable
 {
-    public Transform target;
 
-    [SerializeField] private EnemyState state;
+    enum EnemyState
+    {
+        Following,
+        Attacking
+    }
+    public Transform target;
+    public LayerMask m_LayerMask;
+
+    [SerializeField] private EnemyStatus status;
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -14,11 +22,13 @@ public class Enemy : MonoBehaviour, IDamagable
     private float _updateIntervalFar = 5.0f;
     private float _updateIntervalShort = 1.0f;
     private float _shortDistance = 4.0f;
-
+    private EnemyState _state;
+    private float _stateSwitchCooldown=0;
     void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        _state = EnemyState.Following;
     }
 
     void Update()
@@ -26,14 +36,41 @@ public class Enemy : MonoBehaviour, IDamagable
         _animator.SetFloat("Speed", _agent.velocity.magnitude);
         
         if (target == null) return;
-        
-        var interval = (transform.position - target.position).magnitude > _shortDistance 
-            ? _updateIntervalFar : _updateIntervalShort;
-        if( Time.time > _lastUpdate + interval)   
+
+        _stateSwitchCooldown -= Time.deltaTime;
+        switch(_state)
         {
-            _lastUpdate = Time.time;
-            _agent.SetDestination(target.position);
+            case EnemyState.Following :
+
+                var interval = (transform.position - target.position).magnitude > _shortDistance
+            ? _updateIntervalFar : _updateIntervalShort;
+                if (Time.time > _lastUpdate + interval)
+                {
+                    _lastUpdate = Time.time;
+                    _agent.SetDestination(target.position);
+                }
+                if(Vector3.Distance(transform.position,target.position) < 1f
+                    && _stateSwitchCooldown <=0)
+                {
+                    _state = EnemyState.Attacking;
+                    _stateSwitchCooldown = 2f;
+                    _animator.SetBool("Attack", true);
+                    StartCoroutine(Attack());
+                    _agent.Stop();
+                }
+
+                break;
+            case EnemyState.Attacking:
+                if(_stateSwitchCooldown <=0)
+                {
+                    _state = EnemyState.Following;
+                    _agent.Resume();
+                }
+
+
+                break;
         }
+        
     }
 
     private void RagDoll()
@@ -45,6 +82,28 @@ public class Enemy : MonoBehaviour, IDamagable
 
         _animator.enabled = false;
     }
+    IEnumerator Attack()
+    {
+
+
+        yield return new WaitForSeconds(1f);
+
+
+        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, m_LayerMask);
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            Debug.Log("Hit : " + hitColliders[i].name + i);
+            i++;
+            IDamagable player;
+           if( hitColliders[i].TryGetComponent<IDamagable>(out player))
+            {
+                player.TakeDamage(1f);
+            }
+
+        }
+
+    }    
     
     public void SetTarget(Transform target)
     {
@@ -53,9 +112,9 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void TakeDamage(float value)
     {
-        state.Health -= value;
+        status.Health -= value;
 
-        if (state.Health <= 0f)
+        if (status.Health <= 0f)
         {
             RagDoll();
         }

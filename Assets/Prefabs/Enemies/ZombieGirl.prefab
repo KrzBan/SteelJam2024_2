@@ -1258,7 +1258,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  state:
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  status:
     Health: 3
 --- !u!1 &7739065210319591711 stripped
 GameObject:
