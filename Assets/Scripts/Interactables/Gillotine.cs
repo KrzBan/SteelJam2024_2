@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Gillotine : AnimationInteractableBase
 {
-    [SerializeField] private DropPoint dropPoint;
+    [SerializeField] private SacrificeReward sacrificeReward;
     [SerializeField] private Collider triggerCollider;
 
     private void Awake()
     {
         OnAnimationEnded += OnEnd;
+    }
+
+    private void Start()
+    {
+        sacrificeReward.PlaceObject();
     }
 
     private void OnDestroy()
@@ -19,7 +24,7 @@ public class Gillotine : AnimationInteractableBase
 
     private void OnEnd()
     {
-        dropPoint.Drop();
+        sacrificeReward.MakeObjectPickable();
         triggerCollider.enabled = false;
         if (Player.Instance == null)
         {
