@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(AudioSource))]
 public class Enemy : MonoBehaviour, IDamagable
 {
     public Transform target;
@@ -23,17 +25,21 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private float rotateDuringAttackSpeed = 30f;
     [SerializeField] private float hitAngle = 30f;
-
+    
+    [SerializeField] private List<AudioClip> hitSounds;
+    
     private NavMeshAgent _agent;
     private Animator _animator;
+    private AudioSource _audioSource;
     private float cooldown = 0f;
     private bool dead = false;
-
+    
     private Vector3 OverlapBoxOffset;
     void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnValidate()
@@ -159,6 +165,7 @@ public class Enemy : MonoBehaviour, IDamagable
         }
         
         status.Health -= value;
+        PlayHitSound();
         Debug.Log("Zombie HP :" + status.Health);
         if (status.Health <= 0f)
         {
@@ -169,5 +176,11 @@ public class Enemy : MonoBehaviour, IDamagable
             
             RoomManager.Instance.OnEnemyDeath();
         }
+    }
+
+    void PlayHitSound()
+    {
+        var clip = hitSounds[Random.Range(0, hitSounds.Count)];
+        _audioSource.PlayOneShot(clip);
     }
 }

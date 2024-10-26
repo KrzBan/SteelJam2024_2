@@ -10,14 +10,18 @@ public class Fade : MonoBehaviour
     public static Fade Instance;
 
     public AnimationCurve fadeCurve;
+
+    private AudioSource _audioSource;
     
     void Awake()
     {
         Instance = this;
+        _audioSource = GetComponent<AudioSource>();
     }
     public void Out(float time)
     {
         StartCoroutine(IOut(time));
+        _audioSource.Play();
     }
     
     public void In(float time)
