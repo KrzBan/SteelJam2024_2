@@ -41,6 +41,6 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float value)
     {
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }
