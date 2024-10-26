@@ -142,11 +142,15 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void TakeDamage(float value)
     {
+        if (dead)
+        {
+            return;
+        }
+        
         status.Health -= value;
         Debug.Log("Zombie HP :" + status.Health);
         if (status.Health <= 0f)
         {
-            GetComponent<CapsuleCollider>().enabled = false;
             _agent.Stop();
             dead = true;
             RagDoll();
