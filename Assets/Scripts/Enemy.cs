@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour, IDamagable
     private float _shortDistance = 4.0f;
     private EnemyState _state;
     private float _stateSwitchCooldown=0;
+
+    private Vector3 OverlapBoxOffset;
     void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     void Update()
     {
+        OverlapBoxOffset = new Vector3(0, 1, 0) + (transform.forward * 0.5f);
         _animator.SetFloat("Speed", _agent.velocity.magnitude);
         
         if (target == null) return;
@@ -49,7 +52,7 @@ public class Enemy : MonoBehaviour, IDamagable
                     _lastUpdate = Time.time;
                     _agent.SetDestination(target.position);
                 }
-                if(Vector3.Distance(transform.position,target.position) < 1f
+                if(Vector3.Distance(transform.position,target.position) < 1.2f
                     && _stateSwitchCooldown <=0)
                 {
                     _state = EnemyState.Attacking;
@@ -89,22 +92,28 @@ public class Enemy : MonoBehaviour, IDamagable
         yield return new WaitForSeconds(1f);
 
 
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, m_LayerMask);
+        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + OverlapBoxOffset, transform.localScale / 2, Quaternion.identity, m_LayerMask);
         int i = 0;
         while (i < hitColliders.Length)
         {
             Debug.Log("Hit : " + hitColliders[i].name + i);
-            i++;
+          
             IDamagable player;
            if( hitColliders[i].TryGetComponent<IDamagable>(out player))
             {
                 player.TakeDamage(1f);
             }
-
+            i++;
         }
 
-    }    
-    
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
+            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+            Gizmos.DrawWireCube(transform.position + OverlapBoxOffset, transform.localScale);
+    }
     public void SetTarget(Transform target)
     {
         this.target = target;
