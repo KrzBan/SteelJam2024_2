@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 1
-  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
+  m_Fog: 0
+  m_FogColor: {r: 0.41509432, g: 0, b: 0, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -812,6 +812,7 @@ MonoBehaviour:
   roomType: 1
   keyLock: {fileID: 0}
   lockSpawnPoint: {fileID: 0}
+  _interactable: 1
 --- !u!1001 &1659018351
 PrefabInstance:
   m_ObjectHideFlags: 0

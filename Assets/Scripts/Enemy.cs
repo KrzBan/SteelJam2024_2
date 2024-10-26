@@ -155,6 +155,8 @@ public class Enemy : MonoBehaviour, IDamagable
             dead = true;
             RagDoll();
             DropMoney();
+            
+            RoomManager.Instance.OnEnemyDeath();
         }
     }
 }
