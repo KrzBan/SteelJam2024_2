@@ -6,4 +6,12 @@ public class Inventory
     public int Coins { get; set; }
     
     public IItem ItemSlot;
+
+    public bool ConsumeKey()
+    {
+        if (Keys == 0) return false;
+
+        --Keys;
+        return true;
+    }
 }

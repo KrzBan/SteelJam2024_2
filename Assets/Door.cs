@@ -1,20 +1,25 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Door : MonoBehaviour, IInteractable
 {
     public RoomType roomType;
-
+    public GameObject keyLock;
+    public Transform lockSpawnPoint;
+    
     private bool _interactable = true;
     public void interact(Player user)
     {
         if(_interactable == false)
             return;
         
-        Debug.Log("Door interacted with");
+        //if(keyLock != null && user.inventory.ConsumeKey() == false)
+        //    return;
         
-        // check if player has key
+        if(keyLock != null)
+            keyLock.GetComponent<PlayableDirector>().Play();
         
         // spawn new room
         _interactable = false;
@@ -26,6 +31,9 @@ public class Door : MonoBehaviour, IInteractable
     
     IEnumerator TeleportCoroutine(Player user, Transform spawnPoint)
     {
+        if (keyLock != null)
+            yield return new WaitForSeconds(2.0f);
+        
         float fadeTime = 3.0f;
         
         // fade in

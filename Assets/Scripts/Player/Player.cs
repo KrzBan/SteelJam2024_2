@@ -4,7 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamagable
 {
     [field: SerializeField] public PlayerStatus PlayerStatus { get; set; }
     [SerializeField] public Inventory inventory;
@@ -12,11 +12,12 @@ public class Player : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float sensitivity = 0.05f;
     [SerializeField] public Transform headTransform;
     [SerializeField] private float movementSpeed = 1f;
+    [SerializeField] private Arm rArm;
+    [SerializeField] private Transform handSlot;
     [CanBeNull] public static Player Instance { get; private set; }
 
     private Vector2 direction;
     private Rigidbody rb;
-    [SerializeField] private Transform HandAnchor;
 
     public bool canInteract = true;
 
@@ -120,15 +121,19 @@ public class Player : MonoBehaviour
 
     public void PlaceInHand(ItemSO item)
     {
-        if (HandAnchor.childCount > 0)
-             Destroy(HandAnchor.GetChild(0));
+        if (handSlot.childCount > 0)
+             Destroy(handSlot.GetChild(0));
 
-        Instantiate(item.Prefab,HandAnchor);
+        Instantiate(item.Prefab, handSlot);
     }
 
     public void Use()
     {
-        if(inventory.ItemSlot!=null)
-            inventory.ItemSlot.Use(this);
+        rArm.Attack();
+    }
+
+    public void TakeDamage(float value)
+    {
+        Debug.Log("Player Took dmg");
     }
 }

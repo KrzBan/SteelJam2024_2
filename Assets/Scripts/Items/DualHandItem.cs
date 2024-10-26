@@ -31,11 +31,16 @@ public class DualHandItem :  IItem
         RaycastHit hit;
         if (Physics.Raycast(User.headTransform.position, User.headTransform.TransformDirection(Vector3.forward), out hit, ItemSO.Range))
         {
-            IDamagable damagable;
-            bool isDamageble = hit.collider.TryGetComponent<IDamagable>(out damagable);
+            var objTransform = hit.transform;
+            while (objTransform != null)
+            {
+                var isDamageble = objTransform.TryGetComponent<IDamagable>(out var damagable);
 
-            if(isDamageble)
-                 damagable.TakeDamage(1);
+                if(isDamageble)
+                    damagable.TakeDamage(ItemSO.Damage);
+                
+                objTransform = objTransform.parent;
+            }
         }
 
     }

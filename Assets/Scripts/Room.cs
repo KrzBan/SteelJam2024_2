@@ -64,23 +64,29 @@ public class Room : MonoBehaviour
         InstantiateInChildren(prefab, lightsParent);
     }
 
-    public void InstantiateDoors(GameObject door, RoomType leftType, RoomType middleType, RoomType rightType)
+    public void InstantiateDoors(GameObject door, GameObject lockKey, RoomInfo leftInfo, RoomInfo middleInfo, RoomInfo rightInfo)
     {
-        if (leftType != RoomType.None)
-            InstantiateDoor(door, leftType, doorsParent.GetChild(0));
-        if (middleType != RoomType.None)
-            InstantiateDoor(door, middleType, doorsParent.GetChild(1));
-        if (rightType != RoomType.None)
-            InstantiateDoor(door, rightType, doorsParent.GetChild(2));
+        if (leftInfo != null)
+            InstantiateDoor(door, lockKey, leftInfo, doorsParent.GetChild(0));
+        if (middleInfo != null)
+            InstantiateDoor(door, lockKey, middleInfo, doorsParent.GetChild(1));
+        if (rightInfo != null)
+            InstantiateDoor(door, lockKey, rightInfo, doorsParent.GetChild(2));
     }
 
-    private void InstantiateDoor(GameObject door, RoomType roomType, Transform parent)
+    private void InstantiateDoor(GameObject door, GameObject lockKey, RoomInfo roomInfo, Transform parent)
     {
         var doorObj = Instantiate(door, parent.transform.position, parent.transform.rotation, parent);
         var doorComp = doorObj.GetComponentInChildren<Door>();
         if(doorComp != null)
         {
-            doorComp.roomType = roomType;
+            doorComp.roomType = roomInfo.roomType;
+        }
+
+        if (roomInfo.hasKey)
+        {
+            var lockObj = Instantiate(lockKey, doorComp.lockSpawnPoint.position, doorComp.lockSpawnPoint.rotation, doorObj.transform);
+            doorComp.keyLock = lockObj;
         }
     }
 
