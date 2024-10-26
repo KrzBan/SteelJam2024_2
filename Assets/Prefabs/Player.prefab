@@ -135,6 +135,7 @@ MonoBehaviour:
   headTransform: {fileID: 1417718039005260479}
   movementSpeed: 2.5
   HandAnchor: {fileID: 7759302274379124900}
+  canInteract: 1
 --- !u!114 &8089716275638371328
 MonoBehaviour:
   m_ObjectHideFlags: 0
