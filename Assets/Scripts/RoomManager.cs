@@ -11,8 +11,10 @@ public enum RoomType
     None,
     Normal,
     Shop,
-    Bonus,
-    Boss
+    Sacrifice,
+    Boss,
+    Challange,
+    Special
 }
 
 [Serializable]
@@ -47,8 +49,12 @@ public class RoomManager : MonoBehaviour
     public GameObject doorObject;
 
     [Header("Rooms")]
-    public Room bossRoom;
-    public Room[] roomTemplates;
+    public List<Room> bossRoomTemplates;
+    public List<Room> normalRoomTemplates;
+    public List<Room> shopRoomTemplates;
+    public List<Room> sacrificeRoomTemplates;
+    public List<Room> challangeRoomTemplates;
+    public List<Room> specialRoomTemplates;
 
     private Room _currentRoom;
     private Room _newRoom;
@@ -60,14 +66,25 @@ public class RoomManager : MonoBehaviour
         switch (type)
         {
             case RoomType.Normal:
-                SpawnRandomRoom();
+                SpawnRandomRoom(normalRoomTemplates);
                 break;
             case RoomType.Shop:
+                SpawnRandomRoom(shopRoomTemplates);
                 break;
-            case RoomType.Bonus:
+            case RoomType.Sacrifice:
+                SpawnRandomRoom(sacrificeRoomTemplates);
+                break;
+            case RoomType.Challange:
+                SpawnRandomRoom(challangeRoomTemplates);
                 break;
             case RoomType.Boss:
-                SpawnBossRoom();
+                SpawnRandomRoom(bossRoomTemplates);
+                break;
+            case RoomType.None:
+                Debug.LogWarning("Tried spawning room type: None?");
+                break;
+            case RoomType.Special:
+                SpawnRandomRoom(specialRoomTemplates);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -79,26 +96,15 @@ public class RoomManager : MonoBehaviour
         return _newRoom.GetPlayerSpawnPoint();
     }
     
-    [ContextMenu("Spawn Room")]
-    public void SpawnRandomRoom()
+    public void SpawnRandomRoom(List<Room> roomTemplates)
     {
-        //DeleteCurrentRoom();
-        _newRoom = Instantiate( roomTemplates[Random.Range(0, roomTemplates.Length)], 
+        _newRoom = Instantiate( roomTemplates[Random.Range(0, roomTemplates.Count)], 
             new Vector3(_roomOffset, 0.0f, 0f), Quaternion.identity, roomParent);
         _roomOffset += 50.0f;
         
         StartCoroutine(SpawnRandomRoomCouroutine());
     }
-    
-    [ContextMenu("Spawn Boss Room")]
-    public void SpawnBossRoom()
-    {
-        DeleteCurrentRoom();
-        _currentRoom = Instantiate( bossRoom, roomParent );
 
-        StartCoroutine(SpawnBossRoomCoroutine());
-    }
-    
     public void DeleteCurrentRoom()
     {
         if(_currentRoom != null)
@@ -107,15 +113,6 @@ public class RoomManager : MonoBehaviour
         }
     }
     
-    IEnumerator SpawnBossRoomCoroutine()
-    {
-        yield return null;
-        
-        _currentRoom.BakeNavMesh();
-        
-        _currentRoom.InstantiateEnemies(enemyObject);
-        _currentRoom.SetEnemyTarget(enemyTarget);
-    }
     IEnumerator SpawnRandomRoomCouroutine()
     {
         yield return null;
@@ -141,7 +138,6 @@ public class RoomManager : MonoBehaviour
         _newRoom.BakeNavMesh();
         
         _newRoom.InstantiateEnemies(enemyObject);
-        _newRoom.SetEnemyTarget(enemyTarget);
     }
 
     public void SwapRooms()
@@ -149,5 +145,7 @@ public class RoomManager : MonoBehaviour
         DeleteCurrentRoom();
         _currentRoom = _newRoom;
         _newRoom = null;
+        
+        _currentRoom.SetEnemyTarget(Player.Instance.transform);
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7267278243913688902}
   - component: {fileID: 3926861486938160487}
   - component: {fileID: 5714726446476438281}
+  - component: {fileID: 2761105358503312811}
   m_Layer: 0
   m_Name: EnemyTest
   m_TagString: Untagged
@@ -68,6 +69,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e20a598d0af764e8c7a4695de2d718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!65 &2761105358503312811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3101592751412893510}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.89884645, y: 0.92705, z: 0.73674715}
+  m_Center: {x: 0.0071991384, y: 0.60620373, z: -0.0050813556}
 --- !u!1 &6309415074437707844
 GameObject:
   m_ObjectHideFlags: 0

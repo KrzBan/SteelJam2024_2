@@ -224,6 +224,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1417718039005260479, guid: 2c6d0ad82844cbd429ab4fbc6bf50f00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417718039005260479, guid: 2c6d0ad82844cbd429ab4fbc6bf50f00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417718039005260479, guid: 2c6d0ad82844cbd429ab4fbc6bf50f00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1802225105672969590, guid: 2c6d0ad82844cbd429ab4fbc6bf50f00, type: 3}
       propertyPath: m_Name
       value: Player
@@ -334,8 +346,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomLayers:
-  - roomTypes: 010000000100000001000000
-  - roomTypes: 010000000100000001000000
+  - roomTypes: 010000000300000005000000
+  - roomTypes: 010000000200000005000000
+  - roomTypes: 010000000600000005000000
+  - roomTypes: 010000000300000005000000
+  - roomTypes: 010000000200000005000000
+  - roomTypes: 050000000500000005000000
   - roomTypes: 04000000
   enemyTarget: {fileID: 672910342}
   roomParent: {fileID: 1289144003}
@@ -344,10 +360,19 @@ MonoBehaviour:
   ceilingMaterial: {fileID: 2100000, guid: 583ba5fe437b17442a68287dc6ec476f, type: 2}
   sceneryObject: {fileID: 3101592751412893510, guid: 0b720eaf3660af2458af5b6e65f04ff7, type: 3}
   lightObject: {fileID: 724133117482815894, guid: e61c74e0e43c68c43b6efa936d6fe350, type: 3}
-  enemyObject: {fileID: 3101592751412893510, guid: 3323359f0ec6cf148a80b29b18849de3, type: 3}
-  doorObject: {fileID: 5591542815596445596, guid: 40b5800cc45d9d34288166df6a58f947, type: 3}
-  bossRoom: {fileID: 0}
-  roomTemplates:
+  enemyObject: {fileID: 7678512171347918952, guid: 2f1f487f012edd64f9b3314019174a02, type: 3}
+  doorObject: {fileID: 1123299098356835380, guid: f7607bb30c8ff474fa76335417b50a6f, type: 3}
+  bossRoomTemplates:
+  - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
+  normalRoomTemplates:
+  - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
+  shopRoomTemplates:
+  - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
+  sacrificeRoomTemplates:
+  - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
+  challangeRoomTemplates:
+  - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
+  specialRoomTemplates:
   - {fileID: 6292688871591923823, guid: 142b364c847771d46ac7d1082fb783ae, type: 3}
 --- !u!4 &790338796
 Transform:
@@ -456,7 +481,7 @@ Transform:
   m_GameObject: {fileID: 982765882}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -0.046, y: 3.079, z: -0.103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -826,7 +851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -834,7 +859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -846,7 +871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 55.115
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

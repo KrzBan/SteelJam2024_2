@@ -1,22 +1,39 @@
 using System;
 using UnityEngine;
 
+public class LimbState
+{
+    public bool Head { get; }
+    public bool LeftArm { get; }
+    public bool RightArm { get; }
+    public bool LeftLeg { get; }
+    public bool RightLeg { get; }
+
+    public LimbState(bool head, bool lArm, bool rArm, bool lLeg, bool rLeg)
+    {
+        Head = head;
+        LeftArm = lArm;
+        RightArm = rArm;
+        LeftLeg = lLeg;
+        RightLeg = rLeg;
+    }
+}
+
 [Serializable]
 public class PlayerStatus
 {
-    public Action<bool> OnHeadStateChanged { get; set; }
-    public Action<bool> OnLeftArmStateChanged { get; set; }
-    public Action<bool> OnRightArmStateChanged { get; set; }
-    public Action<bool> OnLeftLegStateChanged { get; set; }
-    public Action<bool> OnRightLegStateChanged { get; set; }
-    
+    public Action<LimbState> OnLimbStateChanged { get; set; }
+    public Action<float> OnHealthReduced { get; set; }
+    public Action<float> OnHealthGained { get; set; }
+    public Action OnDeath { get; set; }
+
     public bool Head
     {
         get => head;
         set
         {
             head = value;
-            OnHeadStateChanged?.Invoke(value);
+            OnLimbStateChanged?.Invoke(new LimbState(head, lArm, rArm, lLeg, rLeg));
         }
     }
     public bool LeftArm
@@ -25,7 +42,7 @@ public class PlayerStatus
         set
         {
             lArm = value;
-            OnLeftArmStateChanged?.Invoke(value);
+            OnLimbStateChanged?.Invoke(new LimbState(head, lArm, rArm, lLeg, rLeg));
         }
     }
     public bool RightArm
@@ -34,7 +51,7 @@ public class PlayerStatus
         set
         {
             rArm = value;
-            OnRightArmStateChanged?.Invoke(value);
+            OnLimbStateChanged?.Invoke(new LimbState(head, lArm, rArm, lLeg, rLeg));
         }
     }
     public bool LeftLeg
@@ -43,7 +60,7 @@ public class PlayerStatus
         set
         {
             lLeg = value;
-            OnLeftLegStateChanged?.Invoke(value);
+            OnLimbStateChanged?.Invoke(new LimbState(head, lArm, rArm, lLeg, rLeg));
         }
     }
     public bool RightLeg
@@ -52,7 +69,33 @@ public class PlayerStatus
         set
         {
             head = value;
-            OnRightLegStateChanged?.Invoke(value);
+            OnLimbStateChanged?.Invoke(new LimbState(head, lArm, rArm, lLeg, rLeg));
+        }
+    }
+
+    public float Health
+    {
+        get => health;
+        set
+        {
+            if (value > health)
+            {
+                health = value;
+                OnHealthGained?.Invoke(health);
+            }
+
+            if (value < health && value > 0f)
+            {
+                health = value;
+                OnHealthReduced?.Invoke(health);
+            }
+
+            if (value <= 0f)
+            {
+                health = 0f;
+                OnDeath?.Invoke();
+            }
+            
         }
     }
 
@@ -61,4 +104,5 @@ public class PlayerStatus
     private bool rArm = true;
     private bool lLeg = true;
     private bool rLeg = true;
+    private float health = 100f;
 }

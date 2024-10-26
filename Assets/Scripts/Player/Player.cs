@@ -1,28 +1,29 @@
 using System;
 using JetBrains.Annotations;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
     [field: SerializeField] public PlayerStatus PlayerStatus { get; set; }
+    [SerializeField] public Inventory inventory;
     public Rigidbody Rigidbody => rb;
-    
     [SerializeField, Range(0f, 1f)] private float sensitivity = 0.05f;
-    [SerializeField] private Transform headTransform;
+    [SerializeField] public Transform headTransform;
     [SerializeField] private float movementSpeed = 1f;
-
     [CanBeNull] public static Player Instance { get; private set; }
-    
+
     private Vector2 direction;
     private Rigidbody rb;
+    [SerializeField] private Transform HandAnchor;
 
-    
+    public bool canInteract = true;
 
     private void Awake()
     {
         Instance = this;
-        
+        inventory = new Inventory();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -56,6 +57,38 @@ public class Player : MonoBehaviour
         headTransform.RotateAround(headTransform.position, headTransform.right, -delta.y * sensitivity);
     }
 
+    public void Hit(HitParams hitParams)
+    {
+        PlayerStatus.Health -= hitParams.Damage;
+        if (Random.Range(0f, 1f) <= hitParams.LibLossChance)
+        {
+            RemoveLimbOrdered();
+        }
+    }
+
+    /// <summary>
+    /// Order - left arm -> left leg -> right leg -> right arm
+    /// </summary>
+    public void RemoveLimbOrdered()
+    {
+        if (PlayerStatus.LeftArm)
+        {
+            PlayerStatus.LeftArm = false;
+        }
+        else if (PlayerStatus.LeftLeg)
+        {
+            PlayerStatus.LeftLeg = false;
+        }
+        else if (PlayerStatus.RightLeg)
+        {
+            PlayerStatus.RightLeg = false;
+        }
+        else if (PlayerStatus.RightArm)
+        {
+            PlayerStatus.RightArm = false;
+        }
+    }
+
     private void EvaluateMovement()
     {
         var forward = headTransform.forward;
@@ -71,11 +104,9 @@ public class Player : MonoBehaviour
 
     public void Interact()
     {
-
         RaycastHit hit;
         if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
-            Debug.Log("Did Hit");
             IInteractable interactable;
             bool isInteractable = hit.collider.TryGetComponent<IInteractable>(out interactable );
 
@@ -84,9 +115,20 @@ public class Player : MonoBehaviour
                 interactable.interact(this);
             }
         }
-        else
-        {
-            Debug.Log("Did not Hit");
-        }
+        
+    }
+
+    public void PlaceInHand(ItemSO item)
+    {
+        if (HandAnchor.childCount > 0)
+             Destroy(HandAnchor.GetChild(0));
+
+        Instantiate(item.Prefab,HandAnchor);
+    }
+
+    public void Use()
+    {
+        if(inventory.ItemSlot!=null)
+            inventory.ItemSlot.Use(this);
     }
 }

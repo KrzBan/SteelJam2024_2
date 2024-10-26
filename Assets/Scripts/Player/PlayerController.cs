@@ -33,7 +33,16 @@ public class PlayerController : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
+        if(player.canInteract == false)
+            return;
+        
         if(context.started)
             player.Interact();
+    }
+
+    public void UseItem(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            player.Use();
     }
 }
