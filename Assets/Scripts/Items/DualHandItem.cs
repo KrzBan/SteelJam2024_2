@@ -6,12 +6,12 @@ public class DualHandItem : IItem
 
     public DualHandItem()
     {
-       // ItemSO
+       
     }
 
     public GameObject GetPrefab()
     {
-        throw new System.NotImplementedException();
+        return ItemSO.Prefab;
     }
 
     public void Use(PlayerManager User)
