@@ -7,4 +7,5 @@ public class GameManager : MonoBehaviour
     {
         Cursor.Instance.Hide();
     }
+
 }
