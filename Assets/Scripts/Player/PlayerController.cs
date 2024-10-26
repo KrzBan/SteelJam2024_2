@@ -14,12 +14,18 @@ public class PlayerController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (player.canMove == false)
+        {
+            return;
+        }
+
         if (context.canceled)
         {
             player.Move(Vector2.zero);
         }
         
         var val = context.ReadValue<Vector2>();
+
         
         player.Move(val);
     }

@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, IDamagable
     private Rigidbody rb;
 
     public bool canInteract = true;
+    public bool canMove = true;
     public bool AttackingMoveDebuff = false;
 
 
