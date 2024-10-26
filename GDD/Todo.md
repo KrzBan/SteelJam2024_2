@@ -19,5 +19,5 @@
 - [ ] Bonus room
 ## Kosmetyczne
 
-- [ ] Efekt uderzenia w przeciwnika
+- [x] Efekt uderzenia w przeciwnika
 - [ ] Spadanie kończyn po utracie
