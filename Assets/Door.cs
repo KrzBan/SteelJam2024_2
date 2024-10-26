@@ -27,6 +27,9 @@ public class Door : MonoBehaviour, IInteractable
         // spawn new room
         _interactable = false;
         user.canInteract = false;
+        user.canMove = false;
+        user.Move(Vector2.zero);
+
         RoomManager.Instance.SpawnRoomByType(roomType);
 
         StartCoroutine(TeleportCoroutine(user, RoomManager.Instance.GetPlayerSpawnPoint()));
@@ -57,8 +60,11 @@ public class Door : MonoBehaviour, IInteractable
         yield return new WaitForSeconds(fadeTime);
         
         user.canInteract = true;
+        user.canMove = true;
+
         RoomManager.Instance.SwapRooms();
 
+        
         yield return null;
     }
 }

@@ -22,7 +22,9 @@ public class Player : MonoBehaviour, IDamagable
     private Vector2 direction;
     private Rigidbody rb;
 
+    private float movementSpeedMultplier = 1;
     public bool canInteract = true;
+    public bool canMove = true;
     public bool AttackingMoveDebuff = false;
 
 
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour, IDamagable
         inventory = new Inventory();
         rb = GetComponent<Rigidbody>();
         Cursor.Instance.Hide();
+        PlayerStatus.OnLimbStateChanged += OnLimbLoss;
     }
 
     private void FixedUpdate()
@@ -74,13 +77,15 @@ public class Player : MonoBehaviour, IDamagable
         headTransform.RotateAround(headTransform.position, headTransform.right, -delta.y * sensitivity);
     }
 
-    void OnLimbLoss(PlayerStatus status)
+    void OnLimbLoss(LimbState status)
     {
         if (!status.Head) PlayerStatus.OnDeath.Invoke();
-        movementSpeed = 0.2f;
-        if (status.LeftLeg) movementSpeed += 0.4f;
-        if (status.RightLeg) movementSpeed += 0.4f;
+        movementSpeedMultplier = 0.4f;
+        if (status.LeftLeg) movementSpeedMultplier += 0.3f;
+        if (status.RightLeg) movementSpeedMultplier += 0.3f;
 
+
+        if (inventory.ItemSlot == null) return;
         if (!(status.LeftArm || status.RightArm)) DropItem();
 
 
@@ -90,12 +95,17 @@ public class Player : MonoBehaviour, IDamagable
                 DropItem();
         }
     }
-    void DropItem()
+    public void DropItem()
     {
-        if (handSlot.childCount != 0)
-            Destroy(handSlot.GetChild(0));
 
-        inventory.ItemSlot.setItemSO(null);
+        if (handSlot.childCount != 0)
+            Destroy(handSlot.GetChild(0).gameObject);
+
+        if (inventory.ItemSlot == null) { Debug.Log("Nothin to drop"); return; }
+
+       var DroppedItem = Instantiate(inventory.ItemSlot.GetWorldPrefab(), handSlot);
+        DroppedItem.transform.SetParent(null);
+        inventory.ItemSlot = null;
     }
     public void Hit(HitParams hitParams)
     {
@@ -145,6 +155,7 @@ public class Player : MonoBehaviour, IDamagable
 
 
         var velo = (forward * direction.y + right * direction.x) * movementSpeed + rb.linearVelocity.y * Vector3.up;
+        velo *= movementSpeedMultplier;
         if (AttackingMoveDebuff) velo *= 0.3f;
         rb.linearVelocity = velo;
     }
@@ -175,6 +186,7 @@ public class Player : MonoBehaviour, IDamagable
 
     public void Use()
     {
+        if (inventory.ItemSlot == null) return;
         switch (inventory.ItemSlot.getItemSO().HandRequirement)
         {
             case HandRequirement.SingeHanded:
