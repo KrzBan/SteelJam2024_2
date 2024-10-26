@@ -64,26 +64,30 @@ public class Room : MonoBehaviour
         InstantiateInChildren(prefab, lightsParent);
     }
 
-    public void InstantiateDoors(GameObject door, GameObject lockKey, RoomType leftType, RoomType middleType, RoomType rightType)
+    public void InstantiateDoors(GameObject door, GameObject lockKey, RoomInfo leftInfo, RoomInfo middleInfo, RoomInfo rightInfo)
     {
-        if (leftType != RoomType.None)
-            InstantiateDoor(door, lockKey, leftType, doorsParent.GetChild(0));
-        if (middleType != RoomType.None)
-            InstantiateDoor(door, lockKey, middleType, doorsParent.GetChild(1));
-        if (rightType != RoomType.None)
-            InstantiateDoor(door, lockKey, rightType, doorsParent.GetChild(2));
+        if (leftInfo.roomType != null)
+            InstantiateDoor(door, lockKey, leftInfo, doorsParent.GetChild(0));
+        if (middleInfo.roomType != null)
+            InstantiateDoor(door, lockKey, middleInfo, doorsParent.GetChild(1));
+        if (rightInfo.roomType != null)
+            InstantiateDoor(door, lockKey, rightInfo, doorsParent.GetChild(2));
     }
 
-    private void InstantiateDoor(GameObject door, GameObject lockKey, RoomType roomType, Transform parent)
+    private void InstantiateDoor(GameObject door, GameObject lockKey, RoomInfo roomInfo, Transform parent)
     {
         var doorObj = Instantiate(door, parent.transform.position, parent.transform.rotation, parent);
         var doorComp = doorObj.GetComponentInChildren<Door>();
         if(doorComp != null)
         {
-            doorComp.roomType = roomType;
+            doorComp.roomType = roomInfo.roomType;
         }
-        var lockObj = Instantiate(lockKey, doorComp.lockSpawnPoint.position, doorComp.lockSpawnPoint.rotation, doorObj.transform);
-        doorComp.keyLock = lockObj;
+
+        if (roomInfo.hasKey)
+        {
+            var lockObj = Instantiate(lockKey, doorComp.lockSpawnPoint.position, doorComp.lockSpawnPoint.rotation, doorObj.transform);
+            doorComp.keyLock = lockObj;
+        }
     }
 
     private void InstantiateInChildren(GameObject prefab, Transform parent)

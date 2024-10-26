@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 [Serializable]
 public enum RoomType
 {
-    None,
     Normal,
     Shop,
     Sacrifice,
@@ -18,9 +17,16 @@ public enum RoomType
 }
 
 [Serializable]
+public class RoomInfo
+{
+    public RoomType roomType;
+    public bool hasKey;
+}
+
+[Serializable]
 public class RoomLayer
 {
-    public List<RoomType> roomTypes;
+    public List<RoomInfo> roomTypes;
 }
 public class RoomManager : MonoBehaviour
 {
@@ -81,9 +87,6 @@ public class RoomManager : MonoBehaviour
             case RoomType.Boss:
                 SpawnRandomRoom(bossRoomTemplates);
                 break;
-            case RoomType.None:
-                Debug.LogWarning("Tried spawning room type: None?");
-                break;
             case RoomType.Special:
                 SpawnRandomRoom(specialRoomTemplates);
                 break;
@@ -128,7 +131,7 @@ public class RoomManager : MonoBehaviour
             _newRoom.InstantiateDoors(doorObject, keyObject, roomTypes[0], roomTypes[1], roomTypes[2]);
         } else if (roomTypes.Count() == 1)
         {
-            _newRoom.InstantiateDoors(doorObject, keyObject, RoomType.None, roomTypes[0], RoomType.None);
+            _newRoom.InstantiateDoors(doorObject, keyObject, null, roomTypes[0], null);
         }
         else
         {
