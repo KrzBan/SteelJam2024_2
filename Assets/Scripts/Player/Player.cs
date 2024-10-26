@@ -132,4 +132,10 @@ public class Player : MonoBehaviour
 
         Instantiate(item.Prefab,HandAnchor);
     }
+
+    public void Use()
+    {
+        if(inventory.ItemSlot!=null)
+            inventory.ItemSlot.Use(this);
+    }
 }

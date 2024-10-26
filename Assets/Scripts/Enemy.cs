@@ -38,4 +38,9 @@ public class Enemy : MonoBehaviour
     {
         this.target = target;
     }
+
+    public void TakeDamage(float value)
+    {
+        Destroy(this);
+    }
 }
