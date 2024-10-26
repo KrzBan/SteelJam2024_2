@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AnimationInteractableBase : MonoBehaviour, IInteractable
 {
+    public Action OnAnimationEnded { get; set; }
+    
     [SerializeField] protected GameObject objectCamera;
     [SerializeField] protected List<Animator> animatorsToPlay;
     [SerializeField] protected List<GameObject> objectsToEnable;
@@ -12,7 +15,7 @@ public abstract class AnimationInteractableBase : MonoBehaviour, IInteractable
     [SerializeField] protected float timeToAnimationStart = 3f;
     [SerializeField] protected bool interactableMultipleTimes = false;
 
-    private bool interacted = false;
+    protected bool interacted = false;
 
     public virtual void interact(Player user)
     {
@@ -63,5 +66,7 @@ public abstract class AnimationInteractableBase : MonoBehaviour, IInteractable
         
         objectCamera.GetComponent<Animator>().enabled = false;
         objectCamera.SetActive(false);
+        
+        OnAnimationEnded?.Invoke();
     }
 }

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private float movementSpeed = 1f;
     [SerializeField] private Arm rArm;
     [SerializeField] private Transform handSlot;
+    [SerializeField] private GameObject armObject;
     [CanBeNull] public static Player Instance { get; private set; }
 
     private Vector2 direction;
@@ -31,6 +32,16 @@ public class Player : MonoBehaviour, IDamagable
     private void FixedUpdate()
     {
         EvaluateMovement();
+    }
+
+    public void HideArm()
+    {
+        armObject.SetActive(false);
+    }
+
+    public void ShowArm()
+    {
+        armObject.SetActive(true);
     }
     
     public void Move(Vector2 _direction)

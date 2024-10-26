@@ -206,6 +206,7 @@ MonoBehaviour:
   movementSpeed: 2.5
   rArm: {fileID: 8727314432344146667}
   handSlot: {fileID: 5868189144301117254}
+  armObject: {fileID: 4588974612047626680}
   canInteract: 1
 --- !u!114 &8089716275638371328
 MonoBehaviour:
