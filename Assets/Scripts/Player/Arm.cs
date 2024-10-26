@@ -4,7 +4,7 @@ public class Arm : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     
-    public void Attack()
+    public void Attack(string triggerName)
     {
         if (Player.Instance == null)
         {
@@ -16,7 +16,7 @@ public class Arm : MonoBehaviour
             return;
         }
 
-        animator.SetTrigger("Attack");
+        animator.SetTrigger(triggerName);
     }
 
     public void UseItem()
