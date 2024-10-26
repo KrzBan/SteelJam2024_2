@@ -48,7 +48,7 @@ public class RoomManager : MonoBehaviour
     public List<Material> roomMaterials;
     public Material ceilingMaterial;
 
-    public GameObject sceneryObject;
+    public List<GameObject> propObjects;
     public GameObject lightObject;
     public GameObject enemyObject;
     public GameObject doorObject;
@@ -121,7 +121,7 @@ public class RoomManager : MonoBehaviour
         yield return null;
         
         _newRoom.SetMaterial(roomMaterials[Random.Range(0, roomMaterials.Count)]);
-        _newRoom.InstantiateScenery(sceneryObject);
+        _newRoom.InstantiateScenery(propObjects);
         _newRoom.InstantiateLights(lightObject);
 
         var roomTypes = roomLayers[_currentRoomLayer].roomTypes;
