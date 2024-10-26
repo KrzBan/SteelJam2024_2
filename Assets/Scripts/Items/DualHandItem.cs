@@ -9,12 +9,17 @@ public class DualHandItem : IItem
        
     }
 
+    public ItemSO getItemSO()
+    {
+        return ItemSO;
+    }
+
     public GameObject GetPrefab()
     {
         return ItemSO.Prefab;
     }
 
-    public void Use(PlayerManager User)
+    public void Use(Player User)
     {
         
     }

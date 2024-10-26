@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class PlayerManager { };
+
 public interface IItem
 {
+    ItemSO getItemSO();
     GameObject GetPrefab();
-    void Use(PlayerManager User);
+    void Use(Player User);
 }
