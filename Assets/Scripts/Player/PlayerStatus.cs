@@ -93,6 +93,7 @@ public class PlayerStatus
             if (value <= 0f)
             {
                 health = 0f;
+                OnHealthReduced?.Invoke(health);
                 OnDeath?.Invoke();
             }
             

@@ -29,6 +29,8 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private float maxHealth = 10;
     [SerializeField] public GameObject Bubbles;
     [SerializeField] private AudioClip woshSFX;
+    [SerializeField] private GameObject ragdollParent;
+    [SerializeField] private Transform head;
     [CanBeNull] public static Player Instance { get; private set; }
     public Animator animator;
 
@@ -52,8 +54,25 @@ public class Player : MonoBehaviour, IDamagable
         animator = GetComponent<Animator>();
         Cursor.Instance.Hide();
         PlayerStatus.OnLimbStateChanged += OnLimbLoss;
+        
+        PlayerStatus.OnDeath += Ragdoll;
 
         PlayerStatus.Health = maxHealth;
+    }
+
+    public void Ragdoll()
+    {
+        rb.isKinematic = true;
+        canInteract = false;
+        canMove = false;
+        headTransform.parent = head;
+        headTransform.localPosition = Vector3.zero;
+        ragdollParent.SetActive(true);
+        GetComponent<CapsuleCollider>().enabled = false;
+        foreach (var r in ragdollParent.GetComponentsInChildren<Rigidbody>())
+        {
+            r.isKinematic = false;
+        }
     }
 
     public void Wosh()
