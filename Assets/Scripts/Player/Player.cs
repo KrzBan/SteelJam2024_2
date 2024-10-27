@@ -160,7 +160,7 @@ public class Player : MonoBehaviour, IDamagable
 
         if(!(status.LeftArm && status.RightArm))
         {
-            if (inventory.ItemSlot.getItemSO().HandRequirement == HandRequirement.DualHanded)
+            if (inventory.ItemSlot != null && inventory.ItemSlot.getItemSO().HandRequirement == HandRequirement.DualHanded)
                 DropItem();
         }
     }

@@ -35,7 +35,6 @@ public class Gillotine : AnimationInteractableBase
     private void OnEnd()
     {
         sacrificeReward.MakeObjectPickable();
-        triggerCollider.enabled = false;
         if (Player.Instance == null)
         {
             return;
@@ -71,6 +70,8 @@ public class Gillotine : AnimationInteractableBase
         {
             return;
         }
+        
+        triggerCollider.enabled = false;
 
         if (Player.Instance.PlayerStatus.LeftArm)
         {

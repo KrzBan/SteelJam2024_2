@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DualHandItem :  IItem
+public class DualHandItem : IItem
 {
     public ItemSO ItemSO;
 
