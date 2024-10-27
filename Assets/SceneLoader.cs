@@ -9,4 +9,14 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Cursor.Instance.Hide();
     }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

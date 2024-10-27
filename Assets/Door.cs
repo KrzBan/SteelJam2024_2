@@ -45,7 +45,7 @@ public class Door : MonoBehaviour, IInteractable
         if (keyLock != null)
             yield return new WaitForSeconds(2.0f);
         
-        float fadeTime = 2.5f;
+        float fadeTime = 3.2f;
         
         // fade in
         Fade.Instance.Out(fadeTime);

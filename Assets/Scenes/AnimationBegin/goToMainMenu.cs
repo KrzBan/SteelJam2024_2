@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GoToMainMenu : MonoBehaviour
+public class goToMainMenu : MonoBehaviour
 {
     public void EndOfAnimation()
     {
