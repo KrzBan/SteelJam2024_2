@@ -777,19 +777,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9782764
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.20730537
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.00000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.00000009685755
       objectReference: {fileID: 0}
     - target: {fileID: 4955698052860331671, guid: b7e0bc9a10bb01b4298ec85b194687b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1433,6 +1433,30 @@ PrefabInstance:
       propertyPath: enemyTarget
       value: 
       objectReference: {fileID: 672910342}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: normalRoomTemplates.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'normalRoomTemplates.Array.data[3]'
+      value: 
+      objectReference: {fileID: 5700448676719099809, guid: 3a977e88b698ba9438ed067ac4d6f811, type: 3}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: roomLayers.Array.data[1].roomTypes.Array.data[1].roomType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: roomLayers.Array.data[2].roomTypes.Array.data[0].roomType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: roomLayers.Array.data[1].roomTypes.Array.data[1].roomIndexFromList
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: roomLayers.Array.data[2].roomTypes.Array.data[0].roomIndexFromList
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7771203061307140637, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.7023226

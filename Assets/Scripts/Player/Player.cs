@@ -16,16 +16,20 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] public Transform headTransform;
     [SerializeField] private float movementSpeed = 1f;
     [SerializeField] private Arm rArm;
+    [SerializeField] private Arm doubleArm;
     [SerializeField] private Transform handSlot;
+    [SerializeField] private Transform twoHandSlot;
     [SerializeField] private GameObject armObject;
+    [SerializeField] private GameObject doubleArmObject;
     [SerializeField] private GameObject legDecap;
     [SerializeField] private GameObject armDecap;
     [SerializeField] private float dashForce = 500f;
     [SerializeField] private float dashCooldown = 2f;
     [SerializeField] private float interactRange = 1.5f;
     [SerializeField] private float maxHealth = 10;
-    
+    [SerializeField] public GameObject Bubbles;
     [CanBeNull] public static Player Instance { get; private set; }
+    public Animator animator;
 
     private Vector2 direction;
     private Rigidbody rb;
@@ -36,6 +40,7 @@ public class Player : MonoBehaviour, IDamagable
     public bool canInteract = true;
     public bool canMove = true;
     public bool AttackingMoveDebuff = false;
+    public bool PropelUp = false;
 
 
     private void Awake()
@@ -43,15 +48,34 @@ public class Player : MonoBehaviour, IDamagable
         Instance = this;
         inventory = new Inventory();
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         Cursor.Instance.Hide();
         PlayerStatus.OnLimbStateChanged += OnLimbLoss;
 
         PlayerStatus.Health = maxHealth;
     }
 
+    public void SetGlutPartices()
+    {
+        Bubbles.SetActive(true);
+    }
+
+    public void HealLimbs()
+    {
+        PlayerStatus.Head = true;
+        PlayerStatus.LeftArm = true;
+        PlayerStatus.LeftLeg  = true;
+        PlayerStatus.RightArm = true;
+        PlayerStatus.RightLeg = true;
+        PlayerStatus.Health = 10;
+
+
+    }
     private void Start()
     {
         ToolTipTMP = GameObject.FindGameObjectWithTag("Tooltip").GetComponent<TMP_Text>();
+        
+        ShowArm();
     }
 
     private void FixedUpdate()
@@ -62,10 +86,18 @@ public class Player : MonoBehaviour, IDamagable
     public void HideArm()
     {
         armObject.SetActive(false);
+        doubleArmObject.SetActive(false);
     }
 
     public void ShowArm()
     {
+        if (inventory.ItemSlot != null && inventory.ItemSlot.getItemSO().HandRequirement == HandRequirement.DualHanded &&
+            PlayerStatus.RightArm && PlayerStatus.LeftArm)
+        {
+            doubleArmObject.SetActive(true);
+            return;
+        }
+        
         if (PlayerStatus.RightArm)
         {
             armObject.SetActive(true);
@@ -166,6 +198,7 @@ public class Player : MonoBehaviour, IDamagable
         {
             DropItem();
             HideArm();
+            ShowArm();
         }
 
 
@@ -264,12 +297,18 @@ public class Player : MonoBehaviour, IDamagable
         right.y = 0f;
         right.Normalize();
 
+        float upBoost = 0;
+        if(PropelUp)
+        {
+            upBoost =2.5f;
+        }
 
-        var velo = (forward * direction.y + right * direction.x) * movementSpeed + rb.linearVelocity.y * Vector3.up;
+        var velo = (forward * direction.y + right * direction.x) * movementSpeed + (upBoost +  rb.linearVelocity.y) * Vector3.up;
         velo *= movementSpeedMultplier;
         if (AttackingMoveDebuff) velo *= 0.3f;
         rb.linearVelocity = velo;
     }
+
 
     public void Interact()
     {
@@ -294,9 +333,26 @@ public class Player : MonoBehaviour, IDamagable
     public void PlaceInHand(ItemSO item)
     {
         if (handSlot.childCount > 0)
-             Destroy(handSlot.GetChild(0).gameObject);
+        {
+            Destroy(handSlot.GetChild(0).gameObject);
+        }
 
-        Instantiate(item.InHandPrefab, handSlot);
+        if (twoHandSlot.childCount > 0)
+        {
+            Destroy(twoHandSlot.GetChild(0).gameObject);
+        }
+
+        if (item.HandRequirement == HandRequirement.SingeHanded)
+        {
+            Instantiate(item.InHandPrefab, handSlot);
+        }
+        else if (item.HandRequirement == HandRequirement.DualHanded)
+        {
+            Instantiate(item.InHandPrefab, twoHandSlot);
+        }
+        
+        HideArm();
+        ShowArm();
     }
 
     public void Use()
@@ -312,7 +368,7 @@ public class Player : MonoBehaviour, IDamagable
 
                 break;
             case HandRequirement.DualHanded:
-                rArm.Attack("Attack"); //tutaj ata animacja dla 2 rak, ale jje nie ma jeszcze sadge
+                doubleArm.Attack("Attack");
 
                 break;
         }
