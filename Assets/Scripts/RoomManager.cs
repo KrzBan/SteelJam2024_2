@@ -140,6 +140,12 @@ public class RoomManager : MonoBehaviour
     {
         yield return null;
         
+        if(_currentRoomLayer >= roomLayers.Count)
+        {
+            Debug.Log("No more rooms to spawn");
+            yield break;
+        }
+        
         _newRoom.SetMaterial(roomMaterials[Random.Range(0, roomMaterials.Count)]);
         _newRoom.InstantiateScenery(propObjects);
         _newRoom.InstantiateLights(lightObject);
