@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(AudioSource))]
 public class Enemy : MonoBehaviour, IDamagable
 {
     public Transform target;
@@ -24,16 +26,22 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private float rotateDuringAttackSpeed = 30f;
     [SerializeField] private float hitAngle = 30f;
 
+    private bool movementPaused = false;
+    
+    [SerializeField] private List<AudioClip> hitSounds;
+    
     private NavMeshAgent _agent;
     private Animator _animator;
+    private AudioSource _audioSource;
     private float cooldown = 0f;
     private bool dead = false;
-
+    
     private Vector3 OverlapBoxOffset;
     void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnValidate()
@@ -50,8 +58,11 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             return;
         }
-        
-        _animator.SetFloat("Speed", _agent.velocity.magnitude);
+
+        if (!movementPaused)
+        {
+            _animator.SetFloat("Speed", _agent.velocity.magnitude);
+        }
 
         if (target == null)
         {
@@ -62,11 +73,11 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             var angle = Vector3.SignedAngle(transform.forward, (target.position - transform.position).normalized, Vector3.up);
 
-            if (angle > rotateDuringAttackSpeed)
+            if (angle > 0.01f)
             {
                 angle = rotateDuringAttackSpeed;
             }
-            else if (angle < -rotateDuringAttackSpeed)
+            else if (angle < -0.01f)
             {
                 angle = -rotateDuringAttackSpeed;
             }
@@ -74,19 +85,27 @@ public class Enemy : MonoBehaviour, IDamagable
             transform.Rotate(Vector3.up, angle * Time.deltaTime);
             
             cooldown += Time.deltaTime;
-            return;
+            //return;
+        }
+        else
+        {
+            cooldown = 0f;
+            _animator.SetTrigger("Attack");
         }
 
         if (Vector3.Distance(target.position, transform.position) > hitRange)
         {
-            _agent.SetDestination(target.position);
+            if (!movementPaused)
+            {
+                _agent.SetDestination(target.position);
+            }
+            else
+            {
+                _agent.SetDestination(transform.position);
+            }
+            
             return;
         }
-        
-        _agent.SetDestination(transform.position);
-
-        cooldown = 0f;
-        _animator.SetTrigger("Attack");
     }
 
     private void DropMoney()
@@ -95,6 +114,16 @@ public class Enemy : MonoBehaviour, IDamagable
         moneyObj.GetComponent<Money>().Amount = Random.Range(moneyDropMin, moneyDropMax + 1);
     }
 
+    public void PauseMovement()
+    {
+        movementPaused = true;
+    }
+
+    public void ResumeMovement()
+    {
+        movementPaused = false;
+    }
+    
     private void RagDoll()
     {
         foreach (var rb in GetComponentsInChildren<Rigidbody>())
@@ -144,10 +173,10 @@ public class Enemy : MonoBehaviour, IDamagable
         forward.Normalize();
         
         var angle = Vector3.Angle(transform.forward, playerDir);
-        if (angle <= hitAngle && Vector3.Distance(transform.position, target.position) <= hitRange + 0.05f)
+        if (angle <= hitAngle && Vector3.Distance(transform.position, target.position) <= hitRange + 0.3f)
         {
             player.Hit(new HitParams(damage, limbLossChanceOnHit));
-            impulseSource.GenerateImpulse(10f);
+            impulseSource.GenerateImpulse(0.2f);
         }
     }
 
@@ -159,6 +188,7 @@ public class Enemy : MonoBehaviour, IDamagable
         }
         
         status.Health -= value;
+        PlayHitSound();
         Debug.Log("Zombie HP :" + status.Health);
         if (status.Health <= 0f)
         {
@@ -169,5 +199,11 @@ public class Enemy : MonoBehaviour, IDamagable
             
             RoomManager.Instance.OnEnemyDeath();
         }
+    }
+
+    void PlayHitSound()
+    {
+        var clip = hitSounds[Random.Range(0, hitSounds.Count)];
+        _audioSource.PlayOneShot(clip);
     }
 }

@@ -7,7 +7,7 @@ public class KeyLockShaft : MonoBehaviour
     {
         var rb = GetComponent<Rigidbody>();
         rb.isKinematic = false;
-        rb.AddForce(transform.right * 0.1f + transform.up * 0.15f , ForceMode.Impulse);
-        rb.AddTorque(transform.forward * 0.05f, ForceMode.Impulse);
+        rb.AddForce(transform.right * 0.1f + Vector3.up * 0.15f , ForceMode.Impulse);
+        rb.AddTorque(transform.up * 0.05f + transform.right * 0.01f, ForceMode.Impulse);
     }
 }

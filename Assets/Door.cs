@@ -27,6 +27,9 @@ public class Door : MonoBehaviour, IInteractable
         // spawn new room
         _interactable = false;
         user.canInteract = false;
+        user.canMove = false;
+        user.Move(Vector2.zero);
+
         RoomManager.Instance.SpawnRoomByType(roomType);
 
         StartCoroutine(TeleportCoroutine(user, RoomManager.Instance.GetPlayerSpawnPoint()));
@@ -42,8 +45,7 @@ public class Door : MonoBehaviour, IInteractable
         if (keyLock != null)
             yield return new WaitForSeconds(2.0f);
         
-        float fadeTime = 3.0f;
-        float fadeOutTime = 1.0f;
+        float fadeTime = 3.2f;
         
         // fade in
         Fade.Instance.Out(fadeTime);
@@ -55,11 +57,14 @@ public class Door : MonoBehaviour, IInteractable
         
         // fade out
         Fade.Instance.In(fadeTime);
-        yield return new WaitForSeconds(fadeOutTime);
+        yield return new WaitForSeconds(fadeTime);
         
         user.canInteract = true;
+        user.canMove = true;
+
         RoomManager.Instance.SwapRooms();
 
+        
         yield return null;
     }
 }
