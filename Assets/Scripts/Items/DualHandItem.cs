@@ -20,7 +20,7 @@ public class DualHandItem :  IItem
     }
     public GameObject GetWorldPrefab()
     {
-        return ItemSO.InHandPrefab;
+        return ItemSO.WorldPrefab;
     }
     public void setItemSO(ItemSO itemSO_)
     {
