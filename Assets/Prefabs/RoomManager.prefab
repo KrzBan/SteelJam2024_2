@@ -47,32 +47,43 @@ MonoBehaviour:
   roomLayers:
   - roomTypes:
     - roomType: 0
+      roomIndexFromList: 0
       hasKey: 0
     - roomType: 4
+      roomIndexFromList: 0
       hasKey: 0
   - roomTypes:
     - roomType: 6
+      roomIndexFromList: 0
       hasKey: 1
     - roomType: 2
+      roomIndexFromList: 0
       hasKey: 0
   - roomTypes:
     - roomType: 0
+      roomIndexFromList: 1
       hasKey: 0
   - roomTypes:
     - roomType: 2
+      roomIndexFromList: 0
       hasKey: 0
     - roomType: 4
+      roomIndexFromList: 1
       hasKey: 0
   - roomTypes:
     - roomType: 6
+      roomIndexFromList: 1
       hasKey: 1
     - roomType: 1
+      roomIndexFromList: 0
       hasKey: 0
   - roomTypes:
     - roomType: 0
+      roomIndexFromList: 2
       hasKey: 0
   - roomTypes:
     - roomType: 3
+      roomIndexFromList: 0
       hasKey: 0
   enemyTarget: {fileID: 0}
   roomParent: {fileID: 0}
@@ -114,12 +125,16 @@ MonoBehaviour:
   - {fileID: 3205531888409352052, guid: 077698cd8b0733b4b817f9c317b323bf, type: 3}
   normalRoomTemplates:
   - {fileID: 3517669031967486734, guid: f4f7f611590e3574984f03445d02d877, type: 3}
+  - {fileID: 3517669031967486734, guid: 2b69578e41164ca418bf64e8a891005a, type: 3}
+  - {fileID: 3517669031967486734, guid: 7a7b53f42d8aef34a972ee684f428fe2, type: 3}
   healRoomTemplates:
   - {fileID: 5700448676719099809, guid: f92b83a13259fb24c820106a2988eaf9, type: 3}
   sacrificeRoomTemplates:
   - {fileID: 2849441465333524448, guid: 0010d83460dc33c4c8d768b431b32fb0, type: 3}
   challangeRoomTemplates:
   - {fileID: 2320515126810040238, guid: c7d57a56ff6e25a47987625ccd0b512d, type: 3}
+  - {fileID: 2320515126810040238, guid: c77df062fae44da4e9b94ad8c8a8c9c5, type: 3}
+  - {fileID: 2320515126810040238, guid: 25a6db13e32cfbd4b97588ef3ebaaa0e, type: 3}
   specialRoomTemplates:
   - {fileID: 6135108285766436068, guid: fc1e6a0e1160f7646bacc7200bd28196, type: 3}
   treasureRoomTemplates:

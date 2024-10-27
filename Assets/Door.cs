@@ -8,7 +8,7 @@ public class Door : MonoBehaviour, IInteractable
 {
     public TMP_Text RoomText;
     
-    public RoomType roomType;
+    public RoomInfo roomInfo;
     public GameObject keyLock;
     public Transform lockSpawnPoint;
     
@@ -62,7 +62,7 @@ public class Door : MonoBehaviour, IInteractable
         user.canMove = false;
         user.Move(Vector2.zero);
 
-        RoomManager.Instance.SpawnRoomByType(roomType);
+        RoomManager.Instance.SpawnRoom(roomInfo);
 
         StartCoroutine(TeleportCoroutine(user, RoomManager.Instance.GetPlayerSpawnPoint()));
     }

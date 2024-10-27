@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewards:
-  - {fileID: 8642779040836782039, guid: 9944ed3270696564fb667975b3a43a40, type: 3}
+  - {fileID: 8642779040836782039, guid: 4ef5f9a26606c964d98b9fa62cbd6bda, type: 3}
 --- !u!1 &939422271923712086
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 6131302103321030226}
   - component: {fileID: 5700448676719099809}
   m_Layer: 0
-  m_Name: Treasure Room
+  m_Name: Treasure Room 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

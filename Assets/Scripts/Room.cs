@@ -18,6 +18,8 @@ public class Room : MonoBehaviour
     public Transform lightsParent;
     public Transform doorsParent;
 
+    public List<GameObject> enemyList;
+
     public Transform GetPlayerSpawnPoint()
     {
         return playerSpawnPoint;
@@ -54,9 +56,20 @@ public class Room : MonoBehaviour
     {
         InstantiateInChildren(props, sceneryParent);
     }
-    public void InstantiateEnemies(GameObject prefab)
+    public void InstantiateEnemies()
     {
-        InstantiateInChildren(prefab, enemiesParent);
+        if (enemyList.Count <= 0)
+        {
+            return;
+        }
+        
+        var i = 0;
+        foreach (Transform child in enemiesParent)
+        {
+            var prefab = enemyList[i % enemyList.Count];
+            Instantiate(prefab, child.position, child.rotation, child);
+            i++;
+        }
     }
     public void InstantiateInteractables(GameObject prefab)
     {
@@ -87,7 +100,7 @@ public class Room : MonoBehaviour
         var doorComp = doorObj.GetComponentInChildren<Door>();
         if(doorComp != null)
         {
-            doorComp.roomType = roomInfo.roomType;
+            doorComp.roomInfo = roomInfo;
         }
 
         doorComp.RoomText.text = roomInfo.roomType.ToString();
