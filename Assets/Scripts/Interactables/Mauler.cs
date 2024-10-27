@@ -6,10 +6,22 @@ public class Mauler : AnimationInteractableBase
 {
     [SerializeField] private SacrificeReward sacrificeReward;
     [SerializeField] private Collider triggerCollider;
-    
+    [SerializeField] private List<Transform> blades;
+    [SerializeField] private bool spin;
+    [SerializeField] private float spinSpeed;
+
     private void Awake()
     {
         OnAnimationEnded += OnEnd;
+    }
+
+    void Update()
+    {
+        if (spin)
+        {
+            blades[0].Rotate(Vector3.up, spinSpeed * Time.deltaTime, Space.Self);
+            blades[1].Rotate(Vector3.up, -spinSpeed * Time.deltaTime, Space.Self);
+        }
     }
     
     private void Start()
@@ -83,5 +95,15 @@ public class Mauler : AnimationInteractableBase
     {
         yield return new WaitForSeconds(1.5f);
         Player.Instance.ShowArm();
+    }
+
+    public void StartMauler()
+    {
+        spin = true;
+    }
+    public void StopMauler()
+    {
+        Debug.Log("WTF");
+        spin = false;
     }
 }

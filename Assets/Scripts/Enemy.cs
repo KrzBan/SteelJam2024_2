@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private EnemyStatus status;
     [SerializeField] private int moneyDropMin;
     [SerializeField] private int moneyDropMax;
+    [SerializeField] private AudioClip moneyDropSFX;
     [SerializeField] private GameObject moneyPrefab;
     [SerializeField] private GameObject bloodHitPrefab;
     [SerializeField] private float damage = 1f;
@@ -112,6 +113,8 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         var moneyObj = Instantiate(moneyPrefab, transform.position + Vector3.up, Quaternion.identity);
         moneyObj.GetComponent<Money>().Amount = Random.Range(moneyDropMin, moneyDropMax + 1);
+        
+        AudioSource.PlayClipAtPoint(moneyDropSFX, transform.position);
     }
 
     public void PauseMovement()

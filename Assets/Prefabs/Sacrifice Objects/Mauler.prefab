@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 9183506760431083681}
   - component: {fileID: 8901862652863229606}
   - component: {fileID: 4778462492811842322}
+  - component: {fileID: 3681285985623011847}
   m_Layer: 0
   m_Name: Mauler
   m_TagString: Untagged
@@ -123,10 +124,9 @@ Transform:
   - {fileID: 190230651010801717}
   - {fileID: 1182224457002395530}
   - {fileID: 9080087533948438106}
-  - {fileID: 8968006055530482436}
-  - {fileID: 7503926736284606070}
   - {fileID: 8231721427213295049}
   - {fileID: 1859135325440853023}
+  - {fileID: 7881791827945115429}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8901862652863229606
@@ -142,16 +142,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectCamera: {fileID: 6127425981381424878}
-  animatorsToPlay: []
+  animatorsToPlay:
+  - {fileID: 3681285985623011847}
   objectsToEnable:
   - {fileID: 7039344709411273147}
   objectsToDisable:
   - {fileID: 7039344709411273147}
-  timeToAnimationEnd: 6.2
+  timeToAnimationEnd: 6
   timeToAnimationStart: 3
   interactableMultipleTimes: 0
   sacrificeReward: {fileID: 4338664354510884264}
   triggerCollider: {fileID: 4778462492811842322}
+  blades:
+  - {fileID: 8968006055530482436}
+  - {fileID: 7503926736284606070}
+  spin: 0
+  spinSpeed: -200
 --- !u!65 &4778462492811842322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,6 +179,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.4239902, y: 0.9395905, z: 3.6597679}
   m_Center: {x: -0.24330235, y: -0.030204743, z: -1.3298839}
+--- !u!95 &3681285985623011847
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540271167939965630}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6da627f63e6f92a41863a97395ce5ca5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1298232777962040179
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +441,7 @@ GameObject:
   - component: {fileID: 1044307699016264036}
   - component: {fileID: 7399612279298980240}
   m_Layer: 0
-  m_Name: Cylinder.001
+  m_Name: Blade1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,12 +455,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3319826269435227631}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.46299133, y: 0, z: -0.14951089}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.621, y: 0.125, z: -0.15}
   m_LocalScale: {x: 34.455456, y: 34.455456, z: 34.455456}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9183506760431083681}
+  m_Father: {fileID: 7881791827945115429}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1044307699016264036
 MeshFilter:
@@ -726,7 +754,7 @@ GameObject:
   - component: {fileID: 657967156540950965}
   - component: {fileID: 9061948701461437684}
   m_Layer: 0
-  m_Name: Cylinder.003
+  m_Name: Blade2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -740,12 +768,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4087075546038640948}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.07793479, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.07793522, y: 0, z: 0}
   m_LocalScale: {x: 34.455456, y: 34.455456, z: 34.455456}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9183506760431083681}
+  m_Father: {fileID: 7881791827945115429}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &657967156540950965
 MeshFilter:
@@ -927,6 +955,39 @@ Transform:
   - {fileID: 1425338895796946850}
   m_Father: {fileID: 4479965288508822151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5514162586782685517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7881791827945115429}
+  m_Layer: 0
+  m_Name: Blades
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7881791827945115429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514162586782685517}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8968006055530482436}
+  - {fileID: 7503926736284606070}
+  m_Father: {fileID: 9183506760431083681}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &6051732471143391348
 GameObject:
   m_ObjectHideFlags: 0

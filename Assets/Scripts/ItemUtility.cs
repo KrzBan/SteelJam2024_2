@@ -56,11 +56,14 @@ public class ItemUtility
 
 
         var enemies = new HashSet<Enemy>();
+        var hits = new List<Vector3>();
 
         Collider[] hitColliders = Physics.OverlapBox(User.transform.position + OverlapBoxOffset, User.transform.localScale, Quaternion.identity);
         foreach (var col in hitColliders)
         {
             Debug.Log("Hit : " + col.name);
+            
+            hits.Add(col.ClosestPoint(User.transform.position));
 
             var objTransform = col.transform;
             while (objTransform != null)
@@ -80,6 +83,10 @@ public class ItemUtility
         foreach (var enemy in enemies)
         {
             enemy.TakeDamage(ItemSO.Damage);
+            foreach (var pos in hits)
+            {
+                enemy.DrawBloodHit(pos);
+            }
         }
         User.AttackingMoveDebuff = false;
     }
