@@ -86,6 +86,8 @@ public class Room : MonoBehaviour
 
     public void InstantiateDoors(GameObject door, GameObject lockKey, RoomInfo leftInfo, RoomInfo middleInfo, RoomInfo rightInfo)
     {
+        if (doorsParent == null) return;
+        
         if (leftInfo != null)
             InstantiateDoor(door, lockKey, leftInfo, doorsParent.GetChild(0));
         if (middleInfo != null)
@@ -114,6 +116,8 @@ public class Room : MonoBehaviour
 
     private void InstantiateInChildren(GameObject prefab, Transform parent)
     {
+        if (parent == null) return;
+        
         foreach(Transform child in parent)
         {
             Instantiate(prefab, child.position, child.rotation, child);        
@@ -122,6 +126,8 @@ public class Room : MonoBehaviour
     
     private void InstantiateInChildren(List<GameObject> props, Transform parent)
     {
+        if (parent == null) return;
+        
         foreach(Transform child in parent)
         {
             Instantiate(props[Random.Range(0, props.Count)], child.position, child.rotation, child);        
@@ -142,6 +148,8 @@ public class Room : MonoBehaviour
     }
     void SetMaterialInChildren(Transform parent, Material material)
     {
+        if (parent == null) return;
+        
         foreach (Transform child in parent.transform)
         {
             var ren = child.GetComponent<Renderer>();
