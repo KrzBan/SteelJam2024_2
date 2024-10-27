@@ -318,7 +318,7 @@ MonoBehaviour:
   lightsParent: {fileID: 5086103562839556880}
   doorsParent: {fileID: 8315602913977637110}
   enemyList:
-  - {fileID: 7678512171347918952, guid: 2f1f487f012edd64f9b3314019174a02, type: 3}
+  - {fileID: 7539808093485349444, guid: 3898aa13ba50d7a4dbb270f9aa70d691, type: 3}
   - {fileID: 7678512171347918952, guid: ffb24c08ad6934c4aade1024e120b836, type: 3}
 --- !u!1 &4236315632653651034
 GameObject:

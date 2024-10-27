@@ -56,7 +56,7 @@ public class RoomManager : MonoBehaviour
 
     public List<GameObject> propObjects;
     public GameObject lightObject;
-    public GameObject enemyObject;
+    public List<GameObject> enemyObjects;
     public GameObject doorObject;
     public GameObject keyObject;
     
