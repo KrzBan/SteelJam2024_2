@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4498098673223483195}
   - component: {fileID: -4255335845373783794}
   m_Layer: 0
-  m_Name: "pa\u0142a"
+  m_Name: "pa\u0142a tier 0"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d7554a78ea33089408b80e2af4f9235b, type: 2}
+  - {fileID: 2100000, guid: 1ec52678aa370994c812ef3a12c781c6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

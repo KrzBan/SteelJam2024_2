@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d34fe08faf3c7784a9a03261fe0484e9, type: 3}
+  m_Name: "Pa\u0142a tier 1"
+  m_EditorClassIdentifier: 
+  InHandPrefab: {fileID: 450127992598989824, guid: 9dbecfd2c93e10c4d87054b64da73127, type: 3}
+  WorldPrefab: {fileID: 8642779040836782039, guid: 9944ed3270696564fb667975b3a43a40, type: 3}
+  HandRequirement: 0
+  Range: 2
+  Damage: 2
