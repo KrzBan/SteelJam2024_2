@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -60,6 +62,12 @@ public class Player : MonoBehaviour, IDamagable
         PlayerStatus.Health = maxHealth;
     }
 
+    IEnumerator ILoadEndScene()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(3);
+    }
+
     public void Ragdoll()
     {
         rb.isKinematic = true;
@@ -73,6 +81,8 @@ public class Player : MonoBehaviour, IDamagable
         {
             r.isKinematic = false;
         }
+
+        StartCoroutine(ILoadEndScene());
     }
 
     public void Wosh()
