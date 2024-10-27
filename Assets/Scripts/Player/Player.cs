@@ -1,5 +1,6 @@
 using System;
 using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,12 +20,13 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private GameObject armDecap;
     [SerializeField] private float dashForce = 500f;
     [SerializeField] private float dashCooldown = 2f;
-    [SerializeField] private TMPro.TMP_Text ToolTipTMP;
+    
     [CanBeNull] public static Player Instance { get; private set; }
 
     private Vector2 direction;
     private Rigidbody rb;
     private float lastDash = 0f;
+    private TMPro.TMP_Text ToolTipTMP;
 
     private float movementSpeedMultplier = 1;
     public bool canInteract = true;
@@ -41,6 +43,11 @@ public class Player : MonoBehaviour, IDamagable
         PlayerStatus.OnLimbStateChanged += OnLimbLoss;
     }
 
+    private void Start()
+    {
+        ToolTipTMP = GameObject.FindGameObjectWithTag("Tooltip").GetComponent<TMP_Text>();
+    }
+
     private void FixedUpdate()
     {
         EvaluateMovement();
@@ -53,7 +60,10 @@ public class Player : MonoBehaviour, IDamagable
 
     public void ShowArm()
     {
-        armObject.SetActive(true);
+        if (PlayerStatus.RightArm)
+        {
+            armObject.SetActive(true);
+        }
     }
     
     public void Move(Vector2 _direction)
@@ -63,6 +73,11 @@ public class Player : MonoBehaviour, IDamagable
 
     public void Dash()
     {
+        if (!PlayerStatus.RightLeg || !PlayerStatus.LeftLeg)
+        {
+            return;
+        }
+        
         if (Time.time - lastDash < dashCooldown)
         {
             return;
@@ -118,11 +133,11 @@ public class Player : MonoBehaviour, IDamagable
                 if(ToolTipTMP != null)
                     ToolTipTMP.text = Interactable.getToolTip();
              }
-             else
-            {
+             else 
+             {
                 if (ToolTipTMP != null)
                     ToolTipTMP.text = "";
-            }
+             }
 
         }
 
@@ -136,7 +151,11 @@ public class Player : MonoBehaviour, IDamagable
 
 
         if (inventory.ItemSlot == null) return;
-        if (!(status.LeftArm || status.RightArm)) DropItem();
+        if (!(status.LeftArm || status.RightArm))
+        {
+            DropItem();
+            HideArm();
+        }
 
 
         if(!(status.LeftArm && status.RightArm))
@@ -164,6 +183,18 @@ public class Player : MonoBehaviour, IDamagable
         if (Random.Range(0f, 1f) <= hitParams.LibLossChance)
         {
             RemoveLimbOrdered();
+        }
+    }
+
+    public void RemoveArm()
+    {
+        if (PlayerStatus.LeftArm)
+        {
+            PlayerStatus.LeftArm = false;
+        }
+        else if (PlayerStatus.RightArm)
+        {
+            PlayerStatus.RightArm = false;
         }
     }
 
@@ -247,6 +278,9 @@ public class Player : MonoBehaviour, IDamagable
 
     public void Use()
     {
+        if (!PlayerStatus.RightArm)
+            return;
+        
         if (inventory.ItemSlot == null) return;
         switch (inventory.ItemSlot.getItemSO().HandRequirement)
         {

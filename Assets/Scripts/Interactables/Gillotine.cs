@@ -1,14 +1,21 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Gillotine : AnimationInteractableBase
 {
     [SerializeField] private SacrificeReward sacrificeReward;
     [SerializeField] private Collider triggerCollider;
-    public string getToolTip()
+
+    public override string getToolTip()
     {
-        return "xd";
+        if (!CanUse())
+        {
+            return "You cannot use gillotine without hands!";
+        }
+        
+        return "Use to lose a hand and gain an item";
     }
     private void Awake()
     {
@@ -43,9 +50,19 @@ public class Gillotine : AnimationInteractableBase
         Player.Instance.ShowArm();
     }
 
+    public bool CanUse()
+    {
+        return Player.Instance.PlayerStatus.LeftArm || Player.Instance.PlayerStatus.RightArm;
+    }
+
     public override void interact(Player user)
     {
         if (Player.Instance == null)
+        {
+            return;
+        }
+
+        if (!CanUse())
         {
             return;
         }
@@ -55,10 +72,15 @@ public class Gillotine : AnimationInteractableBase
             return;
         }
 
+        if (Player.Instance.PlayerStatus.LeftArm)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
+
         Player.Instance.HideArm();
 
         base.interact(user);
         
-        Player.Instance.RemoveLimbOrdered();
+        Player.Instance.RemoveArm();
     }
 }
