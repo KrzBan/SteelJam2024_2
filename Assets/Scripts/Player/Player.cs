@@ -133,6 +133,7 @@ public class Player : MonoBehaviour, IDamagable
         if (inventory.ItemSlot == null) { Debug.Log("Nothin to drop"); return; }
 
        var DroppedItem = Instantiate(inventory.ItemSlot.GetWorldPrefab(), handSlot);
+        DroppedItem.transform.localPosition = new Vector3();
         DroppedItem.transform.SetParent(null);
         inventory.ItemSlot = null;
     }
