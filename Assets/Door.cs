@@ -13,6 +13,12 @@ public class Door : MonoBehaviour, IInteractable
     public Transform lockSpawnPoint;
     
     [SerializeField] bool _interactable = false;
+
+    public string getToolTip()
+    {
+        return "xd";
+    }
+
     public void interact(Player user)
     {
         if(_interactable == false)

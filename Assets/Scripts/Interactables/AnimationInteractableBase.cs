@@ -16,7 +16,10 @@ public abstract class AnimationInteractableBase : MonoBehaviour, IInteractable
     [SerializeField] protected bool interactableMultipleTimes = false;
 
     protected bool interacted = false;
-
+    public string getToolTip()
+    {
+        return "xd";
+    }
     public virtual void interact(Player user)
     {
         if (interacted && !interactableMultipleTimes)

@@ -3,8 +3,11 @@ using UnityEngine;
 public class WeaponInWorld : MonoBehaviour, IInteractable
 {
     [SerializeField] ItemSO Item;
-    
 
+    public string getToolTip()
+    {
+        return "xd";
+    }
     public void interact(Player user)
     {
 

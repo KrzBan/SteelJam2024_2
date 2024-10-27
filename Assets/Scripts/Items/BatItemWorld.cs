@@ -4,7 +4,10 @@ public class BatItemWorld : MonoBehaviour, IInteractable
 {
     [SerializeField] ItemSO Item;
 
-
+    public string getToolTip()
+    {
+        return "xd";
+    }
     public void interact(Player user)
     {
         if (ItemUtility.ShouldRefuseInteract(user, Item)) return;
