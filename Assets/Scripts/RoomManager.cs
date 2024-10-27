@@ -14,7 +14,8 @@ public enum RoomType
     Boss,
     Challange,
     Special,
-    Treasure
+    Treasure,
+    Slime
 }
 
 [Serializable]
@@ -97,6 +98,9 @@ public class RoomManager : MonoBehaviour
                 break;
             case RoomType.Treasure:
                 SpawnRoom(treasureRoomTemplates, info);
+                break;
+            case RoomType.Slime:
+                SpawnRoom(normalRoomTemplates, info);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
