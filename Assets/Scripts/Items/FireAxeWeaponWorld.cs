@@ -6,9 +6,14 @@ public class FireAxeWeaponWorld : MonoBehaviour, IInteractable
 
     public string getToolTip()
     {
+        if ((!Player.Instance.PlayerStatus.RightArm || !Player.Instance.PlayerStatus.LeftArm) &&
+            Item.HandRequirement == HandRequirement.DualHanded)
+        {
+            return "You have only one hand";
+        }
         if (!Player.Instance.PlayerStatus.RightArm)
         {
-            return "You cannot hold this item with you current hands!";
+            return "No hands";
         }
         return "Press e to take";
     }

@@ -16,8 +16,11 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] public Transform headTransform;
     [SerializeField] private float movementSpeed = 1f;
     [SerializeField] private Arm rArm;
+    [SerializeField] private Arm doubleArm;
     [SerializeField] private Transform handSlot;
+    [SerializeField] private Transform twoHandSlot;
     [SerializeField] private GameObject armObject;
+    [SerializeField] private GameObject doubleArmObject;
     [SerializeField] private GameObject legDecap;
     [SerializeField] private GameObject armDecap;
     [SerializeField] private float dashForce = 500f;
@@ -52,6 +55,8 @@ public class Player : MonoBehaviour, IDamagable
     private void Start()
     {
         ToolTipTMP = GameObject.FindGameObjectWithTag("Tooltip").GetComponent<TMP_Text>();
+        
+        ShowArm();
     }
 
     private void FixedUpdate()
@@ -62,10 +67,18 @@ public class Player : MonoBehaviour, IDamagable
     public void HideArm()
     {
         armObject.SetActive(false);
+        doubleArmObject.SetActive(false);
     }
 
     public void ShowArm()
     {
+        if (inventory.ItemSlot != null && inventory.ItemSlot.getItemSO().HandRequirement == HandRequirement.DualHanded &&
+            PlayerStatus.RightArm && PlayerStatus.LeftArm)
+        {
+            doubleArmObject.SetActive(true);
+            return;
+        }
+        
         if (PlayerStatus.RightArm)
         {
             armObject.SetActive(true);
@@ -166,6 +179,7 @@ public class Player : MonoBehaviour, IDamagable
         {
             DropItem();
             HideArm();
+            ShowArm();
         }
 
 
@@ -294,9 +308,26 @@ public class Player : MonoBehaviour, IDamagable
     public void PlaceInHand(ItemSO item)
     {
         if (handSlot.childCount > 0)
-             Destroy(handSlot.GetChild(0).gameObject);
+        {
+            Destroy(handSlot.GetChild(0).gameObject);
+        }
 
-        Instantiate(item.InHandPrefab, handSlot);
+        if (twoHandSlot.childCount > 0)
+        {
+            Destroy(twoHandSlot.GetChild(0).gameObject);
+        }
+
+        if (item.HandRequirement == HandRequirement.SingeHanded)
+        {
+            Instantiate(item.InHandPrefab, handSlot);
+        }
+        else if (item.HandRequirement == HandRequirement.DualHanded)
+        {
+            Instantiate(item.InHandPrefab, twoHandSlot);
+        }
+        
+        HideArm();
+        ShowArm();
     }
 
     public void Use()
@@ -312,7 +343,7 @@ public class Player : MonoBehaviour, IDamagable
 
                 break;
             case HandRequirement.DualHanded:
-                rArm.Attack("Attack"); //tutaj ata animacja dla 2 rak, ale jje nie ma jeszcze sadge
+                doubleArm.Attack("Attack");
 
                 break;
         }

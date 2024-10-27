@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34fe08faf3c7784a9a03261fe0484e9, type: 3}
   m_Name: FireAxe
   m_EditorClassIdentifier: 
-  InHandPrefab: {fileID: 450127992598989824, guid: 17f3f1c04fbda71438c21b043f7f1910, type: 3}
-  WorldPrefab: {fileID: 8642779040836782039, guid: de22138870e42a843934af586d443fec, type: 3}
+  InHandPrefab: {fileID: 2331098363897039795, guid: 40acc31aac4b12b4db13e5d8aaa5678e, type: 3}
+  WorldPrefab: {fileID: 2331098363897039795, guid: 1cbf8f1ee606f4748875a62f47abab09, type: 3}
   HandRequirement: 1
-  Range: 5
-  Damage: 5
+  Range: 3
+  Damage: 2
