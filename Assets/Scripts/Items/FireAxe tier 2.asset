@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d34fe08faf3c7784a9a03261fe0484e9, type: 3}
-  m_Name: "Pa\u0142a tier 2"
+  m_Name: FireAxe tier 2
   m_EditorClassIdentifier: 
-  InHandPrefab: {fileID: 450127992598989824, guid: 5716508021f8af04eb037714b54ce441, type: 3}
-  WorldPrefab: {fileID: 8642779040836782039, guid: 10725b39fb8e71b478a5106555ab9f34, type: 3}
-  HandRequirement: 0
-  Range: 2
-  Damage: 4
+  InHandPrefab: {fileID: 2331098363897039795, guid: a9a343ee9b6e7fb4c81836580ed7da4a, type: 3}
+  WorldPrefab: {fileID: 2331098363897039795, guid: 26aaa48c7337e6e4aa946a6e951a9c22, type: 3}
+  HandRequirement: 1
+  Range: 3
+  Damage: 7
