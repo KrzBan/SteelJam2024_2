@@ -49,50 +49,54 @@ MonoBehaviour:
     - roomType: 0
       roomIndexFromList: 0
       hasKey: 0
-    - roomType: 4
+  - roomTypes:
+    - roomType: 1
+      roomIndexFromList: 0
+      hasKey: 0
+    - roomType: 3
       roomIndexFromList: 0
       hasKey: 0
   - roomTypes:
-    - roomType: 6
-      roomIndexFromList: 0
-      hasKey: 1
-    - roomType: 2
+    - roomType: 5
       roomIndexFromList: 0
       hasKey: 0
-  - roomTypes:
-    - roomType: 0
-      roomIndexFromList: 1
-      hasKey: 0
-  - roomTypes:
-    - roomType: 2
-      roomIndexFromList: 0
-      hasKey: 0
-    - roomType: 4
-      roomIndexFromList: 1
-      hasKey: 0
-  - roomTypes:
-    - roomType: 6
-      roomIndexFromList: 0
-      hasKey: 1
     - roomType: 1
       roomIndexFromList: 0
       hasKey: 0
   - roomTypes:
-    - roomType: 0
-      roomIndexFromList: 2
+    - roomType: 1
+      roomIndexFromList: 1
       hasKey: 0
   - roomTypes:
     - roomType: 3
       roomIndexFromList: 0
       hasKey: 0
+    - roomType: 5
+      roomIndexFromList: 1
+      hasKey: 0
+  - roomTypes:
+    - roomType: 7
+      roomIndexFromList: 0
+      hasKey: 1
+    - roomType: 2
+      roomIndexFromList: 0
+      hasKey: 0
+  - roomTypes:
+    - roomType: 1
+      roomIndexFromList: 2
+      hasKey: 0
+  - roomTypes:
+    - roomType: 4
+      roomIndexFromList: 0
+      hasKey: 0
   enemyTarget: {fileID: 0}
   roomParent: {fileID: 0}
   roomMaterials:
-  - {fileID: 2100000, guid: 5deabf6b72ea8f54eb61d0cc19fddd2b, type: 2}
-  - {fileID: 2100000, guid: d24a27e0dede04e4c9a0d9fb5b29ab4f, type: 2}
-  - {fileID: 2100000, guid: 4b1c9078c6c36404c95e5b4fc2f833c7, type: 2}
-  - {fileID: 2100000, guid: 6ac12ff5057a69941ad19d7bca9deba3, type: 2}
-  - {fileID: 2100000, guid: 87219803fde09404ca3b46db6a3d4059, type: 2}
+  - {fileID: -6478536213147159724, guid: 3ff21ed3d2a54711894bdb26fc070beb, type: 3}
+  - {fileID: -6478536213147159724, guid: a3b88fbd9a384a80d8e3a4229d1df522, type: 3}
+  - {fileID: -876546973899608171, guid: 667b1de73d1abc8aaa23a377e48c369e, type: 3}
+  - {fileID: -3846018093981099296, guid: 4e97df7007c1c63b888320b3366e6273, type: 3}
+  - {fileID: -3846018093981099296, guid: 19357a3d425c4bc8abcab5fd5cc0b98e, type: 3}
   ceilingMaterial: {fileID: 2100000, guid: 583ba5fe437b17442a68287dc6ec476f, type: 2}
   propObjects:
   - {fileID: 2847881385650683060, guid: 628940d1c04599e45b6d65ebcbd206d1, type: 3}
@@ -121,6 +125,8 @@ MonoBehaviour:
   enemyObject: {fileID: 7678512171347918952, guid: 2f1f487f012edd64f9b3314019174a02, type: 3}
   doorObject: {fileID: 1123299098356835380, guid: f7607bb30c8ff474fa76335417b50a6f, type: 3}
   keyObject: {fileID: 907664395641349445, guid: e6e3b70bd00aec54d9f8f2de96f6c556, type: 3}
+  startRoomTemplates:
+  - {fileID: 1349358845517521001, guid: bf05c913e42a6604ab22044d98963caa, type: 3}
   bossRoomTemplates:
   - {fileID: 3205531888409352052, guid: 077698cd8b0733b4b817f9c317b323bf, type: 3}
   normalRoomTemplates:

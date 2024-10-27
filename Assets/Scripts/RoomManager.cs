@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 [Serializable]
 public enum RoomType
 {
+    Start,
     Normal,
     Heal,
     Sacrifice,
@@ -60,6 +61,7 @@ public class RoomManager : MonoBehaviour
     public GameObject keyObject;
     
     [Header("Rooms")]
+    public List<Room> startRoomTemplates;
     public List<Room> bossRoomTemplates;
     public List<Room> normalRoomTemplates;
     public List<Room> healRoomTemplates;
@@ -78,6 +80,9 @@ public class RoomManager : MonoBehaviour
     {
         switch (info.roomType)
         {
+            case RoomType.Start:
+                SpawnRoom(startRoomTemplates, info);
+                break;
             case RoomType.Normal:
                 SpawnRoom(normalRoomTemplates, info);
                 break;
@@ -169,7 +174,8 @@ public class RoomManager : MonoBehaviour
         
         _currentRoom.SetEnemyTarget(Player.Instance.transform);
         _enemiesAlive = _currentRoom.GetEnemiesAlive();
-        if(_enemiesAlive == 0) UnlockDoors();
+        Debug.Log(_currentRoomLayer);
+        if(_enemiesAlive == 0 && _currentRoomLayer != 1) UnlockDoors(); // Dont unlock starting doors
     }
 
     public void OnEnemyDeath()
