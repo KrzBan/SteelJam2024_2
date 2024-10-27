@@ -1083,7 +1083,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 3ff21ed3d2a54711894bdb26fc070beb, type: 3}
+  - {fileID: 2100000, guid: 726a70b64653840459a491007983f1d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1310,6 +1310,26 @@ PrefabInstance:
       propertyPath: enemyTarget
       value: 
       objectReference: {fileID: 672910342}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -6478536213147159724, guid: 3ff21ed3d2a54711894bdb26fc070beb, type: 3}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[1]'
+      value: 
+      objectReference: {fileID: -6478536213147159724, guid: 3ff21ed3d2a54711894bdb26fc070beb, type: 3}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[2]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 667b1de73d1abc8aaa23a377e48c369e, type: 3}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[3]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 667b1de73d1abc8aaa23a377e48c369e, type: 3}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: 'roomMaterials.Array.data[4]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 667b1de73d1abc8aaa23a377e48c369e, type: 3}
     - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
       propertyPath: roomLayers.Array.data[0].roomTypes.Array.size
       value: 2
