@@ -21,6 +21,7 @@ public enum RoomType
 public class RoomInfo
 {
     public RoomType roomType;
+    public int roomIndexFromList;
     public bool hasKey;
 }
 
@@ -72,30 +73,30 @@ public class RoomManager : MonoBehaviour
     private float _roomOffset = 100.0f;
     private int _enemiesAlive = 0;
 
-    public void SpawnRoomByType(RoomType type)
+    public void SpawnRoom(RoomInfo info)
     {
-        switch (type)
+        switch (info.roomType)
         {
             case RoomType.Normal:
-                SpawnRandomRoom(normalRoomTemplates);
+                SpawnRoom(normalRoomTemplates, info);
                 break;
             case RoomType.Heal:
-                SpawnRandomRoom(healRoomTemplates);
+                SpawnRoom(healRoomTemplates, info);
                 break;
             case RoomType.Sacrifice:
-                SpawnRandomRoom(sacrificeRoomTemplates);
+                SpawnRoom(sacrificeRoomTemplates, info);
                 break;
             case RoomType.Challange:
-                SpawnRandomRoom(challangeRoomTemplates);
+                SpawnRoom(challangeRoomTemplates, info);
                 break;
             case RoomType.Boss:
-                SpawnRandomRoom(bossRoomTemplates);
+                SpawnRoom(bossRoomTemplates, info);
                 break;
             case RoomType.Special:
-                SpawnRandomRoom(specialRoomTemplates);
+                SpawnRoom(specialRoomTemplates, info);
                 break;
             case RoomType.Treasure:
-                SpawnRandomRoom(treasureRoomTemplates);
+                SpawnRoom(treasureRoomTemplates, info);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -107,9 +108,9 @@ public class RoomManager : MonoBehaviour
         return _newRoom.GetPlayerSpawnPoint();
     }
     
-    public void SpawnRandomRoom(List<Room> roomTemplates)
+    public void SpawnRoom(List<Room> roomTemplates, RoomInfo info)
     {
-        _newRoom = Instantiate( roomTemplates[Random.Range(0, roomTemplates.Count)], 
+        _newRoom = Instantiate( roomTemplates[info.roomIndexFromList], 
             new Vector3(_roomOffset, 0.0f, 0f), Quaternion.identity, roomParent);
         _roomOffset += 50.0f;
         
@@ -153,7 +154,7 @@ public class RoomManager : MonoBehaviour
         
         _newRoom.BakeNavMesh();
         
-        _newRoom.InstantiateEnemies(enemyObject);
+        _newRoom.InstantiateEnemies();
     }
 
     public void SwapRooms()

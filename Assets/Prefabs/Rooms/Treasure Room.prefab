@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewards:
-  - {fileID: 450127992598989824, guid: 9dbecfd2c93e10c4d87054b64da73127, type: 3}
-  - {fileID: 450127992598989824, guid: 53374809e1508404b90de1c439f64919, type: 3}
+  - {fileID: 8642779040836782039, guid: 9944ed3270696564fb667975b3a43a40, type: 3}
 --- !u!1 &939422271923712086
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,6 +858,7 @@ MonoBehaviour:
   vfxParent: {fileID: 7689421590234669428}
   lightsParent: {fileID: 6436447647927526103}
   doorsParent: {fileID: 2550338165363931091}
+  enemyList: []
 --- !u!1 &8600312277528237135
 GameObject:
   m_ObjectHideFlags: 0

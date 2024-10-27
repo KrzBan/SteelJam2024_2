@@ -155,7 +155,7 @@ public class Player : MonoBehaviour, IDamagable
     }
     void OnLimbLoss(LimbState status)
     {
-        if (!status.Head) PlayerStatus.OnDeath.Invoke();
+        if (!status.Head) PlayerStatus.OnDeath?.Invoke();
         movementSpeedMultplier = 0.4f;
         if (status.LeftLeg) movementSpeedMultplier += 0.3f;
         if (status.RightLeg) movementSpeedMultplier += 0.3f;
@@ -206,6 +206,18 @@ public class Player : MonoBehaviour, IDamagable
         else if (PlayerStatus.RightArm)
         {
             PlayerStatus.RightArm = false;
+        }
+    }
+    
+    public void RemoveLeg()
+    {
+        if (PlayerStatus.LeftLeg)
+        {
+            PlayerStatus.LeftLeg = false;
+        }
+        else if (PlayerStatus.RightLeg)
+        {
+            PlayerStatus.RightLeg = false;
         }
     }
 

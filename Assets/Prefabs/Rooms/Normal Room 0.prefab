@@ -356,6 +356,8 @@ MonoBehaviour:
   vfxParent: {fileID: 8248109947790943686}
   lightsParent: {fileID: 4928165038086609250}
   doorsParent: {fileID: 7856623062209951934}
+  enemyList:
+  - {fileID: 7678512171347918952, guid: 2f1f487f012edd64f9b3314019174a02, type: 3}
 --- !u!1 &3090784407057091887
 GameObject:
   m_ObjectHideFlags: 0
