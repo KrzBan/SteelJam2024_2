@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 6144532173906984054}
   - component: {fileID: 2849441465333524448}
   m_Layer: 0
-  m_Name: Sacrifice Room 0
+  m_Name: Sacrifice Room 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
