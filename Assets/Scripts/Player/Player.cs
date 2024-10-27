@@ -208,6 +208,18 @@ public class Player : MonoBehaviour, IDamagable
             PlayerStatus.RightArm = false;
         }
     }
+    
+    public void RemoveLeg()
+    {
+        if (PlayerStatus.LeftLeg)
+        {
+            PlayerStatus.LeftLeg = false;
+        }
+        else if (PlayerStatus.RightLeg)
+        {
+            PlayerStatus.RightLeg = false;
+        }
+    }
 
     /// <summary>
     /// Order - left arm -> left leg -> right leg -> right arm

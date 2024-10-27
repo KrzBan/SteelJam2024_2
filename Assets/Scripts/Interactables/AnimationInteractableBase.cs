@@ -48,7 +48,11 @@ public abstract class AnimationInteractableBase : MonoBehaviour, IInteractable
             animator.enabled = true;
         }
 
-        objectCamera.GetComponent<Animator>().enabled = true;
+        if (objectCamera.GetComponent<Animator>() != null)
+        {
+            objectCamera.GetComponent<Animator>().enabled = true;
+        }
+        
         
         StartCoroutine(IEndAnimation());
     }
@@ -67,7 +71,10 @@ public abstract class AnimationInteractableBase : MonoBehaviour, IInteractable
             obj.SetActive(false);
         }
         
-        objectCamera.GetComponent<Animator>().enabled = false;
+        if (objectCamera.GetComponent<Animator>() != null)
+        {
+            objectCamera.GetComponent<Animator>().enabled = false;
+        }
         objectCamera.SetActive(false);
         
         OnAnimationEnded?.Invoke();
