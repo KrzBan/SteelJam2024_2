@@ -17,10 +17,14 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private GameObject armObject;
     [SerializeField] private GameObject legDecap;
     [SerializeField] private GameObject armDecap;
+    [SerializeField] private float dashForce = 500f;
+    [SerializeField] private float dashCooldown = 2f;
+    
     [CanBeNull] public static Player Instance { get; private set; }
 
     private Vector2 direction;
     private Rigidbody rb;
+    private float lastDash = 0f;
 
     private float movementSpeedMultplier = 1;
     public bool canInteract = true;
@@ -55,6 +59,31 @@ public class Player : MonoBehaviour, IDamagable
     public void Move(Vector2 _direction)
     {
         direction = _direction;
+    }
+
+    public void Dash()
+    {
+        if (Time.time - lastDash < dashCooldown)
+        {
+            return;
+        }
+
+        lastDash = Time.time;
+        
+        if (direction == Vector2.zero)
+        {
+            return;
+        }
+        
+        var forward = headTransform.forward;
+        forward.y = 0f;
+        forward.Normalize();
+
+        var right = headTransform.right;
+        right.y = 0f;
+        right.Normalize();
+        
+        rb.AddForce((forward * direction.y + right * direction.x) * dashForce);
     }
 
     public void Look(Vector2 delta)
@@ -104,6 +133,7 @@ public class Player : MonoBehaviour, IDamagable
         if (inventory.ItemSlot == null) { Debug.Log("Nothin to drop"); return; }
 
        var DroppedItem = Instantiate(inventory.ItemSlot.GetWorldPrefab(), handSlot);
+        DroppedItem.transform.localPosition = new Vector3();
         DroppedItem.transform.SetParent(null);
         inventory.ItemSlot = null;
     }
@@ -145,6 +175,12 @@ public class Player : MonoBehaviour, IDamagable
 
     private void EvaluateMovement()
     {
+        if (Time.time - lastDash < 0.6f)
+        {
+            rb.linearVelocity -= Time.fixedDeltaTime * rb.linearVelocity * 5f;
+            return;
+        }
+        
         var forward = headTransform.forward;
         forward.y = 0f;
         forward.Normalize();
