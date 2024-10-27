@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeaponInWorld : MonoBehaviour, IInteractable
 {
     [SerializeField] ItemSO Item;
+    [SerializeField] private AudioClip pickUpSFX;
 
     public string getToolTip()
     {
@@ -19,8 +20,12 @@ public class WeaponInWorld : MonoBehaviour, IInteractable
     }
     public void interact(Player user)
     {
-
-        if (ItemUtility.ShouldRefuseInteract(user, Item)) return;
+        if (ItemUtility.ShouldRefuseInteract(user, Item))
+        {
+            return;
+        }
+        
+        AudioSource.PlayClipAtPoint(pickUpSFX, transform.position);
 
         user.inventory.ItemSlot = new DualHandItem();
 

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Money : MonoBehaviour, IInteractable
 {
+    [SerializeField] private AudioClip pickUpSFX;
     public int Amount;
     public string getToolTip()
     {
@@ -10,6 +11,7 @@ public class Money : MonoBehaviour, IInteractable
     public void interact(Player user)
     {
         user.inventory.Coins += Amount;
+        AudioSource.PlayClipAtPoint(pickUpSFX, transform.position);
         Destroy(gameObject);
     }
 }

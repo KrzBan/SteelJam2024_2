@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996c9f1bf3f72ac43b1a4b1c41201640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpSFX: {fileID: 8300000, guid: 44b66f978dc40684684d061ad5ae798c, type: 3}
 --- !u!95 &7962999489871036975
 Animator:
   serializedVersion: 7

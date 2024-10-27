@@ -149,4 +149,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f137688a7df5546ac2c33e859137cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpSFX: {fileID: 8300000, guid: 44b66f978dc40684684d061ad5ae798c, type: 3}
   Amount: 0

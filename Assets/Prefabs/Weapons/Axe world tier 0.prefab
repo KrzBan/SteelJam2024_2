@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: d6defd80924a0544789efcd3121edc5a, type: 2}
+  pickUpSFX: {fileID: 8300000, guid: 44b66f978dc40684684d061ad5ae798c, type: 3}
 --- !u!54 &7520439751608927924
 Rigidbody:
   m_ObjectHideFlags: 0

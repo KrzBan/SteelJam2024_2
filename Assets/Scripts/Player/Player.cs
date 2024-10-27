@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private float interactRange = 1.5f;
     [SerializeField] private float maxHealth = 10;
     [SerializeField] public GameObject Bubbles;
+    [SerializeField] private AudioClip woshSFX;
     [CanBeNull] public static Player Instance { get; private set; }
     public Animator animator;
 
@@ -55,6 +56,11 @@ public class Player : MonoBehaviour, IDamagable
         PlayerStatus.Health = maxHealth;
     }
 
+    public void Wosh()
+    {
+        AudioSource.PlayClipAtPoint(woshSFX, transform.position);
+    }
+    
     public void SetGlutPartices()
     {
         Bubbles.SetActive(true);
@@ -205,7 +211,11 @@ public class Player : MonoBehaviour, IDamagable
         if(!(status.LeftArm && status.RightArm))
         {
             if (inventory.ItemSlot != null && inventory.ItemSlot.getItemSO().HandRequirement == HandRequirement.DualHanded)
+            {
                 DropItem();
+                HideArm();
+                ShowArm();
+            }
         }
     }
     public void DropItem()

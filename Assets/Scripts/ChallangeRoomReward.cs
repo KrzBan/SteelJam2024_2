@@ -6,6 +6,7 @@ public class ChallangeRoomReward : MonoBehaviour
 {
     [SerializeField] private GameObject KeyPrefab;
     [SerializeField] private Light _light;
+    [SerializeField] private AudioClip keyAppearSFX;
     
     private void Start()
     {
@@ -15,6 +16,7 @@ public class ChallangeRoomReward : MonoBehaviour
     private void DropReward()
     {
         Instantiate(KeyPrefab, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(keyAppearSFX, transform.position);
         StartCoroutine(EnableLight());
     }
 

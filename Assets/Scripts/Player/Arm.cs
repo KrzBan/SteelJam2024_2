@@ -19,6 +19,11 @@ public class Arm : MonoBehaviour
         animator.SetTrigger(triggerName);
     }
 
+    public void Woosh()
+    {
+        Player.Instance.Wosh();
+    }
+
     public void UseItem()
     {
         if (Player.Instance == null)

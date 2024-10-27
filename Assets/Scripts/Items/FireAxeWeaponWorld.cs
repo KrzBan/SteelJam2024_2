@@ -3,6 +3,7 @@ using UnityEngine;
 public class FireAxeWeaponWorld : MonoBehaviour, IInteractable
 {
     [SerializeField] ItemSO Item;
+    [SerializeField] private AudioClip pickUpSFX;
 
     public string getToolTip()
     {
@@ -21,6 +22,8 @@ public class FireAxeWeaponWorld : MonoBehaviour, IInteractable
     {
 
         if(ItemUtility.ShouldRefuseInteract(user, Item)) return;
+        
+        AudioSource.PlayClipAtPoint(pickUpSFX, transform.position);
 
         user.inventory.ItemSlot = new FireAxeItem();
 
