@@ -536,6 +536,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfcf7595a8b8c34bbd1955a13252c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1705470910
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 640439584026112401, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_Name
+      value: MusicPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762710121589485840, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.853
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762710121589485840, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.988
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762710121589485840, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762710121589485840, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762710121589485840, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762710121589485840, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762710121589485840, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762710121589485840, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762710121589485840, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762710121589485840, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373857125442544542, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373857125442544542, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: Pan2D
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373857125442544542, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_Volume
+      value: 0.604
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373857125442544542, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 07e1fb80b0b73db4fbde77a032b3148f, type: 3}
+    - target: {fileID: 7373857125442544542, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: MaxDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373857125442544542, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 07e1fb80b0b73db4fbde77a032b3148f, type: 3}
+    - target: {fileID: 7373857125442544542, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.022222223
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373857125442544542, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.209
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d3b818de5a9f9d44b98b6bf80d70884, type: 3}
 --- !u!1 &1886183591
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,3 +934,4 @@ SceneRoots:
   - {fileID: 763982396}
   - {fileID: 1886183595}
   - {fileID: 1892233657}
+  - {fileID: 1705470910}
