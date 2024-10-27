@@ -1941,6 +1941,7 @@ MonoBehaviour:
     Health: 8
   moneyDropMin: 10
   moneyDropMax: 20
+  moneyDropSFX: {fileID: 8300000, guid: 2bf493bfe19aaaa48a3db4bd78552a5e, type: 3}
   moneyPrefab: {fileID: 123534167090756388, guid: 6ca3d66e97cf7c84e90b2f6b5e3e6038, type: 3}
   bloodHitPrefab: {fileID: 2691878564117464624, guid: b7f3c294086a4d94a8ceef7ddc26ec8a, type: 3}
   damage: 2
