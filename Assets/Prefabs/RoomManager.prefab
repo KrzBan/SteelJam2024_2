@@ -51,7 +51,7 @@ MonoBehaviour:
       hasKey: 0
   - roomTypes:
     - roomType: 1
-      roomIndexFromList: 0
+      roomIndexFromList: 1
       hasKey: 0
     - roomType: 5
       roomIndexFromList: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
       hasKey: 1
   - roomTypes:
     - roomType: 1
-      roomIndexFromList: 1
+      roomIndexFromList: 2
       hasKey: 0
     - roomType: 5
       roomIndexFromList: 1
@@ -77,17 +77,29 @@ MonoBehaviour:
     - roomType: 2
       roomIndexFromList: 0
       hasKey: 0
+    - roomType: 7
+      roomIndexFromList: 1
+      hasKey: 1
   - roomTypes:
     - roomType: 1
+      roomIndexFromList: 0
+      hasKey: 0
+    - roomType: 5
       roomIndexFromList: 2
       hasKey: 0
   - roomTypes:
     - roomType: 1
-      roomIndexFromList: 3
+      roomIndexFromList: 2
       hasKey: 0
+    - roomType: 2
+      roomIndexFromList: 0
+      hasKey: 0
+    - roomType: 7
+      roomIndexFromList: 0
+      hasKey: 1
   - roomTypes:
     - roomType: 4
-      roomIndexFromList: 3
+      roomIndexFromList: 0
       hasKey: 0
   enemyTarget: {fileID: 0}
   roomParent: {fileID: 0}
