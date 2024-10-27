@@ -5,7 +5,7 @@ public class Money : MonoBehaviour, IInteractable
     public int Amount;
     public string getToolTip()
     {
-        return "xd";
+        return $"Press e to pick up {Amount.ToString()}$";
     }
     public void interact(Player user)
     {
