@@ -59,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 4498098673223483195, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 327702b6d9c844746817631bb85794d9, type: 2}
+      objectReference: {fileID: 2100000, guid: 638edc1ee18b4eb439d9b6b73b0347a7, type: 2}
     - target: {fileID: 6265478345516631817, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -76,7 +76,7 @@ PrefabInstance:
       addedObject: {fileID: 8307250902312444745}
     - targetCorrespondingSourceObject: {fileID: 450127992598989824, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9109365651054955992}
+      addedObject: {fileID: 7330942601000984467}
   m_SourcePrefab: {fileID: 100100000, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
 --- !u!1 &8642779040836782039 stripped
 GameObject:
@@ -123,7 +123,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &9109365651054955992
+--- !u!64 &7330942601000984467
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

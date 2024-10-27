@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d34fe08faf3c7784a9a03261fe0484e9, type: 3}
-  m_Name: FireAxe
+  m_Name: FireAxe tier 3
   m_EditorClassIdentifier: 
-  InHandPrefab: {fileID: 2331098363897039795, guid: 40acc31aac4b12b4db13e5d8aaa5678e, type: 3}
-  WorldPrefab: {fileID: 2331098363897039795, guid: 1cbf8f1ee606f4748875a62f47abab09, type: 3}
+  InHandPrefab: {fileID: 2331098363897039795, guid: 9d8a9342134ca4e4c8f9ff960e4b1440, type: 3}
+  WorldPrefab: {fileID: 2331098363897039795, guid: 6ca3289d429ffea4aa595ff98e037a4a, type: 3}
   HandRequirement: 1
   Range: 3
-  Damage: 2
+  Damage: 10

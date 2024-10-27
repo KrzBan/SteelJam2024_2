@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34fe08faf3c7784a9a03261fe0484e9, type: 3}
   m_Name: "Pa\u0142a tier 3"
   m_EditorClassIdentifier: 
-  InHandPrefab: {fileID: 450127992598989824, guid: e672688ac3eda504d82bbb2fce0ea474, type: 3}
-  WorldPrefab: {fileID: 8642779040836782039, guid: b2e198f4e7ad27e40962133c7a55be4b, type: 3}
+  InHandPrefab: {fileID: 450127992598989824, guid: 53374809e1508404b90de1c439f64919, type: 3}
+  WorldPrefab: {fileID: 8642779040836782039, guid: 4ef5f9a26606c964d98b9fa62cbd6bda, type: 3}
   HandRequirement: 0
   Range: 2
-  Damage: 4
+  Damage: 7
