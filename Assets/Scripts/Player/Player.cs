@@ -198,8 +198,12 @@ public class Player : MonoBehaviour, IDamagable
 
     public void Interact()
     {
+        int keyLockLayer = LayerMask.NameToLayer("KeyLock");
+        int layerMask = 1 << keyLockLayer;
+        layerMask = ~layerMask;
+        
         RaycastHit hit;
-        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
             IInteractable interactable;
             bool isInteractable = hit.collider.TryGetComponent<IInteractable>(out interactable );
