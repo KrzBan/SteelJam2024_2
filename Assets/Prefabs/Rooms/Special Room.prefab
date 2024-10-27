@@ -57,6 +57,7 @@ MonoBehaviour:
   vfxParent: {fileID: 1050627119894069050}
   lightsParent: {fileID: 5419832769374650307}
   doorsParent: {fileID: 2762655752348165513}
+  enemyList: []
 --- !u!1 &594958222176864372
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +260,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: b5e39e93d20bf324d9e6aec38b1c599e, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 5a5d3cb0df4300d46a9c413f373a3f7a, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1371986637101372111
 GameObject:

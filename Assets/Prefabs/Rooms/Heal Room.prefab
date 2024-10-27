@@ -127,7 +127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 726a70b64653840459a491007983f1d1, type: 2}
+  - {fileID: 2100000, guid: 8384c377a9a71bf4fa7dceab66e1037a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -643,7 +643,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 726a70b64653840459a491007983f1d1, type: 2}
+  - {fileID: 2100000, guid: 8384c377a9a71bf4fa7dceab66e1037a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -684,8 +684,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.06, y: 0, z: 0.06}
-  m_Center: {x: 0, y: -0.000000038146972, z: -0.000000057742}
+  m_Size: {x: 0.06, y: 0.0040602405, z: 0.06}
+  m_Center: {x: 0, y: -0.002030158, z: -0.000000057220458}
 --- !u!114 &2114455947995111195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,6 +935,7 @@ MonoBehaviour:
   vfxParent: {fileID: 7689421590234669428}
   lightsParent: {fileID: 6436447647927526103}
   doorsParent: {fileID: 2550338165363931091}
+  enemyList: []
 --- !u!1 &8600312277528237135
 GameObject:
   m_ObjectHideFlags: 0

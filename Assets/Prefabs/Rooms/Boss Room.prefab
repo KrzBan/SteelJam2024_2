@@ -182,7 +182,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 5a2da6efb1fd53846a8032b911f0e262, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 4b1863d755d176349b60185a59488dab, type: 2}
   m_BuildHeightMesh: 0
 --- !u!65 &463844368330040115
 BoxCollider:
@@ -203,8 +203,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.060000002, y: 0.000000008283678, z: 0.060000002}
-  m_Center: {x: -9.313226e-10, y: 0.000050494687, z: 9.313226e-10}
+  m_Size: {x: 0.06, y: 0.004936925, z: 0.06}
+  m_Center: {x: 0, y: -0.0024179635, z: -2.0307532e-19}
 --- !u!1 &1078767856575715180
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +814,7 @@ MonoBehaviour:
   vfxParent: {fileID: 7041585940793739660}
   lightsParent: {fileID: 1698728709397158549}
   doorsParent: {fileID: 9217034405201457433}
+  enemyList: []
 --- !u!1 &8121364423758319445
 GameObject:
   m_ObjectHideFlags: 0
