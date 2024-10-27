@@ -10,11 +10,11 @@ public class FireAxeWeaponWorld : MonoBehaviour, IInteractable
         if ((!Player.Instance.PlayerStatus.RightArm || !Player.Instance.PlayerStatus.LeftArm) &&
             Item.HandRequirement == HandRequirement.DualHanded)
         {
-            return "You have only one hand";
+            return "You lack a hand";
         }
         if (!Player.Instance.PlayerStatus.RightArm)
         {
-            return "No hands";
+            return "You lack hands";
         }
         return "Press e to take";
     }

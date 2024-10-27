@@ -1040,7 +1040,7 @@ MonoBehaviour:
   dashForce: 500
   dashCooldown: 2
   interactRange: 2.3
-  maxHealth: 10
+  maxHealth: 30
   Bubbles: {fileID: 105932997990331269}
   woshSFX: {fileID: 8300000, guid: 2e27d6037cf4d594f9061c3ad46ae93c, type: 3}
   animator: {fileID: 0}

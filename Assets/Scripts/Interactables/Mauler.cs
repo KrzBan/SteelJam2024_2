@@ -49,10 +49,10 @@ public class Mauler : AnimationInteractableBase
     {
         if (!CanUse())
         {
-            return "You cannot use gillotine without legs!";
+            return "You cannot use mauler without legs!";
         }
         
-        return "Use to lose a leg and gain an item";
+        return "Sacrifice a leg for a weapon";
     }
     
     public bool CanUse()

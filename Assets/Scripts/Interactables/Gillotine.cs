@@ -12,10 +12,10 @@ public class Gillotine : AnimationInteractableBase
     {
         if (!CanUse())
         {
-            return "You cannot use gillotine without hands!";
+            return "You cannot use guillotine without hands!";
         }
         
-        return "Use to lose a hand and gain an item";
+        return "Sacrifice an arm for a weapon";
     }
     private void Awake()
     {

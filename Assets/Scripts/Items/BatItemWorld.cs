@@ -8,7 +8,7 @@ public class BatItemWorld : MonoBehaviour, IInteractable
     {
         if (!Player.Instance.PlayerStatus.RightArm)
         {
-            return "You cannot hold this item with you current hands!";
+            return "You need more hands to wield this item!";
         }
         return "Press e to take";
     }
