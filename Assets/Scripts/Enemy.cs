@@ -78,26 +78,26 @@ public class Enemy : MonoBehaviour, IDamagable
             transform.Rotate(Vector3.up, angle * Time.deltaTime);
             
             cooldown += Time.deltaTime;
-            //return;
         }
         else
         {
-            cooldown = 0f;
-            _animator.SetTrigger("Attack");
-        }
-
-        if (Vector3.Distance(target.position, transform.position) > hitRange)
-        {
-            if (!movementPaused)
-            {
-                _agent.SetDestination(target.position);
-            }
-            else
+            if (movementPaused)
             {
                 _agent.SetDestination(transform.position);
             }
+
+            if (Vector3.Distance(target.position, transform.position) > hitRange)
+            {
+                if (!movementPaused)
+                {
+                    _agent.SetDestination(target.position);
+                }
+
+                return;
+            }
             
-            return;
+            cooldown = 0f;
+            _animator.SetTrigger("Attack");
         }
     }
 
