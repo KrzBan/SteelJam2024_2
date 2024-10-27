@@ -19,7 +19,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private GameObject armDecap;
     [SerializeField] private float dashForce = 500f;
     [SerializeField] private float dashCooldown = 2f;
-    
+    [SerializeField] private TMPro.TMP_Text ToolTipTMP;
     [CanBeNull] public static Player Instance { get; private set; }
 
     private Vector2 direction;
@@ -104,8 +104,29 @@ public class Player : MonoBehaviour, IDamagable
         
         headTransform.RotateAround(headTransform.position, Vector3.up, delta.x * sensitivity);
         headTransform.RotateAround(headTransform.position, headTransform.right, -delta.y * sensitivity);
-    }
 
+        doToolTip();
+    }
+    void doToolTip()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit))
+        {
+             var isInteractable = hit.collider.TryGetComponent<IInteractable>(out var Interactable);
+             if (isInteractable)
+             {
+                if(ToolTipTMP != null)
+                    ToolTipTMP.text = Interactable.getToolTip();
+             }
+             else
+            {
+                if (ToolTipTMP != null)
+                    ToolTipTMP.text = "";
+            }
+
+        }
+
+    }
     void OnLimbLoss(LimbState status)
     {
         if (!status.Head) PlayerStatus.OnDeath.Invoke();

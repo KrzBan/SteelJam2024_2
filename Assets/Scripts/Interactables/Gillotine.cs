@@ -6,7 +6,10 @@ public class Gillotine : AnimationInteractableBase
 {
     [SerializeField] private SacrificeReward sacrificeReward;
     [SerializeField] private Collider triggerCollider;
-
+    public string getToolTip()
+    {
+        return "xd";
+    }
     private void Awake()
     {
         OnAnimationEnded += OnEnd;
