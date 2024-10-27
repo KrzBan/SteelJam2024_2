@@ -339,7 +339,7 @@ public class Player : MonoBehaviour, IDamagable
         float upBoost = 0;
         if(PropelUp)
         {
-            upBoost =2.5f;
+            upBoost =5.5f;
         }
 
         var velo = (forward * direction.y + right * direction.x) * movementSpeed + (upBoost +  rb.linearVelocity.y) * Vector3.up;
