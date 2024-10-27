@@ -323,17 +323,6 @@ Transform:
   - {fileID: 2076893013}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &395599875 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7456928428802914897, guid: 1f452616f51833b4f9d9dd6c60f3a6e8, type: 3}
-  m_PrefabInstance: {fileID: 4870854218976022388}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &523901791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,10 +1519,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4652120623364795468, guid: 2c6d0ad82844cbd429ab4fbc6bf50f00, type: 3}
-      propertyPath: ToolTipTMP
-      value: 
-      objectReference: {fileID: 395599875}
     - target: {fileID: 7121174450714316185, guid: 2c6d0ad82844cbd429ab4fbc6bf50f00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.3701439

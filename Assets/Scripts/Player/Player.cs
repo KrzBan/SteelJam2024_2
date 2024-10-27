@@ -20,6 +20,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private GameObject armDecap;
     [SerializeField] private float dashForce = 500f;
     [SerializeField] private float dashCooldown = 2f;
+    [SerializeField] private float interactRange = 1.5f;
     
     [CanBeNull] public static Player Instance { get; private set; }
 
@@ -125,7 +126,7 @@ public class Player : MonoBehaviour, IDamagable
     void doToolTip()
     {
         RaycastHit hit;
-        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit))
+        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, interactRange))
         {
              var isInteractable = hit.collider.TryGetComponent<IInteractable>(out var Interactable);
              if (isInteractable)
@@ -139,6 +140,11 @@ public class Player : MonoBehaviour, IDamagable
                     ToolTipTMP.text = "";
              }
 
+        }
+        else 
+        {
+            if (ToolTipTMP != null)
+                ToolTipTMP.text = "";
         }
 
     }
@@ -255,7 +261,7 @@ public class Player : MonoBehaviour, IDamagable
         layerMask = ~layerMask;
         
         RaycastHit hit;
-        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, interactRange, layerMask))
         {
             IInteractable interactable;
             bool isInteractable = hit.collider.TryGetComponent<IInteractable>(out interactable );

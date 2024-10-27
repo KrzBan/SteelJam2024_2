@@ -4,7 +4,7 @@ public class Key : MonoBehaviour, IInteractable
 {
     public string getToolTip()
     {
-        return "xd";
+        return "Press e to pick up";
     }
     public void interact(Player user)
     {
