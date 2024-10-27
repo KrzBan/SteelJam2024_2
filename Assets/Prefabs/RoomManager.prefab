@@ -72,7 +72,7 @@ MonoBehaviour:
       hasKey: 0
   - roomTypes:
     - roomType: 6
-      roomIndexFromList: 1
+      roomIndexFromList: 0
       hasKey: 1
     - roomType: 1
       roomIndexFromList: 0
