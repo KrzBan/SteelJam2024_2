@@ -6,7 +6,11 @@ public class FireAxeWeaponWorld : MonoBehaviour, IInteractable
 
     public string getToolTip()
     {
-        return "xd";
+        if (!Player.Instance.PlayerStatus.RightArm)
+        {
+            return "You cannot hold this item with you current hands!";
+        }
+        return "Press e to take";
     }
     public void interact(Player user)
     {

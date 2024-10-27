@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewards:
-  - {fileID: 8642779040836782039, guid: c20a843feb8846f42b67ce33d3fb12bb, type: 3}
+  - {fileID: 450127992598989824, guid: 9dbecfd2c93e10c4d87054b64da73127, type: 3}
+  - {fileID: 450127992598989824, guid: 53374809e1508404b90de1c439f64919, type: 3}
 --- !u!1 &939422271923712086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,7 +1044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7131430495408432971, guid: 8e70421517332b84fabc8e0c049896ca, type: 3}
       propertyPath: m_Name
-      value: 'Table with item [TODO SPAWNING RANDOM]'
+      value: Table with item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

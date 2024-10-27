@@ -12,6 +12,6 @@ public class AtticDoors : MonoBehaviour, IInteractable
     }
     public string getToolTip()
     {
-        return "xd";
+        return "Press e to go out";
     }
 }
