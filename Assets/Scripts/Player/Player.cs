@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 public class Player : MonoBehaviour, IDamagable
 {
     [field: SerializeField] public PlayerStatus PlayerStatus { get; set; }
+    public float MaxHealth => maxHealth;
+    
     [SerializeField] public Inventory inventory;
     public Rigidbody Rigidbody => rb;
     [SerializeField, Range(0f, 1f)] private float sensitivity = 0.05f;
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private float dashForce = 500f;
     [SerializeField] private float dashCooldown = 2f;
     [SerializeField] private float interactRange = 1.5f;
+    [SerializeField] private float maxHealth = 10;
     
     [CanBeNull] public static Player Instance { get; private set; }
 
@@ -42,6 +45,8 @@ public class Player : MonoBehaviour, IDamagable
         rb = GetComponent<Rigidbody>();
         Cursor.Instance.Hide();
         PlayerStatus.OnLimbStateChanged += OnLimbLoss;
+
+        PlayerStatus.Health = maxHealth;
     }
 
     private void Start()
