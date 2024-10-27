@@ -1442,11 +1442,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5700448676719099809, guid: 3a977e88b698ba9438ed067ac4d6f811, type: 3}
     - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: roomLayers.Array.data[1].roomTypes.Array.data[0].roomType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
       propertyPath: roomLayers.Array.data[1].roomTypes.Array.data[1].roomType
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
       propertyPath: roomLayers.Array.data[2].roomTypes.Array.data[0].roomType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}
+      propertyPath: roomLayers.Array.data[1].roomTypes.Array.data[0].roomIndexFromList
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5143348159318948154, guid: 0024f58ee5d4c554bbd6e6f07eb811dd, type: 3}

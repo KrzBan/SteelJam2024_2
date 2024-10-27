@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -46,7 +47,7 @@ public class RoomManager : MonoBehaviour
     }
 
     public List<RoomLayer> roomLayers;
-    private int _currentRoomLayer = 0;
+    [SerializeField] private int _currentRoomLayer = 0;
     
     public Transform enemyTarget;
     public Transform roomParent;
@@ -139,6 +140,12 @@ public class RoomManager : MonoBehaviour
     {
         yield return null;
         
+        if(_currentRoomLayer >= roomLayers.Count)
+        {
+            Debug.Log("No more rooms to spawn");
+            yield break;
+        }
+        
         _newRoom.SetMaterial(roomMaterials[Random.Range(0, roomMaterials.Count)]);
         _newRoom.InstantiateScenery(propObjects);
         _newRoom.InstantiateLights(lightObject);
@@ -199,5 +206,11 @@ public class RoomManager : MonoBehaviour
         
         OnDoorsUnlocked?.Invoke();
         OnDoorsUnlocked = null;
+
+        Debug.Log("layer nr " + _currentRoomLayer);
+
+        if (_currentRoomLayer == roomLayers.Count)
+            SceneManager.LoadScene(0);
+
     }
 }

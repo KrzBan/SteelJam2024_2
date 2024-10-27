@@ -10,7 +10,7 @@ public class WeaponInWorld : MonoBehaviour, IInteractable
         if ((!Player.Instance.PlayerStatus.RightArm || !Player.Instance.PlayerStatus.LeftArm) &&
             Item.HandRequirement == HandRequirement.DualHanded)
         {
-            return "You have only one hand";
+            return "This weapon requires two hands";
         }
         if (!Player.Instance.PlayerStatus.RightArm)
         {

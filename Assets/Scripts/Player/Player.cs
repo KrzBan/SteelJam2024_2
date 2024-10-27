@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -29,6 +31,8 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private float maxHealth = 10;
     [SerializeField] public GameObject Bubbles;
     [SerializeField] private AudioClip woshSFX;
+    [SerializeField] private GameObject ragdollParent;
+    [SerializeField] private Transform head;
     [CanBeNull] public static Player Instance { get; private set; }
     public Animator animator;
 
@@ -52,8 +56,33 @@ public class Player : MonoBehaviour, IDamagable
         animator = GetComponent<Animator>();
         Cursor.Instance.Hide();
         PlayerStatus.OnLimbStateChanged += OnLimbLoss;
+        
+        PlayerStatus.OnDeath += Ragdoll;
 
         PlayerStatus.Health = maxHealth;
+    }
+
+    IEnumerator ILoadEndScene()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(3);
+    }
+
+    public void Ragdoll()
+    {
+        rb.isKinematic = true;
+        canInteract = false;
+        canMove = false;
+        headTransform.parent = head;
+        headTransform.localPosition = Vector3.zero;
+        ragdollParent.SetActive(true);
+        GetComponent<CapsuleCollider>().enabled = false;
+        foreach (var r in ragdollParent.GetComponentsInChildren<Rigidbody>())
+        {
+            r.isKinematic = false;
+        }
+
+        StartCoroutine(ILoadEndScene());
     }
 
     public void Wosh()
@@ -193,7 +222,7 @@ public class Player : MonoBehaviour, IDamagable
     }
     void OnLimbLoss(LimbState status)
     {
-        if (!status.Head) PlayerStatus.OnDeath?.Invoke();
+        //if (!status.Head) PlayerStatus.OnDeath?.Invoke();
         movementSpeedMultplier = 0.4f;
         if (status.LeftLeg) movementSpeedMultplier += 0.3f;
         if (status.RightLeg) movementSpeedMultplier += 0.3f;
@@ -310,7 +339,7 @@ public class Player : MonoBehaviour, IDamagable
         float upBoost = 0;
         if(PropelUp)
         {
-            upBoost =2.5f;
+            upBoost =5.5f;
         }
 
         var velo = (forward * direction.y + right * direction.x) * movementSpeed + (upBoost +  rb.linearVelocity.y) * Vector3.up;
