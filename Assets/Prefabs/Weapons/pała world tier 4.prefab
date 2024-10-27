@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 450127992598989824, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
       propertyPath: m_Name
-      value: "pa\u0142a world tier 2"
+      value: "pa\u0142a world tier 4"
       objectReference: {fileID: 0}
     - target: {fileID: 450127992598989824, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
       propertyPath: m_Layer
@@ -59,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 4498098673223483195, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d7554a78ea33089408b80e2af4f9235b, type: 2}
+      objectReference: {fileID: 2100000, guid: 327702b6d9c844746817631bb85794d9, type: 2}
     - target: {fileID: 6265478345516631817, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -76,7 +76,7 @@ PrefabInstance:
       addedObject: {fileID: 8307250902312444745}
     - targetCorrespondingSourceObject: {fileID: 450127992598989824, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -2874942065019563529}
+      addedObject: {fileID: 9109365651054955992}
   m_SourcePrefab: {fileID: 100100000, guid: 10ab70e7d015d024e816cd7e1473dc27, type: 3}
 --- !u!1 &8642779040836782039 stripped
 GameObject:
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38c5762dfee98242beb3e5ceed2120f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 63851b9554120b1488ce8c0239eda634, type: 2}
+  Item: {fileID: 11400000, guid: c4763284d124be34d90f5769beba0741, type: 2}
 --- !u!54 &8307250902312444745
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &-2874942065019563529
+--- !u!64 &9109365651054955992
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
