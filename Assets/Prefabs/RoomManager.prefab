@@ -64,21 +64,10 @@ MonoBehaviour:
       roomIndexFromList: 0
       hasKey: 1
   - roomTypes:
-    - roomType: 4
-      roomIndexFromList: 0
-      hasKey: 0
-  - roomTypes:
     - roomType: 1
       roomIndexFromList: 1
       hasKey: 0
     - roomType: 5
-      roomIndexFromList: 1
-      hasKey: 0
-  - roomTypes:
-    - roomType: 7
-      roomIndexFromList: 1
-      hasKey: 1
-    - roomType: 3
       roomIndexFromList: 1
       hasKey: 0
   - roomTypes:
@@ -133,7 +122,7 @@ MonoBehaviour:
   - {fileID: 4234191957543052855, guid: 78062eb8732a0a44299ecf1f390b4318, type: 3}
   - {fileID: 7545615220076572789, guid: fb886b78b0230c542b71f562d3334ff4, type: 3}
   lightObject: {fileID: 724133117482815894, guid: e61c74e0e43c68c43b6efa936d6fe350, type: 3}
-  enemyObject: {fileID: 7678512171347918952, guid: 2f1f487f012edd64f9b3314019174a02, type: 3}
+  enemyObjects: []
   doorObject: {fileID: 1123299098356835380, guid: f7607bb30c8ff474fa76335417b50a6f, type: 3}
   keyObject: {fileID: 907664395641349445, guid: e6e3b70bd00aec54d9f8f2de96f6c556, type: 3}
   startRoomTemplates:
