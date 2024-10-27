@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 6144532173906984054}
   - component: {fileID: 2849441465333524448}
   m_Layer: 0
-  m_Name: Sacrifice Room 0
+  m_Name: Sacrifice Room 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1055,7 +1055,7 @@ PrefabInstance:
     - target: {fileID: 4338664354510884264, guid: e4001ccdd554e0948b4ae9fb18e248c7, type: 3}
       propertyPath: 'possibleObjects.Array.data[0]'
       value: 
-      objectReference: {fileID: 2331098363897039795, guid: 56e6c8fdaa8aac349853fec99d14a8c0, type: 3}
+      objectReference: {fileID: 2331098363897039795, guid: 6ca3289d429ffea4aa595ff98e037a4a, type: 3}
     - target: {fileID: 9183506760431083681, guid: e4001ccdd554e0948b4ae9fb18e248c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.213
@@ -1161,7 +1161,7 @@ PrefabInstance:
     - target: {fileID: 8148063461986736949, guid: fa9759d53088f4f4984c485cb0950fbb, type: 3}
       propertyPath: 'possibleObjects.Array.data[0]'
       value: 
-      objectReference: {fileID: 8642779040836782039, guid: 10725b39fb8e71b478a5106555ab9f34, type: 3}
+      objectReference: {fileID: 8642779040836782039, guid: b2e198f4e7ad27e40962133c7a55be4b, type: 3}
     - target: {fileID: 8148063461986736949, guid: fa9759d53088f4f4984c485cb0950fbb, type: 3}
       propertyPath: 'possibleObjects.Array.data[1]'
       value: 

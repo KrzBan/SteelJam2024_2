@@ -69,6 +69,7 @@ public class RoomManager : MonoBehaviour
     public List<Room> challangeRoomTemplates;
     public List<Room> specialRoomTemplates;
     public List<Room> treasureRoomTemplates;
+    public List<Room> slimeRoomTemplates;
 
     private Room _currentRoom;
     private Room _newRoom;
@@ -105,7 +106,7 @@ public class RoomManager : MonoBehaviour
                 SpawnRoom(treasureRoomTemplates, info);
                 break;
             case RoomType.Slime:
-                SpawnRoom(normalRoomTemplates, info);
+                SpawnRoom(slimeRoomTemplates, info);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
