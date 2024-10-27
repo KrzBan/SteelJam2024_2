@@ -13,7 +13,7 @@ public enum RoomType
     Heal,
     Sacrifice,
     Boss,
-    Challange,
+    Challenge,
     Special,
     Treasure,
     Slime
@@ -93,7 +93,7 @@ public class RoomManager : MonoBehaviour
             case RoomType.Sacrifice:
                 SpawnRoom(sacrificeRoomTemplates, info);
                 break;
-            case RoomType.Challange:
+            case RoomType.Challenge:
                 SpawnRoom(challangeRoomTemplates, info);
                 break;
             case RoomType.Boss:
