@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewards:
   - {fileID: 8642779040836782039, guid: 9944ed3270696564fb667975b3a43a40, type: 3}
+  - {fileID: 2331098363897039795, guid: 1cbf8f1ee606f4748875a62f47abab09, type: 3}
 --- !u!1 &939422271923712086
 GameObject:
   m_ObjectHideFlags: 0

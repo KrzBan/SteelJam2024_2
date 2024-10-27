@@ -10629,8 +10629,8 @@ GameObject:
   - component: {fileID: 5994416365179743169}
   - component: {fileID: 3094492864209363599}
   - component: {fileID: 847106738664712205}
-  - component: {fileID: 3180630537142495779}
   - component: {fileID: 9014906794399938291}
+  - component: {fileID: 259696160598761143}
   m_Layer: 0
   m_Name: Object_117
   m_TagString: Untagged
@@ -10706,19 +10706,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3180630537142495779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4036937875548318157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dde2ae785d9ea1409c19bb52717735c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportToSceneName: KrzBanTestScene
 --- !u!64 &9014906794399938291
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10741,6 +10728,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7083214780887770643, guid: 29b28f36c6430df3491ed9e59452b88a, type: 3}
+--- !u!114 &259696160598761143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4036937875548318157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d33df09a2fe044ab8fd724e17e3a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoomText: {fileID: 0}
+  roomInfo:
+    roomType: 0
+    roomIndexFromList: 0
+    hasKey: 0
+  keyLock: {fileID: 0}
+  lockSpawnPoint: {fileID: 0}
+  _interactable: 1
 --- !u!1 &4056455240479352559
 GameObject:
   m_ObjectHideFlags: 0
