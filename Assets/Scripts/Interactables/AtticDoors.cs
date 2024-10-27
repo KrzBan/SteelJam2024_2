@@ -10,4 +10,8 @@ public class AtticDoors : MonoBehaviour, IInteractable
         Fade.Instance.Out(4f);
         Fade.Instance.OnFadedOut += () => SceneManager.LoadScene(teleportToSceneName);
     }
+    public string getToolTip()
+    {
+        return "Press e to go out";
+    }
 }

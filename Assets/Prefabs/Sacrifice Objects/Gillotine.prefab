@@ -1715,6 +1715,9 @@ MonoBehaviour:
   interactableMultipleTimes: 0
   sacrificeReward: {fileID: 8148063461986736949}
   triggerCollider: {fileID: 2609221243473947189}
+  objsToInverse:
+  - {fileID: 6166099320265775713}
+  - {fileID: 6091564803933574222}
 --- !u!65 &2609221243473947189
 BoxCollider:
   m_ObjectHideFlags: 0

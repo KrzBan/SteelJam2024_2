@@ -211,6 +211,7 @@ MonoBehaviour:
   armDecap: {fileID: 1465919454413493694, guid: 781825c2ce8e6aa47bbc520d61ca46fd, type: 3}
   dashForce: 500
   dashCooldown: 2
+  interactRange: 2.3
   canInteract: 1
   canMove: 1
   AttackingMoveDebuff: 0

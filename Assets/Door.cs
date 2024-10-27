@@ -13,6 +13,28 @@ public class Door : MonoBehaviour, IInteractable
     public Transform lockSpawnPoint;
     
     [SerializeField] bool _interactable = false;
+    private bool noTooltip = false; 
+
+    public string getToolTip()
+    {
+        if (noTooltip)
+        {
+            return "";
+        }
+        
+        if (!_interactable)
+        {
+            return "Locked";
+        }
+
+        if (keyLock != null)
+        {
+            return "You need a key to open this";
+        }
+        
+        return "Press e to move further";
+    }
+
     public void interact(Player user)
     {
         if(_interactable == false)
@@ -20,9 +42,19 @@ public class Door : MonoBehaviour, IInteractable
         
         //if(keyLock != null && user.inventory.ConsumeKey() == false)
         //    return;
-        
-        if(keyLock != null)
+
+        if (keyLock != null)
+        {
+            if (Player.Instance.inventory.Keys <= 0)
+            {
+                return;
+            }
+
+            Player.Instance.inventory.Keys--;
             keyLock.GetComponent<PlayableDirector>().Play();
+        }
+
+        noTooltip = true;
         
         // spawn new room
         _interactable = false;

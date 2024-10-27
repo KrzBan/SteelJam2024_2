@@ -1,5 +1,6 @@
 using System;
 using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,12 +20,14 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private GameObject armDecap;
     [SerializeField] private float dashForce = 500f;
     [SerializeField] private float dashCooldown = 2f;
+    [SerializeField] private float interactRange = 1.5f;
     
     [CanBeNull] public static Player Instance { get; private set; }
 
     private Vector2 direction;
     private Rigidbody rb;
     private float lastDash = 0f;
+    private TMPro.TMP_Text ToolTipTMP;
 
     private float movementSpeedMultplier = 1;
     public bool canInteract = true;
@@ -41,6 +44,11 @@ public class Player : MonoBehaviour, IDamagable
         PlayerStatus.OnLimbStateChanged += OnLimbLoss;
     }
 
+    private void Start()
+    {
+        ToolTipTMP = GameObject.FindGameObjectWithTag("Tooltip").GetComponent<TMP_Text>();
+    }
+
     private void FixedUpdate()
     {
         EvaluateMovement();
@@ -53,7 +61,10 @@ public class Player : MonoBehaviour, IDamagable
 
     public void ShowArm()
     {
-        armObject.SetActive(true);
+        if (PlayerStatus.RightArm)
+        {
+            armObject.SetActive(true);
+        }
     }
     
     public void Move(Vector2 _direction)
@@ -63,6 +74,11 @@ public class Player : MonoBehaviour, IDamagable
 
     public void Dash()
     {
+        if (!PlayerStatus.RightLeg || !PlayerStatus.LeftLeg)
+        {
+            return;
+        }
+        
         if (Time.time - lastDash < dashCooldown)
         {
             return;
@@ -104,8 +120,34 @@ public class Player : MonoBehaviour, IDamagable
         
         headTransform.RotateAround(headTransform.position, Vector3.up, delta.x * sensitivity);
         headTransform.RotateAround(headTransform.position, headTransform.right, -delta.y * sensitivity);
-    }
 
+        doToolTip();
+    }
+    void doToolTip()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, interactRange))
+        {
+             var isInteractable = hit.collider.TryGetComponent<IInteractable>(out var Interactable);
+             if (isInteractable)
+             {
+                if(ToolTipTMP != null)
+                    ToolTipTMP.text = Interactable.getToolTip();
+             }
+             else 
+             {
+                if (ToolTipTMP != null)
+                    ToolTipTMP.text = "";
+             }
+
+        }
+        else 
+        {
+            if (ToolTipTMP != null)
+                ToolTipTMP.text = "";
+        }
+
+    }
     void OnLimbLoss(LimbState status)
     {
         if (!status.Head) PlayerStatus.OnDeath.Invoke();
@@ -115,12 +157,16 @@ public class Player : MonoBehaviour, IDamagable
 
 
         if (inventory.ItemSlot == null) return;
-        if (!(status.LeftArm || status.RightArm)) DropItem();
+        if (!(status.LeftArm || status.RightArm))
+        {
+            DropItem();
+            HideArm();
+        }
 
 
         if(!(status.LeftArm && status.RightArm))
         {
-            if (inventory.ItemSlot.getItemSO().HandRequirement == HandRequirement.DualHanded)
+            if (inventory.ItemSlot != null && inventory.ItemSlot.getItemSO().HandRequirement == HandRequirement.DualHanded)
                 DropItem();
         }
     }
@@ -143,6 +189,18 @@ public class Player : MonoBehaviour, IDamagable
         if (Random.Range(0f, 1f) <= hitParams.LibLossChance)
         {
             RemoveLimbOrdered();
+        }
+    }
+
+    public void RemoveArm()
+    {
+        if (PlayerStatus.LeftArm)
+        {
+            PlayerStatus.LeftArm = false;
+        }
+        else if (PlayerStatus.RightArm)
+        {
+            PlayerStatus.RightArm = false;
         }
     }
 
@@ -203,7 +261,7 @@ public class Player : MonoBehaviour, IDamagable
         layerMask = ~layerMask;
         
         RaycastHit hit;
-        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out hit, interactRange, layerMask))
         {
             IInteractable interactable;
             bool isInteractable = hit.collider.TryGetComponent<IInteractable>(out interactable );
@@ -226,6 +284,9 @@ public class Player : MonoBehaviour, IDamagable
 
     public void Use()
     {
+        if (!PlayerStatus.RightArm)
+            return;
+        
         if (inventory.ItemSlot == null) return;
         switch (inventory.ItemSlot.getItemSO().HandRequirement)
         {
