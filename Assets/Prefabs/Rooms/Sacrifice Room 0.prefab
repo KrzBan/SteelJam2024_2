@@ -1063,6 +1063,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gillotine (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8981860685655067735, guid: fa9759d53088f4f4984c485cb0950fbb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
