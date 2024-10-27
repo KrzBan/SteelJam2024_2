@@ -376,7 +376,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -937,6 +937,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6131302103321030226}
   - component: {fileID: 5700448676719099809}
+  - component: {fileID: 6438128016413973011}
+  - component: {fileID: 6420586684573898973}
   m_Layer: 0
   m_Name: Glut room
   m_TagString: Untagged
@@ -986,6 +988,39 @@ MonoBehaviour:
   lightsParent: {fileID: 6436447647927526103}
   doorsParent: {fileID: 2550338165363931091}
   enemyList: []
+--- !u!114 &6438128016413973011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8503868336884738461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6abda1009bf2ed54182157f50f49887e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &6420586684573898973
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8503868336884738461}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.7885795, y: 2.552343, z: 5.762269}
+  m_Center: {x: -0.105243444, y: -2.3548243, z: 0.039466023}
 --- !u!1 &8846592021360856131
 GameObject:
   m_ObjectHideFlags: 0

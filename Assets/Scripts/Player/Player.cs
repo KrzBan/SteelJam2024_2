@@ -24,8 +24,9 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private float dashCooldown = 2f;
     [SerializeField] private float interactRange = 1.5f;
     [SerializeField] private float maxHealth = 10;
-    
+    [SerializeField] public GameObject Bubbles;
     [CanBeNull] public static Player Instance { get; private set; }
+    public Animator animator;
 
     private Vector2 direction;
     private Rigidbody rb;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour, IDamagable
     public bool canInteract = true;
     public bool canMove = true;
     public bool AttackingMoveDebuff = false;
+    public bool PropelUp = false;
 
 
     private void Awake()
@@ -43,12 +45,29 @@ public class Player : MonoBehaviour, IDamagable
         Instance = this;
         inventory = new Inventory();
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         Cursor.Instance.Hide();
         PlayerStatus.OnLimbStateChanged += OnLimbLoss;
 
         PlayerStatus.Health = maxHealth;
     }
 
+    public void SetGlutPartices()
+    {
+        Bubbles.SetActive(true);
+    }
+
+    public void HealLimbs()
+    {
+        PlayerStatus.Head = true;
+        PlayerStatus.LeftArm = true;
+        PlayerStatus.LeftLeg  = true;
+        PlayerStatus.RightArm = true;
+        PlayerStatus.RightLeg = true;
+        PlayerStatus.Health = 10;
+
+
+    }
     private void Start()
     {
         ToolTipTMP = GameObject.FindGameObjectWithTag("Tooltip").GetComponent<TMP_Text>();
@@ -264,12 +283,18 @@ public class Player : MonoBehaviour, IDamagable
         right.y = 0f;
         right.Normalize();
 
+        float upBoost = 0;
+        if(PropelUp)
+        {
+            upBoost =2.5f;
+        }
 
-        var velo = (forward * direction.y + right * direction.x) * movementSpeed + rb.linearVelocity.y * Vector3.up;
+        var velo = (forward * direction.y + right * direction.x) * movementSpeed + (upBoost +  rb.linearVelocity.y) * Vector3.up;
         velo *= movementSpeedMultplier;
         if (AttackingMoveDebuff) velo *= 0.3f;
         rb.linearVelocity = velo;
     }
+
 
     public void Interact()
     {
